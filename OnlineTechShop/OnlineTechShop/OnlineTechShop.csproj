@@ -184,6 +184,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Contents\CSS_Files\" />
+    <Folder Include="Contents\Scripts_Files\" />
+    <Folder Include="Contents\Upload_Files\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
