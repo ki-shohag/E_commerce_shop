@@ -161,6 +161,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Customer\ComponentsController.cs" />
+    <Compile Include="Controllers\Customer\CustomerLoginController.cs" />
+    <Compile Include="Controllers\Customer\CustomerPasswordController.cs" />
+    <Compile Include="Controllers\Customer\CustomerRegistrationController.cs" />
     <Compile Include="Controllers\Customer\HomeController.cs" />
     <Compile Include="Controllers\Customer\LaptopController.cs" />
     <Compile Include="Controllers\Customer\MonitorController.cs" />
@@ -276,6 +279,11 @@
     <Content Include="Views\Monitor\Index.cshtml" />
     <Content Include="Views\Monitor\MonitorBrand.cshtml" />
     <Content Include="Views\Monitor\ShowMonitor.cshtml" />
+    <Content Include="Views\CustomerRegistration\Index.cshtml" />
+    <Content Include="Views\CustomerLogin\Index.cshtml" />
+    <Content Include="Views\CustomerPassword\Index.cshtml" />
+    <Content Include="Views\CustomerPassword\VerifyEmail.cshtml" />
+    <Content Include="Views\CustomerPassword\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
