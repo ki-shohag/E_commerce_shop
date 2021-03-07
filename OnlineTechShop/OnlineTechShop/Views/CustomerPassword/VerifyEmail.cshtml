@@ -8,7 +8,7 @@
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
-    
+
     <link href="~/Contents/vendor/img/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
                 <div class="col-lg-4 col-12">
                     <a href="#" class="btn btn-light btn-sm">
                         <i class="icofont-cart-alt h6"> Cart <span class="badge  badge-danger">4</span> </i>
-                    </a> | <a href="/CustomerRegistration" class="btn btn-link">Register</a> | <a href="/CustomerLogin" class="btn btn-link">Login</a>
+                    </a> | <a class="btn btn-link">Register</a> | <a class="btn btn-link">Login</a>
                 </div>
                 <div class="col-12 col-lg-6">
                     <nav class="nav-menu d-none d-lg-block">
@@ -192,23 +192,13 @@
     <!--Main Body Starts-->
     <main id="main ">
         <div class="container">
-            <div class="row mt-2">
-                <div class="col-12 col-lg-3 border border-secondary rounded">
-                    <div class="text-center mt-2 mb-2">
-                        <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
-                        <h4>Product name</h4>
-                    </div>
-                    <div class="text-left border-top border-secondary">
-                        <p>
-                            <span>Rating</span><br />
-                            <span>Price</span><br />
-                            <span>Availability</span><br />
-                        </p>
-                    </div>
-                    <div class="border-top border-secondary pb-2 text-center">
-                        <a href="#" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Cart</a>
-                        <a href="/Components/ShowComponent" class="btn-sm btn-primary btn-block">View Product</a>
-                    </div>
+            <div class="row mt-2 justify-content-center">
+                <div class="col-12 col-lg-6 text-center border border-success rounded m-5 p-5">
+                    <form>
+                        <h3 class="text-muted mb-5">Enter Verification Code</h3>
+                        <input class="form-control mb-2" placeholder="Verification Code" type="number" name="code" />
+                        <button class="btn btn-block btn-success" type="button">Submit</button>
+                    </form><br />
                 </div>
             </div>
         </div>
