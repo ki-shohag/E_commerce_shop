@@ -162,6 +162,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Customer\ComponentsController.cs" />
     <Compile Include="Controllers\Customer\HomeController.cs" />
+    <Compile Include="Controllers\Customer\LaptopController.cs" />
+    <Compile Include="Controllers\Customer\MonitorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,6 +263,19 @@
     <Content Include="Views\Components\CPU.cshtml" />
     <Content Include="Views\Components\HDD.cshtml" />
     <Content Include="Views\Components\CoolingFan.cshtml" />
+    <Content Include="Views\Components\SSDBrand.cshtml" />
+    <Content Include="Views\Components\GraphicsCardBrand.cshtml" />
+    <Content Include="Views\Components\CasingBrand.cshtml" />
+    <Content Include="Views\Components\MotherboardBrand.cshtml" />
+    <Content Include="Views\Components\CPUBrand.cshtml" />
+    <Content Include="Views\Components\HDDBrand.cshtml" />
+    <Content Include="Views\Components\CoolingFanBrand.cshtml" />
+    <Content Include="Views\Laptop\Index.cshtml" />
+    <Content Include="Views\Laptop\LaptopBrand.cshtml" />
+    <Content Include="Views\Laptop\ShowLaptop.cshtml" />
+    <Content Include="Views\Monitor\Index.cshtml" />
+    <Content Include="Views\Monitor\MonitorBrand.cshtml" />
+    <Content Include="Views\Monitor\ShowMonitor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
