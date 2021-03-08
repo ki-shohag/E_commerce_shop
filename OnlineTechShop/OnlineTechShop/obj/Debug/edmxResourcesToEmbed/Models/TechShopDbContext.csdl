@@ -5,47 +5,47 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Full_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="User_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Profile_Pic" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProfilePic" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Password" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Joining_Date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Last_Updated" Type="DateTime" Precision="3" />
+    <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="BuyingAgent">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Full_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="User_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Profile_Pic" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProfilePic" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Password" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Salary" Type="Decimal" Precision="18" Scale="3" />
-    <Property Name="Joining_Date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Last_Updated" Type="DateTime" Precision="3" />
+    <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Full_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="User_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Profile_Pic" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProfilePic" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Joining_Date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Last_Updated" Type="DateTime" Precision="3" />
+    <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Old_Products" Relationship="Self.FK_Old_Products_Customers" FromRole="Customers" ToRole="Old_Products" />
     <NavigationProperty Name="Ratings" Relationship="Self.FK_Ratings_Customers" FromRole="Customers" ToRole="Ratings" />
     <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_Customers1" FromRole="Customers" ToRole="Reviews" />
@@ -56,12 +56,12 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Cutomer_Id" Type="Int32" />
-    <Property Name="Product_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Product_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CutomerId" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Buying_Price" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
-    <Property Name="Selling_Price" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="BuyingPrice" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="SellingPrice" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Features" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -77,11 +77,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Product_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Product_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Buying_Price" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
-    <Property Name="Selling_Price" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="BuyingPrice" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="SellingPrice" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Features" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -98,7 +98,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Promo_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PromoCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Validity" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
@@ -107,10 +107,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Product_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Product_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Buying_Price" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="BuyingPrice" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Features" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -122,10 +122,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="User_Id" Type="Int32" Nullable="false" />
-    <Property Name="Product_Id" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
     <Property Name="Rating1" Type="Int32" Nullable="false" />
-    <Property Name="Date_Rated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateRated" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Ratings_Customers" FromRole="Ratings" ToRole="Customers" />
     <NavigationProperty Name="Product" Relationship="Self.FK_Ratings_Products" FromRole="Ratings" ToRole="Products" />
   </EntityType>
@@ -135,9 +135,9 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="User_Id" Type="Int32" Nullable="false" />
-    <Property Name="Product_Id" Type="Int32" Nullable="false" />
-    <Property Name="Date_Posted" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="DatePosted" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Reviews_Customers1" FromRole="Reviews" ToRole="Customers" />
     <NavigationProperty Name="Product" Relationship="Self.FK_Reviews_Products" FromRole="Reviews" ToRole="Products" />
   </EntityType>
@@ -146,14 +146,14 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="User_Id" Type="Int32" />
-    <Property Name="Product_Id" Type="Int32" Nullable="false" />
-    <Property Name="Sales_Executive_Id" Type="Int32" />
-    <Property Name="Date_Sold" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="SalesExecutiveId" Type="Int32" />
+    <Property Name="DateSold" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="Sale" Type="Decimal" Precision="18" Scale="3" />
     <Property Name="Tax" Type="Decimal" Precision="18" Scale="3" />
-    <Property Name="Total_Price" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Sales_Log_Customers" FromRole="Sales_Log" ToRole="Customers" />
     <NavigationProperty Name="Product" Relationship="Self.FK_Sales_Log_Products" FromRole="Sales_Log" ToRole="Products" />
@@ -164,16 +164,16 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Full_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="User_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Profile_Pic" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProfilePic" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Password" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Salary" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
-    <Property Name="Joining_Date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Last_Updated" Type="DateTime" Precision="3" />
+    <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Sales_Log" Relationship="Self.FK_Sales_Log_SalesExecutives" FromRole="SalesExecutives" ToRole="Sales_Log" />
   </EntityType>
   <Association Name="FK_Old_Products_Customers">
@@ -184,7 +184,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Old_Products">
-        <PropertyRef Name="Cutomer_Id" />
+        <PropertyRef Name="CutomerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -196,7 +196,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Ratings">
-        <PropertyRef Name="User_Id" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -208,7 +208,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Reviews">
-        <PropertyRef Name="User_Id" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -220,7 +220,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Sales_Log">
-        <PropertyRef Name="User_Id" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -232,7 +232,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Ratings">
-        <PropertyRef Name="Product_Id" />
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -244,7 +244,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Reviews">
-        <PropertyRef Name="Product_Id" />
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -256,7 +256,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Sales_Log">
-        <PropertyRef Name="Product_Id" />
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -268,7 +268,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Sales_Log">
-        <PropertyRef Name="Sales_Executive_Id" />
+        <PropertyRef Name="SalesExecutiveId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -11,7 +11,8 @@ namespace OnlineTechShop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,16 +25,22 @@ namespace OnlineTechShop.Models
         }
     
         public int Id { get; set; }
-        public string Full_Name { get; set; }
-        public string User_Name { get; set; }
-        public string Profile_Pic { get; set; }
-        public byte[] Password { get; set; }
+        [Required, MinLength(3), MaxLength(50), RegularExpression("^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)", ErrorMessage = "Please enter alphabetic characters for Full Name!")]
+        public string FullName { get; set; }
+        [Required, MinLength(3), MaxLength(30), RegularExpression("^[a-zA-Z0-9_]*$", ErrorMessage = "Please enter alphanumeric charcters for User Name!")]
+        public string UserName { get; set; }
+        public string ProfilePic { get; set; }
+        [Required, MinLength(3), MaxLength(20)]
+        public string Password { get; set; }
+        [Required, EmailAddress, MinLength(10), MaxLength(50)]
         public string Email { get; set; }
+        [Required, Phone, MinLength(11), MaxLength(11)]
         public string Phone { get; set; }
+        [Required, MinLength(3), MaxLength(100)]
         public string Address { get; set; }
         public string Status { get; set; }
-        public System.DateTime Joining_Date { get; set; }
-        public Nullable<System.DateTime> Last_Updated { get; set; }
+        public System.DateTime JoiningDate { get; set; }
+        public System.DateTime LastUpdated { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Old_Products> Old_Products { get; set; }

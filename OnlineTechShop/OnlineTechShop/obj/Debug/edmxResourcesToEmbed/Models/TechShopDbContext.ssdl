@@ -5,59 +5,59 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Full_Name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="User_Name" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Profile_Pic" Type="varchar" MaxLength="150" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProfilePic" Type="varchar" MaxLength="150" />
     <Property Name="Password" Type="varbinary" MaxLength="20" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Address" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="Joining_Date" Type="datetime" Nullable="false" />
-    <Property Name="Last_Updated" Type="datetime" />
+    <Property Name="JoiningDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" />
   </EntityType>
   <EntityType Name="BuyingAgents">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Full_Name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="User_Name" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Profile_Pic" Type="varchar" MaxLength="150" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProfilePic" Type="varchar" MaxLength="150" />
     <Property Name="Password" Type="varbinary" MaxLength="20" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Address" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="Salary" Type="decimal" Precision="18" Scale="3" />
-    <Property Name="Joining_Date" Type="datetime" Nullable="false" />
-    <Property Name="Last_Updated" Type="datetime" />
+    <Property Name="JoiningDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Full_Name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="User_Name" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Profile_Pic" Type="varchar" MaxLength="150" />
-    <Property Name="Password" Type="varbinary" MaxLength="20" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProfilePic" Type="varchar" MaxLength="150" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Address" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="Joining_Date" Type="datetime" Nullable="false" />
-    <Property Name="Last_Updated" Type="datetime" />
+    <Property Name="JoiningDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Old_Products">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Cutomer_Id" Type="int" />
-    <Property Name="Product_Name" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Product_Description" Type="text" />
+    <Property Name="CutomerId" Type="int" />
+    <Property Name="ProductName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProductDescription" Type="text" />
     <Property Name="Status" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Buying_Price" Type="decimal" Precision="18" Scale="3" Nullable="false" />
-    <Property Name="Selling_Price" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="BuyingPrice" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Category" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Features" Type="text" Nullable="false" />
@@ -72,11 +72,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Product_Name" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Product_Description" Type="text" />
+    <Property Name="ProductName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProductDescription" Type="text" />
     <Property Name="Status" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Buying_Price" Type="decimal" Precision="18" Scale="3" Nullable="false" />
-    <Property Name="Selling_Price" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="BuyingPrice" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Category" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Features" Type="text" Nullable="false" />
@@ -90,7 +90,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Promo_Code" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PromoCode" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Validity" Type="datetime" Nullable="false" />
   </EntityType>
@@ -99,10 +99,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Product_Name" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Product_Description" Type="text" />
+    <Property Name="ProductName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProductDescription" Type="text" />
     <Property Name="Status" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Buying_Price" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="BuyingPrice" Type="decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Category" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Features" Type="text" Nullable="false" />
@@ -114,10 +114,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="User_Id" Type="int" Nullable="false" />
-    <Property Name="Product_Id" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="Rating" Type="int" Nullable="false" />
-    <Property Name="Date_Rated" Type="datetime" Nullable="false" />
+    <Property Name="DateRated" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Reviews">
     <Key>
@@ -125,23 +125,23 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Body" Type="text" Nullable="false" />
-    <Property Name="User_Id" Type="int" Nullable="false" />
-    <Property Name="Product_Id" Type="int" Nullable="false" />
-    <Property Name="Date_Posted" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="DatePosted" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Sales_Log">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="User_Id" Type="int" />
-    <Property Name="Product_Id" Type="int" Nullable="false" />
-    <Property Name="Sales_Executive_Id" Type="int" />
-    <Property Name="Date_Sold" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="SalesExecutiveId" Type="int" />
+    <Property Name="DateSold" Type="datetime" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
     <Property Name="Sale" Type="decimal" Precision="18" Scale="3" />
     <Property Name="Tax" Type="decimal" Precision="18" Scale="3" />
-    <Property Name="Total_Price" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="3" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="SalesExecutives">
@@ -149,16 +149,16 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Full_Name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="User_Name" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Profile_Pic" Type="varchar" MaxLength="150" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProfilePic" Type="varchar" MaxLength="150" />
     <Property Name="Password" Type="varbinary" MaxLength="20" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Address" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="Salary" Type="decimal" Precision="18" Scale="3" Nullable="false" />
-    <Property Name="Joining_Date" Type="datetime" Nullable="false" />
-    <Property Name="Last_Updated" Type="datetime" />
+    <Property Name="JoiningDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" />
   </EntityType>
   <Association Name="FK_Old_Products_Customers">
     <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
@@ -168,7 +168,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Old_Products">
-        <PropertyRef Name="Cutomer_Id" />
+        <PropertyRef Name="CutomerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -180,7 +180,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Ratings">
-        <PropertyRef Name="User_Id" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -192,7 +192,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Ratings">
-        <PropertyRef Name="Product_Id" />
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -204,7 +204,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Reviews">
-        <PropertyRef Name="User_Id" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -216,7 +216,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Reviews">
-        <PropertyRef Name="Product_Id" />
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -228,7 +228,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Sales_Log">
-        <PropertyRef Name="User_Id" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -240,7 +240,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Sales_Log">
-        <PropertyRef Name="Product_Id" />
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -252,7 +252,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Sales_Log">
-        <PropertyRef Name="Sales_Executive_Id" />
+        <PropertyRef Name="SalesExecutiveId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

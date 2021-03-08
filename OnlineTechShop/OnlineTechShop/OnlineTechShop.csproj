@@ -1,5 +1,4 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,10 +44,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
@@ -99,6 +98,7 @@
   <ItemGroup>
     <Content Include="Contents\CSS_Files\style.css" />
     <Content Include="Contents\Scripts_Files\clientProfile.js" />
+    <Content Include="Contents\Scripts_Files\customerRegistration.js" />
     <Content Include="Contents\Scripts_Files\main.js" />
     <Content Include="Contents\Scripts_Files\productSearch.js" />
     <Content Include="Contents\vendor\aos\aos.css" />
@@ -160,9 +160,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Customer\CompareProductsController.cs" />
     <Compile Include="Controllers\Customer\ComponentsController.cs" />
     <Compile Include="Controllers\Customer\CustomerLoginController.cs" />
+    <Compile Include="Controllers\Customer\CustomerLogOutController.cs" />
     <Compile Include="Controllers\Customer\CustomerPasswordController.cs" />
+    <Compile Include="Controllers\Customer\CustomerProfileController.cs" />
     <Compile Include="Controllers\Customer\CustomerRegistrationController.cs" />
     <Compile Include="Controllers\Customer\HomeController.cs" />
     <Compile Include="Controllers\Customer\LaptopController.cs" />
@@ -179,6 +182,8 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerAccess\DataModels\CustomerDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\CustomerViewModel.cs" />
     <Compile Include="Models\Old_Products.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -222,13 +227,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\TechShopDbContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TechShopDbContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TechShopDbContext.edmx.diagram">
-      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
-    </Content>
     <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
     <Content Include="Contents\vendor\bootstrap\css\bootstrap-reboot.css.map" />
@@ -253,6 +251,13 @@
     <Content Include="Contents\vendor\remixicon\remixicon.ttf" />
     <Content Include="Contents\vendor\remixicon\remixicon.woff" />
     <Content Include="Contents\vendor\remixicon\remixicon.woff2" />
+    <EntityDeploy Include="Models\TechShopDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TechShopDbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TechShopDbContext.edmx.diagram">
+      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Components\Index.cshtml" />
@@ -284,6 +289,12 @@
     <Content Include="Views\CustomerPassword\Index.cshtml" />
     <Content Include="Views\CustomerPassword\VerifyEmail.cshtml" />
     <Content Include="Views\CustomerPassword\ResetPassword.cshtml" />
+    <Content Include="Views\CustomerProfile\Index.cshtml" />
+    <Content Include="Views\CustomerProfile\Edit.cshtml" />
+    <Content Include="Views\CustomerProfile\ChangePassword.cshtml" />
+    <Content Include="Views\CustomerProfile\PurchaseHistory.cshtml" />
+    <Content Include="Views\CustomerProfile\WishList.cshtml" />
+    <Content Include="Views\CompareProducts\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -294,6 +305,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Contents\Upload_Files\" />
+    <Folder Include="Views\CustomerLogOut\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -328,10 +340,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
