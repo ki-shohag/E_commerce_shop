@@ -51,3 +51,13 @@ D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Deb
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csproj.CopyComplete
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.dll
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.pdb
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\BouncyCastle.Crypto.dll
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.dll
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.dll
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Buffers.dll
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\BouncyCastle.Crypto.xml
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.pdb
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.xml
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.pdb
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.xml
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Buffers.xml
