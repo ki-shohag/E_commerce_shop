@@ -25,7 +25,7 @@ namespace OnlineTechShop.Models
         }
     
         public int Id { get; set; }
-        [Required, MinLength(3), MaxLength(50), RegularExpression("^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)", ErrorMessage = "Please enter alphabetic characters for Full Name!")]
+        [Required, MinLength(3), MaxLength(50), RegularExpression("[a-zA-Z][a-zA-Z ]+[a-zA-Z]$", ErrorMessage = "Please enter alphabetic characters for Full Name!")]
         public string FullName { get; set; }
         [Required, MinLength(3), MaxLength(30), RegularExpression("^[a-zA-Z0-9_]*$", ErrorMessage = "Please enter alphanumeric charcters for User Name!")]
         public string UserName { get; set; }

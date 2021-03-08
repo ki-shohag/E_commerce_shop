@@ -24,9 +24,9 @@ namespace OnlineTechShop.Models.CustomerAccess.ViewModels
         public DateTime JoiningDate { get; set; }
         public DateTime LastUpdated { get; set; }
 
+        CustomerDataModel customerData = new CustomerDataModel();
         public List<CustomerViewModel> ShowAllCustomers()
         {
-            CustomerDataModel customerData = new CustomerDataModel();
             var customers = customerData.GetAllCustomers();
             List<CustomerViewModel> customersList = new List<CustomerViewModel>();
             foreach (var customer in customers)
@@ -34,6 +34,10 @@ namespace OnlineTechShop.Models.CustomerAccess.ViewModels
                 customersList.Add(customerData.ConvertToCustomerViewModel(customer)); 
             }
             return customersList;
+        }
+        public CustomerViewModel ShowCustomerByEmail(string email)
+        {
+            return customerData.ConvertToCustomerViewModel(customerData.GetCustomerByEmail(email));
         }
     }
 }

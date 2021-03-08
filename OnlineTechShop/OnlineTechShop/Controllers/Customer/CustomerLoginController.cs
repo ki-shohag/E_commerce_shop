@@ -12,6 +12,7 @@ namespace OnlineTechShop.Controllers.Customer
         // GET: CustomerLogin
         public ActionResult Index()
         {
+            Session.Clear();
             return View();
         }
         [HttpPost]
@@ -23,8 +24,8 @@ namespace OnlineTechShop.Controllers.Customer
             {
                 if (customer.Status=="Active")
                 {
-
                     Session["user_name"] = customer.UserName;
+                    Session["user_email"] = customer.Email;
                     Session["user_id"] = customer.Id;
                     Session["user_status"] = customer.Status;
                     return RedirectToAction("Index", "Home");

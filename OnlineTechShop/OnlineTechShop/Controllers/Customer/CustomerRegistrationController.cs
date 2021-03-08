@@ -22,9 +22,22 @@ namespace OnlineTechShop.Controllers.Customer
             if (ModelState.IsValid)
             {
                 OnlineTechShop.Models.CustomerAccess.DataModels.CustomerDataModel customerData = new Models.CustomerAccess.DataModels.CustomerDataModel();
-                customerData.InsertCustomer(customer);
-                TempData["msg"] = "Registration was successful!\nWant to login?";
-                return RedirectToAction("Index","CustomerLogin");
+                if (customerData.GetCustomerByUserName(customer.UserName)!=null)
+                {
+                    TempData["msg"] = "User Name is alredy registered!";
+                    return RedirectToAction("Index", "CustomerRegistration");
+                }
+                else if (customerData.GetCustomerByEmail(customer.Email)!=null)
+                {
+                    TempData["msg"] = "Email is alredy registered!";
+                    return RedirectToAction("Index", "CustomerRegistration");
+                }
+                else
+                {
+                    customerData.InsertCustomer(customer);
+                    TempData["msg"] = "Registration was successful!\nWant to login?";
+                    return RedirectToAction("Index", "CustomerLogin");
+                }
             }
             else
             {
