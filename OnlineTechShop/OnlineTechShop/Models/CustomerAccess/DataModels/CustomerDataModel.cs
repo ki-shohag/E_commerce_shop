@@ -5,6 +5,7 @@ using System.Web;
 using OnlineTechShop.Models;
 using OnlineTechShop.Models.CustomerAccess.ViewModels;
 
+
 namespace OnlineTechShop.Models.CustomerAccess.DataModels
 {
     public class CustomerDataModel
@@ -41,6 +42,15 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         public Customer GetValidCustomer(string email, string password)
         {
             return data.Customers.Where(x=>x.Email==email && x.Password==password).FirstOrDefault();
+        }
+        public Customer GetCustomerByEmail(string email)
+        {
+            return data.Customers.Where(x => x.Email == email).FirstOrDefault();
+        }
+        public void UpdateCustomer(Customer customer)
+        {
+            data.Entry(customer).State = System.Data.Entity.EntityState.Modified;
+            data.SaveChanges();
         }
     }
 }
