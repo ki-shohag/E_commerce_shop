@@ -15,14 +15,14 @@ namespace OnlineTechShop.Models
     public partial class Sales_Log
     {
         public int Id { get; set; }
-        public Nullable<int> User_Id { get; set; }
-        public int Product_Id { get; set; }
-        public Nullable<int> Sales_Executive_Id { get; set; }
-        public System.DateTime Date_Sold { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public int ProductId { get; set; }
+        public Nullable<int> SalesExecutiveId { get; set; }
+        public System.DateTime DateSold { get; set; }
         public int Quantity { get; set; }
         public Nullable<decimal> Sale { get; set; }
         public Nullable<decimal> Tax { get; set; }
-        public decimal Total_Price { get; set; }
+        public decimal TotalPrice { get; set; }
         public string Status { get; set; }
     
         public virtual Customer Customer { get; set; }

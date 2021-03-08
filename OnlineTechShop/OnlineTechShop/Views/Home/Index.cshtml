@@ -35,20 +35,28 @@
 
 <body>
     <header id="header" class="">
-        <div class="container d-flex align-items-center">
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-8">
-                    <h1 class="logo"><a href="/home" class="text-success">Online Tech Shop</a></h1>
+                <div class="col-12 col-lg-7">
+                    <h1 class="logo"><a href="/Home" class="text-success">Online Tech Shop</a></h1>
                 </div>
-                <div class="col-lg-4 col-12">
+                <div class="col-lg-5 col-12">
                     <a href="#" class="btn btn-light btn-sm">
-                        <i class="icofont-cart-alt h6"> Cart <span class="badge  badge-danger">4</span> </i>
-                    </a> | <a href="/CustomerRegistration" class="btn btn-link">Register</a> | <a href="/CustomerLogin" class="btn btn-link">Login</a>
+                        <i class="icofont-cart-alt h6"> Cart <span class="badge  badge-danger">0</span> </i>
+                    </a> | <a href="/CompareProducts" class="btn-sm  btn-info">Compare Products</a>
+                    @if ((string)Session["user_status"] == "Active")
+                    {
+                        <a href="/CustomerProfile" class="btn-sm btn-success">My Account</a> <a href="/CustomerLogOut" class="btn-sm btn-danger">Logout</a>
+                    }
+                    else
+                    {
+                        <a href="/CustomerRegistration" class="btn-sm btn-success">Register</a> <a href="/CustomerLogin" class="btn-sm btn-primary">Login</a>
+                    }
+
                 </div>
                 <div class="col-12 col-lg-6">
                     <nav class="nav-menu d-none d-lg-block">
                         <ul>
-                            <li><a href="/Home">Home</a></li>
                             <li class="drop-down">
                                 <a href="/Components">Components</a>
                                 <ul>

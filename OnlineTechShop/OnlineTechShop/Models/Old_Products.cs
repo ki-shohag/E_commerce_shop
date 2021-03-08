@@ -15,12 +15,12 @@ namespace OnlineTechShop.Models
     public partial class Old_Products
     {
         public int Id { get; set; }
-        public Nullable<int> Cutomer_Id { get; set; }
-        public string Product_Name { get; set; }
-        public string Product_Description { get; set; }
+        public Nullable<int> CutomerId { get; set; }
+        public string ProductName { get; set; }
+        public string ProductDescription { get; set; }
         public string Status { get; set; }
-        public decimal Buying_Price { get; set; }
-        public decimal Selling_Price { get; set; }
+        public decimal BuyingPrice { get; set; }
+        public decimal SellingPrice { get; set; }
         public string Category { get; set; }
         public string Brand { get; set; }
         public string Features { get; set; }

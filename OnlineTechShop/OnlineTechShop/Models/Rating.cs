@@ -15,10 +15,10 @@ namespace OnlineTechShop.Models
     public partial class Rating
     {
         public int Id { get; set; }
-        public int User_Id { get; set; }
-        public int Product_Id { get; set; }
+        public int UserId { get; set; }
+        public int ProductId { get; set; }
         public int Rating1 { get; set; }
-        public System.DateTime Date_Rated { get; set; }
+        public System.DateTime DateRated { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Product Product { get; set; }

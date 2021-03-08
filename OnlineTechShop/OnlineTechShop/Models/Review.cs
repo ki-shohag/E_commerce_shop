@@ -16,9 +16,9 @@ namespace OnlineTechShop.Models
     {
         public int Id { get; set; }
         public string Body { get; set; }
-        public int User_Id { get; set; }
-        public int Product_Id { get; set; }
-        public System.DateTime Date_Posted { get; set; }
+        public int UserId { get; set; }
+        public int ProductId { get; set; }
+        public System.DateTime DatePosted { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Product Product { get; set; }

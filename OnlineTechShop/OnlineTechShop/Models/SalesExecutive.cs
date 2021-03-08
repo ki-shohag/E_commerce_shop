@@ -21,16 +21,16 @@ namespace OnlineTechShop.Models
         }
     
         public int Id { get; set; }
-        public string Full_Name { get; set; }
-        public string User_Name { get; set; }
-        public string Profile_Pic { get; set; }
+        public string FullName { get; set; }
+        public string UserName { get; set; }
+        public string ProfilePic { get; set; }
         public byte[] Password { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
         public decimal Salary { get; set; }
-        public System.DateTime Joining_Date { get; set; }
-        public Nullable<System.DateTime> Last_Updated { get; set; }
+        public System.DateTime JoiningDate { get; set; }
+        public Nullable<System.DateTime> LastUpdated { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sales_Log> Sales_Log { get; set; }

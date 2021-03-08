@@ -15,7 +15,7 @@ namespace OnlineTechShop.Models
     public partial class Promotion
     {
         public int Id { get; set; }
-        public string Promo_Code { get; set; }
+        public string PromoCode { get; set; }
         public decimal Amount { get; set; }
         public System.DateTime Validity { get; set; }
     }

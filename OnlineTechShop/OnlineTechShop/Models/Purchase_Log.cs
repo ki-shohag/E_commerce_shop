@@ -15,10 +15,10 @@ namespace OnlineTechShop.Models
     public partial class Purchase_Log
     {
         public int Id { get; set; }
-        public string Product_Name { get; set; }
-        public string Product_Description { get; set; }
+        public string ProductName { get; set; }
+        public string ProductDescription { get; set; }
         public string Status { get; set; }
-        public decimal Buying_Price { get; set; }
+        public decimal BuyingPrice { get; set; }
         public string Category { get; set; }
         public string Brand { get; set; }
         public string Features { get; set; }
