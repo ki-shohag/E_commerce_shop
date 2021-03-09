@@ -1,4 +1,4 @@
-﻿@model OnlineTechShop.Models.CustomerAccess.ViewModels.CustomerViewModel
+﻿@model OnlineTechShop.Models.Customer
 <!DOCTYPE html>
 <html lang="en">
 
@@ -193,43 +193,41 @@
             <div class="row mt-2 justify-content-around">
                 <div class="col-12 col-lg-3 border border-secondary rounded p-3">
                     <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
-                    <div class="text-center">
-                        <h5>Customer Name</h5>
-                        <h6>Email</h6>
-                        <h6>Phone</h6>
+                    <div class="text-left mt-2">
+                        <h5>@Model.FullName</h5>
+                        <h6>@Model.Email</h6>
+                        <h6>@Model.Phone</h6>
                     </div>
-                    <a class="btn-block btn-primary rounded btn-sm" href="/CustomerProfile/Edit/1">Edit Proile Info</a>
-                    <a class="btn-block btn-success rounded btn-sm" href="/CustomerProfile/PurchaseHistory/1">View Purchase History</a>
-                    <a class="btn-block btn-warning rounded btn-sm" href="/CustomerProfile/ChangePassword/1">Change Password</a>
+                    <a class="btn-block btn-primary rounded btn-sm" href="/CustomerProfile/Edit/@Model.Id">Edit Profile Info</a>
+                    <a class="btn-block btn-success rounded btn-sm" href="/CustomerProfile/PurchaseHistory/@Model.Id">View Purchase History</a>
+                    <a class="btn-block btn-warning rounded btn-sm" href="/CustomerProfile/ChangePassword/@Model.Id">Change Password</a>
                     <a class="btn-block btn-info rounded btn-sm" href="#">Reward Points</a>
-                    <a class="btn-block btn-secondary rounded btn-sm" href="/CustomerProfile/WishList/1">Wish List</a>
+                    <a class="btn-block btn-secondary rounded btn-sm" href="/CustomerProfile/WishList/@Model.Id">Wish List</a>
                 </div>
                 <div class="col-12 col-lg-7 border border-secondary rounded p-3">
                     <h5>Customer Details</h5>
-                    @foreach(var item in Model.ShowAllCustomers())
-                    {
-                        @item.FullName
-                    }
+                    <span class="text-danger">@TempData["msg"]</span>
+                    
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>Full Name : </th>
-                            <td>adsgadfg</td>
+                            <td>@Model.FullName</td>
                         </tr>
                         <tr>
                             <th>Email: </th>
-                            <td>adsgadfg</td>
+                            <td>@Model.Email</td>
                         </tr>
                         <tr>
                             <th>Phone : </th>
-                            <td>adsgadfg</td>
+                            <td>@Model.Phone</td>
                         </tr>
                         <tr>
                             <th>Address</th>
-                            <td>adsgadfg</td>
+                            <td>@Model.Address</td>
                         </tr>
                         <tr>
                             <th>Joining Date</th>
-                            <td>adsgadfg</td>
+                            <td>@Model.JoiningDate</td>
                         </tr>
                     </table>
                 </div>

@@ -33,11 +33,11 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         }
         public void InsertCustomer(Customer customer)
         {
-            customer.JoiningDate = DateTime.Now;
-            customer.LastUpdated = DateTime.Now;
-            customer.Status = "Active";
-            data.Customers.Add(customer);
-            data.SaveChanges();
+                customer.JoiningDate = DateTime.Now;
+                customer.LastUpdated = DateTime.Now;
+                customer.Status = "Active";
+                data.Customers.Add(customer);
+                data.SaveChanges();
         }
         public Customer GetValidCustomer(string email, string password)
         {
@@ -46,6 +46,14 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         public Customer GetCustomerByEmail(string email)
         {
             return data.Customers.Where(x => x.Email == email).FirstOrDefault();
+        }
+        public Customer GetCustomerByUserName(string userName)
+        {
+            return data.Customers.Where(x => x.UserName == userName).FirstOrDefault();
+        }
+        public Customer GetCustomerById(int id)
+        {
+            return data.Customers.Find(id);
         }
         public void UpdateCustomer(Customer customer)
         {
