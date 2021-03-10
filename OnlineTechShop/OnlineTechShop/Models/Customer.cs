@@ -11,8 +11,7 @@ namespace OnlineTechShop.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,18 +24,12 @@ namespace OnlineTechShop.Models
         }
     
         public int Id { get; set; }
-        [Required, MinLength(3), MaxLength(50), RegularExpression("[a-zA-Z][a-zA-Z ]+[a-zA-Z]$", ErrorMessage = "Please enter alphabetic characters for Full Name!")]
         public string FullName { get; set; }
-        [Required, MinLength(3), MaxLength(30), RegularExpression("^[a-zA-Z0-9_]*$", ErrorMessage = "Please enter alphanumeric charcters for User Name!")]
         public string UserName { get; set; }
         public string ProfilePic { get; set; }
-        [Required, MinLength(3), MaxLength(20)]
         public string Password { get; set; }
-        [Required, EmailAddress, MinLength(10), MaxLength(50)]
         public string Email { get; set; }
-        [Required, Phone, MinLength(11), MaxLength(11)]
         public string Phone { get; set; }
-        [Required, MinLength(3), MaxLength(100)]
         public string Address { get; set; }
         public string Status { get; set; }
         public System.DateTime JoiningDate { get; set; }

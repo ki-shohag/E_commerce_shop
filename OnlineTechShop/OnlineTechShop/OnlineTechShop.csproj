@@ -173,6 +173,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BuyingAgent\BuyingAgentLoginController.cs" />
+    <Compile Include="Controllers\BuyingAgent\BuyingAgentProfileController.cs" />
     <Compile Include="Controllers\Customer\CompareProductsController.cs" />
     <Compile Include="Controllers\Customer\ComponentsController.cs" />
     <Compile Include="Controllers\Customer\CustomerLoginController.cs" />
@@ -192,6 +194,8 @@
     <Compile Include="Models\BuyingAgent.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BuyingAgentAccess\DataModels\BuyingAgentDataModel.cs" />
+    <Compile Include="Models\BuyingAgentAccess\ViewModels\BuyingAgentViewModel.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -308,6 +312,8 @@
     <Content Include="Views\CustomerProfile\PurchaseHistory.cshtml" />
     <Content Include="Views\CustomerProfile\WishList.cshtml" />
     <Content Include="Views\CompareProducts\Index.cshtml" />
+    <Content Include="Views\BuyingAgentLogin\Index.cshtml" />
+    <Content Include="Views\BuyingAgentProfile\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
