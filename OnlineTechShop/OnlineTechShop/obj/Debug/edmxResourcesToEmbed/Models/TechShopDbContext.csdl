@@ -176,6 +176,15 @@
     <Property Name="LastUpdated" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Sales_Log" Relationship="Self.FK_Sales_Log_SalesExecutives" FromRole="SalesExecutives" ToRole="Sales_Log" />
   </EntityType>
+  <EntityType Name="WishList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="DateWished" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
   <Association Name="FK_Old_Products_Customers">
     <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Old_Products" Type="Self.Old_Products" Multiplicity="*" />
@@ -284,6 +293,7 @@
     <EntitySet Name="Reviews" EntityType="Self.Review" />
     <EntitySet Name="Sales_Log" EntityType="Self.Sales_Log" />
     <EntitySet Name="SalesExecutives" EntityType="Self.SalesExecutive" />
+    <EntitySet Name="WishLists" EntityType="Self.WishList" />
     <AssociationSet Name="FK_Old_Products_Customers" Association="Self.FK_Old_Products_Customers">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="Old_Products" EntitySet="Old_Products" />

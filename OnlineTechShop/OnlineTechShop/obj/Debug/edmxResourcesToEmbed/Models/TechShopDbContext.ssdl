@@ -160,6 +160,15 @@
     <Property Name="JoiningDate" Type="datetime" Nullable="false" />
     <Property Name="LastUpdated" Type="datetime" />
   </EntityType>
+  <EntityType Name="WishLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="DateWished" Type="date" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Old_Products_Customers">
     <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
     <End Role="Old_Products" Type="Self.Old_Products" Multiplicity="*" />
@@ -268,6 +277,7 @@
     <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sales_Log" EntityType="Self.Sales_Log" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalesExecutives" EntityType="Self.SalesExecutives" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WishLists" EntityType="Self.WishLists" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Old_Products_Customers" Association="Self.FK_Old_Products_Customers">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="Old_Products" EntitySet="Old_Products" />
