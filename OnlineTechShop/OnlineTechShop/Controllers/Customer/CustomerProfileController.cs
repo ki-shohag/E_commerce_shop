@@ -10,6 +10,7 @@ namespace OnlineTechShop.Controllers.Customer
     public class CustomerProfileController : Controller
     {
         CustomerDataModel customerData = new CustomerDataModel();
+        WishListsDataModel wishedData = new WishListsDataModel();
         // GET: CustomerProfile
         [HttpGet]
         public ActionResult Index()
@@ -87,8 +88,10 @@ namespace OnlineTechShop.Controllers.Customer
         }
 
         [HttpGet]
-        public ActionResult WishList(int? id)
+        public ActionResult WishList(int id)
         {
+            var list = wishedData.GetWishListByCustomerId(id);
+            ViewBag.WishList = list;
             return View();
         }
     }

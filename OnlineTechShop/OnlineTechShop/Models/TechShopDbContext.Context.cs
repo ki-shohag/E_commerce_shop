@@ -36,5 +36,6 @@ namespace OnlineTechShop.Models
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Sales_Log> Sales_Log { get; set; }
         public virtual DbSet<SalesExecutive> SalesExecutives { get; set; }
+        public virtual DbSet<WishList> WishLists { get; set; }
     }
 }

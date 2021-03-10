@@ -167,7 +167,7 @@
     <Content Include="Models\TechShopDbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TechShopDbContext.edmx</DependentUpon>
-      <LastGenOutput>TechShopDbContext.cs</LastGenOutput>
+      <LastGenOutput>TechShopDbContext1.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
@@ -183,6 +183,8 @@
     <Compile Include="Controllers\Customer\HomeController.cs" />
     <Compile Include="Controllers\Customer\LaptopController.cs" />
     <Compile Include="Controllers\Customer\MonitorController.cs" />
+    <Compile Include="Controllers\Customer\ProductsController.cs" />
+    <Compile Include="Controllers\Customer\ReviewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,7 +198,14 @@
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerAccess\DataModels\CustomerDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\ProductsDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\RatingsDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\ReviewsDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\WishListsDataModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\CustomerViewModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\ProductsViewModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\ReviewsViewModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\WishListViewModel.cs" />
     <Compile Include="Models\Old_Products.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -226,15 +235,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TechShopDbContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TechShopDbContext.cs">
+    <Compile Include="Models\TechShopDbContext.cs" />
+    <Compile Include="Models\TechShopDbContext.Designer.cs">
+      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\TechShopDbContext1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TechShopDbContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
+    <Compile Include="Models\WishList.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -308,6 +321,8 @@
     <Content Include="Views\CustomerProfile\PurchaseHistory.cshtml" />
     <Content Include="Views\CustomerProfile\WishList.cshtml" />
     <Content Include="Views\CompareProducts\Index.cshtml" />
+    <Content Include="Views\Products\ShowProduct.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -319,6 +334,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Contents\Upload_Files\" />
     <Folder Include="Views\CustomerLogOut\" />
+    <Folder Include="Views\Reviews\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
