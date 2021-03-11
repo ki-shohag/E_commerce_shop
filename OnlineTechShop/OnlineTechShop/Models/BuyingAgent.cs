@@ -18,11 +18,11 @@ namespace OnlineTechShop.Models
         public string FullName { get; set; }
         public string UserName { get; set; }
         public string ProfilePic { get; set; }
-        public byte[] Password { get; set; }
+        public string Password { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public Nullable<decimal> Salary { get; set; }
+        public decimal Salary { get; set; }
         public System.DateTime JoiningDate { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
     }

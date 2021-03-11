@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineTechShop.Models.CustomerAccess.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,10 @@ namespace OnlineTechShop.Controllers.Customer
     public class CompareProductsController : Controller
     {
         // GET: CompareProducts
+        ProductsDataModel productsData = new ProductsDataModel();
         public ActionResult Index()
         {
-            return View();
+            return View(productsData.GetAllProductCategory());
         }
     }
 }

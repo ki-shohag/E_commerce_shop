@@ -33,7 +33,7 @@ namespace OnlineTechShop.Models
         public string Address { get; set; }
         public string Status { get; set; }
         public System.DateTime JoiningDate { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public Nullable<System.DateTime> LastUpdated { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Old_Products> Old_Products { get; set; }

@@ -1,10 +1,12 @@
-﻿using OnlineTechShop.Models.CustomerAccess.DataModels;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using OnlineTechShop.Models.CustomerAccess.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Web.Script.Serialization;
 namespace OnlineTechShop.Controllers.Customer
 {
     public class ProductsController : Controller
@@ -84,6 +86,31 @@ namespace OnlineTechShop.Controllers.Customer
             wishData.RemoveProductFromWishList(id);
             TempData["msg"] = "Removed product from your wish list!";
             return Redirect("/CustomerProfile/WishList/"+(int)Session["user_id"]);
+        }
+        [HttpPost]
+        public ActionResult GetProductsByCategory(Models.Product data)
+        {
+            var MyList = new List<KeyValuePair<string, int>>();
+            var list = productsData.GetProductByCategory(data.Category, (int)data.Discount);
+            foreach (var item in list)
+            {
+                MyList.Add(new KeyValuePair<string, int>(item.ProductName, item.Id));
+            }
+            return Json(new JavaScriptSerializer().Serialize(MyList));
+        }
+        [HttpPost]
+        public ActionResult GetProductById(Models.Product data)
+        {
+            Models.Product product = new Models.Product();
+            product = productsData.GetProductById(data.Quantity);
+            if (product!=null)
+            {
+                return Json(JsonConvert.SerializeObject(product), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(JsonConvert.SerializeObject(new { Id = 0}), JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

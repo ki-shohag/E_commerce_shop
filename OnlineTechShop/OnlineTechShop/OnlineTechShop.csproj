@@ -59,6 +59,9 @@
     <Reference Include="MimeKit, Version=2.10.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
       <HintPath>..\packages\MimeKit.2.10.1\lib\net45\MimeKit.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
     </Reference>
@@ -113,6 +116,7 @@
     <Content Include="Contents\Scripts_Files\clientProfile.js" />
     <Content Include="Contents\Scripts_Files\customerRegistration.js" />
     <Content Include="Contents\Scripts_Files\main.js" />
+    <Content Include="Contents\Scripts_Files\productComparison.js" />
     <Content Include="Contents\Scripts_Files\productSearch.js" />
     <Content Include="Contents\vendor\aos\aos.css" />
     <Content Include="Contents\vendor\aos\aos.js" />
@@ -209,6 +213,9 @@
     <Compile Include="Models\Old_Products.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderData.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -237,9 +244,9 @@
     </Compile>
     <Compile Include="Models\TechShopDbContext.cs" />
     <Compile Include="Models\TechShopDbContext.Designer.cs">
-      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TechShopDbContext1.cs">
       <AutoGen>True</AutoGen>

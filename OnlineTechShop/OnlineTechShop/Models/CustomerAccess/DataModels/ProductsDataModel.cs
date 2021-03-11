@@ -32,5 +32,21 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         {
             return data.Products.Find(id);
         }
+        public List<Product> GetProductByCategory(string category, int limit)
+        {
+            return data.Products.Where(x => x.Category == category && x.Status == "In Stock").Take(limit).ToList();
+        }
+        public List<Product> GetProductByCategoryAndBrand(string category, string brand, int limit)
+        {
+            return data.Products.Where(x => x.Category == category && x.Brand==brand && x.Status == "In Stock").Take(limit).ToList();
+        }
+        public List<String> GetAllProductCategory()
+        {
+            return data.Products.Select(x => x.Category).Distinct().ToList();
+        }
+        public List<String> GetAllProductBrandsByCategory(string category)
+        {
+            return data.Products.Where(x=>x.Category==category).Select(x => x.Brand).Distinct().ToList();
+        }
     }
 }
