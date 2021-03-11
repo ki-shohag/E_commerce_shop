@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Home</title>
+    <title>Cooling Fan</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -165,32 +165,34 @@
     <main id="main ">
         <div class="container">
             <div class="row mt-2 justify-content-center">
-                <div class="col-12 col-lg-8 bg-success border border-secondary rounded">
-                    <a href="/Components/CoolingFanBrand/Corsair" class="btn btn-outline-success text-light">Corsair</a>
-                    <a href="/Components/CoolingFanBrand/GSkill" class="btn btn-outline-success text-light">GSkill</a>
-                    <a href="/Components/CoolingFanBrand/Adata" class="btn btn-outline-success text-light">Adata</a>
-                    <a href="/Components/CoolingFanBrand/Avexir" class="btn btn-outline-success text-light">Avexir</a>
-                    <a href="/Components/CoolingFanBrand/Gigabyte" class="btn btn-outline-success text-light">Gigabyte</a>
+                <div class="col-12 col-lg-8 bg-light border border-secondary rounded">
+                    @Html.ActionLink("Corsair", "CoolingFanBrand", new { Controller = "Components", action = "CoolingFanBrand", brand = "Corsair" }) |
+                    @Html.ActionLink("Gamdias", "CoolingFanBrand", new { Controller = "Components", action = "CoolingFanBrand", brand = "Gamdias" }) |
+                    @Html.ActionLink("Cooler Master", "CoolingFanBrand", new { Controller = "Components", action = "CoolingFanBrand", brand = "Cooler Master" }) |
                 </div>
             </div>
-            <div class="row justify-content-center mt-3">
-                <div class="col-12 col-lg-3 border border-secondary rounded">
-                    <div class="text-center mt-2 mb-2">
-                        <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
-                        <h4>Product name</h4>
+            <div class="row justify-content-start mt-3">
+                @foreach (var item in Model)
+                {
+                    <div class="col-12 col-lg-3 m-2 col-md-5 border border-secondary rounded">
+                        <div class="text-center mt-2 mb-2">
+                            <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
+                            <h5>@item.ProductName</h5>
+                        </div>
+                        <div class="text-left border-top border-secondary">
+                            <p>
+                                <span><b>Price :</b> @item.SellingPrice</span><br />
+                                <span><b>Discount :</b> @item.Discount%</span><br />
+                                <span><b>Availability:</b> @item.Status</span><br />
+                            </p>
+                        </div>
+                        <div class="border-top border-secondary pb-2 text-center">
+                            <a href="/Products/AddToWishList/@item.Id" class="btn-sm btn-info btn-block mt-2 mb-2">Add to Wishlist</a>
+                            <a href="#" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Cart</a>
+                            <a href="/Products/ShowProduct/@item.Id" class="btn-sm btn-primary btn-block">View Product</a>
+                        </div>
                     </div>
-                    <div class="text-left border-top border-secondary">
-                        <p>
-                            <span>Rating</span><br />
-                            <span>Price</span><br />
-                            <span>Availability</span><br />
-                        </p>
-                    </div>
-                    <div class="border-top border-secondary pb-2 text-center">
-                        <a href="#" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Cart</a>
-                        <a href="/Components/ShowComponent/1" class="btn-sm btn-primary btn-block">View Product</a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
 

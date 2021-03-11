@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Casing</title>
+    <title>Keyboard</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -162,12 +162,19 @@
     </header>
     <!-- End Header -->
     <!--Main Body Starts-->
-    <main id="main ">
+    <main id="main">
         <div class="container">
-            <div class="row justify-content-center mt-3">
+            <div class="row mt-2 justify-content-center">
                 <div class="col-12 text-center">
-                    <h3>@ViewBag.Brand</h3>
+                    <h3 class="text-muted"><u><i>Ram</i></u></h3>
                 </div>
+                <div class="col-12 col-lg-8 bg-light border border-secondary rounded">
+                    @Html.ActionLink("Logitech", "KeyboardBrand", new { Controller = "Accessories", action = "KeyboardBrand", brand = "Logitech" }) |
+                    @Html.ActionLink("A4Tech", "KeyboardBrand", new { Controller = "Accessories", action = "KeyboardBrand", brand = "A4tech" }) |
+                    @Html.ActionLink("Gamdias", "KeyboardBrand", new { Controller = "Accessories", action = "KeyboardBrand", brand = "Gamdias" }) 
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
                 @foreach (var item in Model)
                 {
                     <div class="col-12 col-lg-3 border border-secondary rounded">

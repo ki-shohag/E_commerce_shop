@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Home</title>
+    <title>CPU</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -168,23 +168,26 @@
                 <div class="col-12 text-center">
                     <h3>@ViewBag.Brand</h3>
                 </div>
-                <div class="col-12 col-lg-3 border border-secondary rounded">
-                    <div class="text-center mt-2 mb-2">
-                        <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
-                        <h4>Product name</h4>
+                @foreach (var item in Model)
+                {
+                    <div class="col-12 col-lg-3 border border-secondary rounded">
+                        <div class="text-center mt-2 mb-2">
+                            <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
+                            <h5>@item.ProductName</h5>
+                        </div>
+                        <div class="text-left border-top border-secondary">
+                            <p>
+                                <span><b>Availability : </b> @item.Status</span><br />
+                                <span><b>Price : </b> @item.SellingPrice</span><br />
+                                <span><b>Discount : </b> @item.Discount%</span><br />
+                            </p>
+                        </div>
+                        <div class="border-top border-secondary pb-2 text-center">
+                            <a href="#" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Cart</a>
+                            <a href="/Products/ShowProduct/@item.Id" class="btn-sm btn-primary btn-block">View Product</a>
+                        </div>
                     </div>
-                    <div class="text-left border-top border-secondary">
-                        <p>
-                            <span>Rating</span><br />
-                            <span>Price</span><br />
-                            <span>Availability</span><br />
-                        </p>
-                    </div>
-                    <div class="border-top border-secondary pb-2 text-center">
-                        <a href="#" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Cart</a>
-                        <a href="/Components/ShowComponent/1" class="btn-sm btn-primary btn-block">View Product</a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
 
