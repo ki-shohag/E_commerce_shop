@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Customer\AccessoriesController.cs" />
     <Compile Include="Controllers\Customer\CompareProductsController.cs" />
     <Compile Include="Controllers\Customer\ComponentsController.cs" />
     <Compile Include="Controllers\Customer\CustomerLoginController.cs" />
@@ -330,6 +331,11 @@
     <Content Include="Views\CompareProducts\Index.cshtml" />
     <Content Include="Views\Products\ShowProduct.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Accessories\Index.cshtml" />
+    <Content Include="Views\Accessories\Keyboard.cshtml" />
+    <Content Include="Views\Accessories\Mouse.cshtml" />
+    <Content Include="Views\Accessories\KeyboardBrand.cshtml" />
+    <Content Include="Views\Accessories\MouseBrand.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

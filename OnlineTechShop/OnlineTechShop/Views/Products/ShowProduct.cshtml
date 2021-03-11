@@ -248,8 +248,15 @@
                 </div>
                 <div class="col-12 col-lg-4 mt-2">
                     <h5 class="border-bottom mt-1">Rate Product:</h5>
-                    <div id="rateYo"></div>
-                    <input type="hidden" id="UserId" value="@ViewBag.UserId" data-value="@ViewBag.UserId" />
+                    @if (Session["user_email"] == null)
+                    {
+                        <a href="/CustomerLogin" class="rounded btn-block btn-secondary p-3">Want to rate the Product?<br /> Please login first or sign up.</a>
+                    }
+                    else
+                    {
+                        <div id="rateYo"></div>
+                        <input type="hidden" id="UserId" value="@ViewBag.UserId" data-value="@ViewBag.UserId" />
+                    }
 
                     <h5 class="border-bottom mt-5">Product Reviews: </h5>
                     @foreach (var item in ViewBag.ReviewsList)

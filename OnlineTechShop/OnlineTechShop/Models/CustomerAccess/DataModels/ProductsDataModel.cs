@@ -12,6 +12,8 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         {
             return data.Products.OrderByDescending(x=>x.Id).ToList();
         }
+        
+
         public List<Product> GetAvailableProducts()
         {
             return data.Products.Where(x=>x.Status=="In Stock").OrderByDescending(x=>x.Id).ToList();

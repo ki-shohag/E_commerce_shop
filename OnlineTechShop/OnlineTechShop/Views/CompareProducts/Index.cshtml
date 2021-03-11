@@ -213,7 +213,7 @@
                     </select><br />
                              <table id="productTable" class="table table-striped table-bordered">
                                  <tbody>
-                                     <tr><td></td><td></td></tr>
+                                     <tr><td class="w-25"></td><td></td></tr>
                                  </tbody>
                              </table>
                 </div>
@@ -224,7 +224,7 @@
                     </select><br />
                     <table class="table table-bordered table-striped"  id="productTable2">
                         <tbody>
-                            <tr><td></td><td></td></tr>
+                            <tr><td class="w-25"></td><td></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -290,10 +290,10 @@
                 dataType: "json",
                 data: mydata,
                 success: function (result) {
-                    mydata = [JSON.parse(result)];
+                    mydata = JSON.parse(result);
                     //alert(mydata);
-                    if (mydata.length >= 1) {
-                        for (var i = 0; i < mydata.length-1; i++) {
+
+                        for (var i = 0; i < mydata.length; i++) {
                             optionText = mydata[i].Key;
                             optionValue = mydata[i].Value;
                             $('#product1SelectBox').append(`<option value="${optionValue}"> 
@@ -303,7 +303,6 @@
                                        ${optionText} 
                                   </option>`);
                         }
-                    }
                 }
             });
         });
@@ -321,18 +320,45 @@
                     //alert("Successfully rated " + JSON.stringify(result) + "!");
                     mydata = JSON.parse(result);
                     $("#productTable2 > tbody").html("");
-                    $("#productTable2 > tbody").append("<tr><td><b>Product Name : </b></td><td>" + mydata.ProductName + "</td></tr>");
-                    $("#productTable2 > tbody").append("<tr><td><b>Product Category : </b></td><td>" + mydata.Category + "</td></tr>");
-                    $("#productTable2 > tbody").append("<tr><td><b>Brand : </b></td><td>" + mydata.Brand + "</td></tr>");
-                    $("#productTable2 > tbody").append("<tr><td><b>Description : </b></td><td>" + mydata.ProductDescription + "</td></tr>");
-                    $("#productTable2 > tbody").append("<tr><td><b>Discount : </b></td><td>" + mydata.Discount + "</td></tr>");
-                    $("#productTable2 > tbody").append("<tr><td><b>Tax : </b></td><td>" + mydata.Tax + "</td></tr>");
-                    $("#productTable2 > tbody").append("<tr><td><b>Availability : </b></td><td>" + mydata.Status + "</td></tr>");
-                    $("#productTable2 > tbody").append("<tr><td><b>Stock : </b></td><td>" + mydata.Quantity + "</td></tr>");
-                    $("#productTable2 > tbody").append("<tr><td><b>Unit Price : </b></td><td>" + mydata.SellingPrice + "</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Product Name : </b></td><td>" + mydata.ProductName + "</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Product Category : </b></td><td>" + mydata.Category + "</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Brand : </b></td><td>" + mydata.Brand + "</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Description : </b></td><td>" + mydata.ProductDescription + "</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Discount : </b></td><td>" + mydata.Discount + "%</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Tax : </b></td><td>" + mydata.Tax + "%</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Availability : </b></td><td>" + mydata.Status + "</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Stock : </b></td><td>" + mydata.Quantity + " Pcs</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Unit Price : </b></td><td>" + mydata.SellingPrice + " BDT</td></tr>");
                 }
             });
         });
+
+        $("#product1SelectBox").on("change", function () {
+            //alert(this.value);
+            mydata = JSON.stringify({ "Quantity": this.value });
+            $.ajax({
+                type: "POST",
+                url: "/Products/GetProductById",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: mydata,
+                success: function (result) {
+                    //alert("Successfully rated " + JSON.stringify(result) + "!");
+                    mydata = JSON.parse(result);
+                    $("#productTable > tbody").html("");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Product Name : </b></td><td>" + mydata.ProductName + "</td></tr>");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Product Category : </b></td><td>" + mydata.Category + "</td></tr>");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Brand : </b></td><td>" + mydata.Brand + "</td></tr>");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Description : </b></td><td>" + mydata.ProductDescription + "</td></tr>");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Discount : </b></td><td>" + mydata.Discount + "%</td></tr>");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Tax : </b></td><td>" + mydata.Tax + "%</td></tr>");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Availability : </b></td><td>" + mydata.Status + "</td></tr>");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Stock : </b></td><td>" + mydata.Quantity + " Pcs</td></tr>");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Unit Price : </b></td><td>" + mydata.SellingPrice + " BDT</td></tr>");
+                }
+            });
+        });
+
 
     </script>
 </body>
