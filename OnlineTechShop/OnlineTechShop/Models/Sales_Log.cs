@@ -20,10 +20,11 @@ namespace OnlineTechShop.Models
         public Nullable<int> SalesExecutiveId { get; set; }
         public System.DateTime DateSold { get; set; }
         public int Quantity { get; set; }
-        public Nullable<decimal> Sale { get; set; }
+        public Nullable<decimal> Discount { get; set; }
         public Nullable<decimal> Tax { get; set; }
         public decimal TotalPrice { get; set; }
         public string Status { get; set; }
+        public Nullable<decimal> Profits { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Product Product { get; set; }

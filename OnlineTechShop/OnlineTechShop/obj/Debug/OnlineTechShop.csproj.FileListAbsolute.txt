@@ -61,3 +61,5 @@ D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Mai
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.pdb
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.xml
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Buffers.xml
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Newtonsoft.Json.dll
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Newtonsoft.Json.xml

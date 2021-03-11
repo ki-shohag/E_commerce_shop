@@ -29,6 +29,7 @@ namespace OnlineTechShop.Models
         public virtual DbSet<BuyingAgent> BuyingAgents { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Old_Products> Old_Products { get; set; }
+        public virtual DbSet<OrderData> OrderDatas { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Purchase_Log> Purchase_Log { get; set; }
