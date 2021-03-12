@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineTechShop.Models.CustomerAccess.DataModels;
+using System.IO;
 
 namespace OnlineTechShop.Controllers.Customer
 {
@@ -51,7 +52,7 @@ namespace OnlineTechShop.Controllers.Customer
         [HttpGet]
         public ActionResult ChangePassword(int? id)
         {
-            return View();
+            return View(customerData.GetCustomerByEmail((string)Session["user_email"]));
         }
         [HttpPost]
         public ActionResult ChangePassword(int id, FormCollection collection)
@@ -84,7 +85,7 @@ namespace OnlineTechShop.Controllers.Customer
         [HttpGet]
         public ActionResult PurchaseHistory(int? id)
         {
-            return View();
+            return View(customerData.GetCustomerByEmail((string)Session["user_email"]));
         }
 
         [HttpGet]
@@ -92,7 +93,56 @@ namespace OnlineTechShop.Controllers.Customer
         {
             var list = wishedData.GetWishListByCustomerId(id);
             ViewBag.WishList = list;
-            return View();
+            return View(customerData.GetCustomerByEmail((string)Session["user_email"]));
+        }
+        [HttpPost]
+        public ActionResult UploadProfilePic(HttpPostedFileBase image)
+        {
+            if (image.ContentLength>0)
+            {
+                Models.Customer customer =customerData.GetCustomerByEmail((string)Session["user_email"]);
+                if (customer!=null)
+                {
+                    string ImageFileName = Path.GetFileName(image.FileName);
+                    string ImageExtension = Path.GetExtension(image.FileName);
+                    string FolderPath = Path.Combine(Server.MapPath("~/Contents/Upload_Files/Customer/ProfilePic"), ImageFileName.Replace(ImageFileName, Session["user_email"].ToString() + ImageExtension));
+                    image.SaveAs(FolderPath);
+                    customer.ProfilePic = ImageFileName.Replace(ImageFileName, Session["user_email"].ToString() + ImageExtension);
+                    Session["user_profile_pic"] = customer.ProfilePic;
+                    customerData.UpdateCustomer(customer);
+                    TempData["msg"] = "Successfully uploaded profile picture!";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["msg"] = "Failed to upload profile picture!";
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                TempData["msg"] = "Failed to upload profile picture!";
+                return RedirectToAction("Index");
+            }
+
+        }
+        [HttpGet]
+        public ActionResult RemoveProfilePic()
+        {
+            Models.Customer customer = customerData.GetCustomerByEmail((string)Session["user_email"]);
+            if (customer!=null)
+            {
+                customer.ProfilePic = null;
+                Session["user_profile_pic"] = null;
+                customerData.UpdateCustomer(customer);
+                TempData["msg"] = "Removed profile picture!";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["msg"] = "Failed to remove profile picture!";
+                return RedirectToAction("Index");
+            }
         }
     }
 }
