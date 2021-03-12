@@ -98,16 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Models\TechShopDbContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
-      <LastGenOutput>TechShopDbContext.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\TechShopDbContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
-      <LastGenOutput>TechShopDbContext.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -115,65 +105,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BuyingAgent.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Customer.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old_Products.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Product.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Promotion.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Purchase_Log.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Rating.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Review.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SalesExecutive.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Sales_Log.cs">
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TechShopDbContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TechShopDbContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TechShopDbContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TechShopDbContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\TechShopDbContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TechShopDbContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TechShopDbContext.edmx.diagram">
-      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -185,6 +120,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
