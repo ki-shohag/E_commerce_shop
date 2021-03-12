@@ -26,6 +26,7 @@ namespace OnlineTechShop.Controllers.Customer
                 {
                     Session["user_name"] = customer.UserName;
                     Session["user_email"] = customer.Email;
+                    Session["user_profile_pic"] = customer.ProfilePic;
                     Session["user_id"] = customer.Id;
                     Session["user_status"] = customer.Status;
                     return RedirectToAction("Index", "Home");
