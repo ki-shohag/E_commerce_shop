@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Home</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+
+    <link href="~/Contents/vendor/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Contents/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="~/Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/Contents/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <style>
+        .featured-item-box {
+            min-height: 150px;
+            background: #3b555d;
+            min-width: 80px;
+            color: white;
+            border-radius: 5px;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header" class="">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-7">
+                    <h1 class="logo"><a href="/Home" class="text-success">Online Tech Shop</a></h1>
+                </div>
+                <div class="col-lg-5 col-12">
+                    <a href="#" class="btn btn-light btn-sm">
+                        <i class="icofont-cart-alt h6"> Cart <span class="badge  badge-danger">0</span> </i>
+                    </a> | <a href="/CompareProducts" class="btn-sm  btn-info">Compare Products</a>
+                    @if ((string)Session["user_status"] == "Active")
+                    {
+                        <a href="/CustomerProfile" class="btn-sm btn-success">My Account</a> <a href="/CustomerLogOut" class="btn-sm btn-danger">Logout</a>
+                    }
+                    else
+                    {
+                        <a href="/CustomerRegistration" class="btn-sm btn-success">Register</a> <a href="/CustomerLogin" class="btn-sm btn-primary">Login</a>
+                    }
+
+                </div>
+                <div class="col-12 col-lg-6">
+                    <nav class="nav-menu d-none d-lg-block">
+                        <ul>
+                            <li class="drop-down">
+                                <a href="/Components">Components</a>
+                                <ul>
+                                    <li class="drop-down">
+                                        <a href="/Components/Ram">Ram</a>
+                                        <ul>
+                                            <li><a href="/Components/RamBrand?brand=Corsair">Corsair</a></li>
+                                            <li><a href="/Components/RamBrand?brand=Gskill">GSkill</a></li>
+                                            <li><a href="/Components/RamBrand?brand=Adata">Adata</a></li>
+                                            <li><a href="/Components/RamBrand?brand=Avexir">Avexir</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="drop-down">
+                                        <a href="/Components/SSD">SSD</a>
+                                        <ul>
+                                            <li><a href="/Components/SSDBrand?brand=Corsair">Corsair</a></li>
+                                            <li><a href="/Components/SSDBrand?brand=Samsung">Samsung</a></li>
+                                            <li><a href="/Components/SSDBrand?brand=Gigabyte">Gigabyte</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="drop-down">
+                                        <a href="/Components/GraphicsCard">Graphics Card</a>
+                                        <ul>
+                                            <li><a href="/Components/GraphicsCardBrand?brand=Gigabyte">Gigabyte</a></li>
+                                            <li><a href="/Components/GraphicsCardBrand?brand=Zotac">Zotac</a></li>
+                                            <li><a href="/Components/GraphicsCardBrand?brand=Asus">Asus</a></li>
+                                            <li><a href="/Components/GraphicsCardBrand?brand=MSI">MSI</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="drop-down">
+                                        <a href="/Components/Casing">Casing</a>
+                                        <ul>
+                                            <li><a href="/Components/CasingBrand?brand=Corsair">Corsair</a></li>
+                                            <li><a href="/Components/CasingBrand?brand=Gamdias">Gamdias</a></li>
+                                            <li><a href="/Components/CasingBrand?brand=Cooler Master">Cooler Master</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="drop-down">
+                                        <a href="/Components/MotherBoard">Mother Board</a>
+                                        <ul>
+                                            <li><a href="/Components/MotherboardBrand?brand=Gigabyte">Gigabyte</a></li>
+                                            <li><a href="/Components/MotherboardBrand?brand=Asus">Asus</a></li>
+                                            <li><a href="/Components/MotherboardBrand?brand=MSI">MSI</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="drop-down">
+                                        <a href="/Components/CPU">CPU</a>
+                                        <ul>
+                                            <li><a href="/Components/CPUBrand?brand=Intel">Intel</a></li>
+                                            <li><a href="/Components/CPUBrand?brand=AMD">AMD</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="drop-down">
+                                        <a href="/Components/CoolingFan">Cooling Fan</a>
+                                        <ul>
+                                            <li><a href="/Components/CoolingFanBrand?brand=Corsair">Corsair</a></li>
+                                            <li><a href="/Components/CoolingFanBrand?brand=Gamdias">Gamdias</a></li>
+                                            <li><a href="/Components/CoolingFanBrand?brand=Cooler Master">Cooler Master</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="/Laptop">Laptops</a>
+                                <ul>
+                                    <li><a href="/Laptop/LaptopBrand?brand=HP">HP</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Asus">Asus</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Apple">Apple</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Razer">Razer</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Microsoft">Microsoft</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Acer">Acer</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="/Monitor">Monitor</a>
+                                <ul>
+                                    <li><a href="/Monitor/MonitorBrand?brand=HP">HP</a></li>
+                                    <li><a href="/Monitor/MonitorBrand?brand=Dell">Dell</a></li>
+                                    <li><a href="/Monitor/MonitorBrand?brand=LG">LG</a></li>
+                                    <li><a href="/Monitor/MonitorBrand?brand=Samsung">Samsung</a></li>
+                                    <li><a href="/Monitor/MonitorBrand?brand=BenQ">BenQ</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="/Accessories">Accessories</a>
+                                <ul>
+                                    <li class="drop-down">
+                                        <a href="/Accessories/Keyboard">Keyboard</a>
+                                        <ul>
+                                            <li><a href="/Accessories/KeyboardBrand?brand=Logitech">Logitech</a></li>
+                                            <li><a href="/Accessories/KeyboardBrand?brand=A4Tech">A4Tech</a></li>
+                                            <li><a href="/Accessories/KeyboardBrand?brand=Gamdias">Gamdias</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="drop-down">
+                                        <a href="/Accessories/Mouse">Mouse</a>
+                                        <ul>
+                                            <li><a href="/Accessories/MouseBrand?brand=Logitech">Logitech</a></li>
+                                            <li><a href="/Accessories/MouseBrand?brand=A4Tech">A4Tech</a></li>
+                                            <li><a href="/Accessories/MouseBrand?brand=Gamdias">Gamdias</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- .nav-menu -->
+                </div>
+                <div class="col-12 col-lg-8 text-center">
+                    <input class="form-control" id="searchBox" name="searchtext" placeholder="Search Products..." type="text">
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header -->
+    <!--Main Body Starts-->
+    <main id="main ">
+        <div class="container">
+            <div class="row mt-2 justify-content-around">
+                <div class="col-12 col-lg-3 border border-secondary rounded p-3">
+                    @if (Session["user_profile_pic"] == null)
+                    {
+                        <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
+                    }
+                    else
+                    {
+                        <img class="featured-product-img" src="~/Contents/Upload_Files/Customer/ProfilePic/@Session["user_profile_pic"]" />
+                    }
+                    <div class="text-left mt-2">
+                        <h5>@Model.FullName</h5>
+                        <h6>@Model.Email</h6>
+                        <h6>@Model.Phone</h6>
+                    </div>
+                    <a class="btn-block btn-primary rounded btn-sm" href="/CustomerProfile/Edit/@Model.Id">Edit Profile Info</a>
+                    <a class="btn-block btn-success rounded btn-sm" href="/CustomerProfile/PurchaseHistory/@Model.Id">View Purchase History</a>
+                    <a class="btn-block btn-warning rounded btn-sm" href="/CustomerProfile/ChangePassword/@Model.Id">Change Password</a>
+                    <a class="btn-block btn-info rounded btn-sm" href="#">Reward Points</a>
+                    <a class="btn-block btn-secondary rounded btn-sm" href="/CustomerProfile/WishList/@Model.Id">Wish List</a>
+                </div>
+                <div class="col-12 col-lg-9 border border-secondary rounded p-3">
+                    <h5>Wish List : </h5>
+                    <span class="text-danger">@TempData["msg"]</span>
+                    <div class="row">
+                        @foreach (var item in ViewBag.WishList)
+                        {
+                            <div class="col-12 col-lg-4 border border-secondary rounded">
+                                <div class="text-center mt-2 mb-2">
+                                    <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
+                                    <h5>@item.ProductName</h5>
+                                </div>
+                                <div class="text-left border-top border-secondary">
+                                    <p>
+                                        <span><b>Price :</b> @item.Price BDT</span><br />
+                                        <span><b>Discount :</b> @item.Discount%</span><br />
+                                        <span><b>Availability:</b> @item.Status</span><br />
+                                    </p>
+                                </div>
+                                <div class="border-top border-secondary pt-2 pb-2 text-center">
+                                    <button value="@item.Id" id="removeButton" class="btn btn-block btn-danger">Remove from Wish List</button>
+                                    @*<a href="/Products/RemoveFromWishList/@item.Id" class="btn-sm btn-danger btn-block">Remove From Wish List</a>*@
+                                    <a href="#" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Cart</a>
+                                    <a href="/Products/ShowProduct/@item.ProductId" class="btn-sm btn-primary btn-block">View Product</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container d-md-flex py-4">
+            <div class="mr-md-auto text-center text-md-left">
+                <div class="credits">
+                    Call Us: <b><i>01xxxxxxxx</i></b><br> Emal: <b><i>onlinetechshop@gmail.com</i></b><br> Address: <b><i>Dhaka, Bangladesh</i></b><br>
+                </div>
+            </div>
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+    <script src="~/Contents/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Contents/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/Contents/vendor/php-email-form/validate.js"></script>
+    <script src="~/Contents/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/Contents/vendor/counterup/counterup.min.js"></script>
+    <script src="~/Contents/vendor/venobox/venobox.min.js"></script>
+    <script src="~/Contents/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/Contents/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Contents/vendor/aos/aos.js"></script>
+    <script src="~/Contents/Scripts_Files/main.js"></script>
+    <script src="~/Contents/Scripts_Files/productSearch.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    @*<script>
+        function confirmRemoval() {
+            var txt;
+            var r = confirm("Are you sure to permanently remove the product from wish list?");
+            if (r == true) {
+                var productId = $("#removeButton").data("value");
+                window.location.href = "/Products/RemoveFromWishList/" + productId;
+            } else {
+
+            }
+        }
+    </script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#removeButton').click(function () {
+                var r = confirm("Are you sure to permanently remove the product from wish list?");
+                if (r == true) {
+                    window.location.href = "/Products/RemoveFromWishList/" + $(this).attr("value");
+                } else {
+
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

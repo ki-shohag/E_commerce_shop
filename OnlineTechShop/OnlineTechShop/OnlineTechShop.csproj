@@ -1,5 +1,4 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -44,13 +43,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.8.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.8\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=2.10.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.2.10.1\lib\net45\MailKit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MimeKit, Version=2.10.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.2.10.1\lib\net45\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -97,19 +112,239 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contents\CSS_Files\style.css" />
+    <Content Include="Contents\Scripts_Files\clientProfile.js" />
+    <Content Include="Contents\Scripts_Files\customerRegistration.js" />
+    <Content Include="Contents\Scripts_Files\main.js" />
+    <Content Include="Contents\Scripts_Files\productComparison.js" />
+    <Content Include="Contents\Scripts_Files\productSearch.js" />
+    <Content Include="Contents\vendor\aos\aos.css" />
+    <Content Include="Contents\vendor\aos\aos.js" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Contents\vendor\boxicons\css\animations.css" />
+    <Content Include="Contents\vendor\boxicons\css\boxicons.css" />
+    <Content Include="Contents\vendor\boxicons\css\boxicons.min.css" />
+    <Content Include="Contents\vendor\boxicons\css\transformations.css" />
+    <Content Include="Contents\vendor\boxicons\fonts\boxicons.svg" />
+    <Content Include="Contents\vendor\counterup\counterup.min.js" />
+    <Content Include="Contents\vendor\icofont\icofont.min.css" />
+    <Content Include="Contents\vendor\Images\default_product_pic.png" />
+    <Content Include="Contents\vendor\isotope-layout\isotope.pkgd.js" />
+    <Content Include="Contents\vendor\isotope-layout\isotope.pkgd.min.js" />
+    <Content Include="Contents\vendor\jquery.easing\jquery.easing.min.js" />
+    <Content Include="Contents\vendor\jquery\jquery.min.js" />
+    <Content Include="Contents\vendor\owl.carousel\assets\ajax-loader.gif" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.carousel.css" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.carousel.min.css" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.theme.default.css" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.theme.default.min.css" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.theme.green.css" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.theme.green.min.css" />
+    <Content Include="Contents\vendor\owl.carousel\assets\owl.video.play.png" />
+    <Content Include="Contents\vendor\owl.carousel\owl.carousel.js" />
+    <Content Include="Contents\vendor\owl.carousel\owl.carousel.min.js" />
+    <Content Include="Contents\vendor\php-email-form\changelog.txt" />
+    <Content Include="Contents\vendor\php-email-form\validate.js" />
+    <Content Include="Contents\vendor\remixicon\remixicon.css" />
+    <Content Include="Contents\vendor\remixicon\remixicon.svg" />
+    <Content Include="Contents\vendor\remixicon\remixicon.symbol.svg" />
+    <Content Include="Contents\vendor\venobox\venobox.css" />
+    <Content Include="Contents\vendor\venobox\venobox.js" />
+    <Content Include="Contents\vendor\venobox\venobox.min.css" />
+    <Content Include="Contents\vendor\venobox\venobox.min.js" />
+    <Content Include="Contents\vendor\waypoints\jquery.waypoints.min.js" />
     <Content Include="Global.asax" />
+<<<<<<< HEAD
+=======
+    <Content Include="Models\TechShopDbContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
+      <LastGenOutput>TechShopDbContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TechShopDbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
+      <LastGenOutput>TechShopDbContext1.cs</LastGenOutput>
+    </Content>
+>>>>>>> 7c0f68b9c6a1ed6d046ac885929f825254b642c1
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Customer\AccessoriesController.cs" />
+    <Compile Include="Controllers\Customer\CompareProductsController.cs" />
+    <Compile Include="Controllers\Customer\ComponentsController.cs" />
+    <Compile Include="Controllers\Customer\CustomerLoginController.cs" />
+    <Compile Include="Controllers\Customer\CustomerLogOutController.cs" />
+    <Compile Include="Controllers\Customer\CustomerPasswordController.cs" />
+    <Compile Include="Controllers\Customer\CustomerProfileController.cs" />
+    <Compile Include="Controllers\Customer\CustomerRegistrationController.cs" />
+    <Compile Include="Controllers\Customer\HomeController.cs" />
+    <Compile Include="Controllers\Customer\LaptopController.cs" />
+    <Compile Include="Controllers\Customer\MonitorController.cs" />
+    <Compile Include="Controllers\Customer\ProductsController.cs" />
+    <Compile Include="Controllers\Customer\ReviewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyingAgent.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerAccess\DataModels\CustomerDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\ProductsDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\RatingsDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\ReviewsDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\WishListsDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\CustomerViewModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\ProductsViewModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\ReviewsViewModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\WishListViewModel.cs" />
+    <Compile Include="Models\Old_Products.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderData.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Promotion.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Purchase_Log.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rating.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Review.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesExecutive.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sales_Log.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TechShopDbContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechShopDbContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TechShopDbContext.cs" />
+    <Compile Include="Models\TechShopDbContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TechShopDbContext1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WishList.cs">
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
+>>>>>>> 7c0f68b9c6a1ed6d046ac885929f825254b642c1
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+<<<<<<< HEAD
+=======
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Contents\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Contents\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Contents\vendor\boxicons\fonts\boxicons.eot" />
+    <Content Include="Contents\vendor\boxicons\fonts\boxicons.ttf" />
+    <Content Include="Contents\vendor\boxicons\fonts\boxicons.woff" />
+    <Content Include="Contents\vendor\boxicons\fonts\boxicons.woff2" />
+    <Content Include="Contents\vendor\icofont\fonts\icofont.woff" />
+    <Content Include="Contents\vendor\icofont\fonts\icofont.woff2" />
+    <Content Include="Contents\vendor\jquery\jquery.min.map" />
+    <Content Include="Contents\vendor\owl.carousel\LICENSE" />
+    <Content Include="Contents\vendor\owl.carousel\README.md" />
+    <Content Include="Contents\vendor\remixicon\remixicon.eot" />
+    <Content Include="Contents\vendor\remixicon\remixicon.less" />
+    <Content Include="Contents\vendor\remixicon\remixicon.ttf" />
+    <Content Include="Contents\vendor\remixicon\remixicon.woff" />
+    <Content Include="Contents\vendor\remixicon\remixicon.woff2" />
+    <EntityDeploy Include="Models\TechShopDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TechShopDbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TechShopDbContext.edmx.diagram">
+      <DependentUpon>TechShopDbContext.edmx</DependentUpon>
+    </Content>
+>>>>>>> 7c0f68b9c6a1ed6d046ac885929f825254b642c1
     <None Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Components\Index.cshtml" />
+    <Content Include="Views\Components\Ram.cshtml" />
+    <Content Include="Views\Components\RamBrand.cshtml" />
+    <Content Include="Views\Components\ShowComponent.cshtml" />
+    <Content Include="Views\Components\SSD.cshtml" />
+    <Content Include="Views\Components\GraphicsCard.cshtml" />
+    <Content Include="Views\Components\Casing.cshtml" />
+    <Content Include="Views\Components\Motherboard.cshtml" />
+    <Content Include="Views\Components\CPU.cshtml" />
+    <Content Include="Views\Components\HDD.cshtml" />
+    <Content Include="Views\Components\CoolingFan.cshtml" />
+    <Content Include="Views\Components\SSDBrand.cshtml" />
+    <Content Include="Views\Components\GraphicsCardBrand.cshtml" />
+    <Content Include="Views\Components\CasingBrand.cshtml" />
+    <Content Include="Views\Components\MotherboardBrand.cshtml" />
+    <Content Include="Views\Components\CPUBrand.cshtml" />
+    <Content Include="Views\Components\HDDBrand.cshtml" />
+    <Content Include="Views\Components\CoolingFanBrand.cshtml" />
+    <Content Include="Views\Laptop\Index.cshtml" />
+    <Content Include="Views\Laptop\LaptopBrand.cshtml" />
+    <Content Include="Views\Laptop\ShowLaptop.cshtml" />
+    <Content Include="Views\Monitor\Index.cshtml" />
+    <Content Include="Views\Monitor\MonitorBrand.cshtml" />
+    <Content Include="Views\Monitor\ShowMonitor.cshtml" />
+    <Content Include="Views\CustomerRegistration\Index.cshtml" />
+    <Content Include="Views\CustomerLogin\Index.cshtml" />
+    <Content Include="Views\CustomerPassword\Index.cshtml" />
+    <Content Include="Views\CustomerPassword\VerifyCode.cshtml" />
+    <Content Include="Views\CustomerPassword\ResetPassword.cshtml" />
+    <Content Include="Views\CustomerProfile\Index.cshtml" />
+    <Content Include="Views\CustomerProfile\Edit.cshtml" />
+    <Content Include="Views\CustomerProfile\ChangePassword.cshtml" />
+    <Content Include="Views\CustomerProfile\PurchaseHistory.cshtml" />
+    <Content Include="Views\CustomerProfile\WishList.cshtml" />
+    <Content Include="Views\CompareProducts\Index.cshtml" />
+    <Content Include="Views\Products\ShowProduct.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Accessories\Index.cshtml" />
+    <Content Include="Views\Accessories\Keyboard.cshtml" />
+    <Content Include="Views\Accessories\Mouse.cshtml" />
+    <Content Include="Views\Accessories\KeyboardBrand.cshtml" />
+    <Content Include="Views\Accessories\MouseBrand.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -119,8 +354,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+<<<<<<< HEAD
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+=======
+    <Folder Include="Contents\Upload_Files\Customer\ProfilePic\" />
+    <Folder Include="Views\CustomerLogOut\" />
+    <Folder Include="Views\Reviews\" />
+>>>>>>> 7c0f68b9c6a1ed6d046ac885929f825254b642c1
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -155,10 +396,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
