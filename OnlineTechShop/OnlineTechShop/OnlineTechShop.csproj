@@ -190,6 +190,7 @@
     <Compile Include="Controllers\Customer\MonitorController.cs" />
     <Compile Include="Controllers\Customer\ProductsController.cs" />
     <Compile Include="Controllers\Customer\ReviewsController.cs" />
+    <Compile Include="Controllers\SalesExecutive\SalesExecutiveController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -336,6 +337,9 @@
     <Content Include="Views\Accessories\Mouse.cshtml" />
     <Content Include="Views\Accessories\KeyboardBrand.cshtml" />
     <Content Include="Views\Accessories\MouseBrand.cshtml" />
+    <Content Include="Views\SalesExecutive\index.cshtml" />
+    <Content Include="Views\Shared\_LayoutSalesExecutive.cshtml" />
+    <Content Include="Views\SalesExecutive\products.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

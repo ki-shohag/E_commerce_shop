@@ -1,0 +1,25 @@
+﻿@model IEnumerable<OnlineTechShop.Models.SalesExecutive>
+@{
+    Layout = "~/Views/Shared/_LayoutSalesExecutive.cshtml";
+}
+
+
+
+<div class="w3-container tab">
+    <table border="1">
+        <tr>
+            <td>Category Name</td>
+            <td>Category Id</td>
+            <td>Operations</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td> @item.FullName </td>
+                <td> @item.Email</td>
+                <td> <a href="/category/edit/@item.Id"> Edit</a> &nbsp;|&nbsp; <a href="/category/delete/@item.Id"> Delete</a> </td>
+            </tr>
+        }
+    </table>
+</div>
