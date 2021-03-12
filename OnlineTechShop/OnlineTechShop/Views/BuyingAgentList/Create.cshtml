@@ -1,0 +1,203 @@
+﻿@model OnlineTechShop.Models.BuyingAgent
+
+@{
+    Layout = null;
+}
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Register Buying Agent</title>
+<meta content="" name="descriptison">
+<meta content="" name="keywords">
+
+<link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="~/Contents/vendor/venobox/venobox.css" rel="stylesheet">
+<link href="~/Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/aos/aos.css" rel="stylesheet">
+<link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<title>Buying Agent Registration</title>
+<style>
+
+    .featured-item-box {
+        min-height: 150px;
+        background: #3b555d;
+        min-width: 80px;
+        color: white;
+        border-radius: 5px;
+        padding-top: 30px;
+    }
+</style>
+<header id="header" class="">
+    <div class="container d-flex align-items-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-1">
+
+            </div>
+
+            <div class="col-12 col-lg-12">
+                <nav class="nav-menu d-none d-lg-block">
+
+                    <ul>
+                        <li class="drop-down">
+                            <a href="/AdminList">Admins</a>
+                            <ul>
+                                <li><a href="/AdminList/Create">Add Admin</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/SalesExecutiveList">Sales Executives</a>
+                            <ul>
+                                <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/BuyingAgentList">BuyingAgents</a>
+                            <ul>
+                                <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/ProductList">Products</a>
+                            <ul>
+                                <li><a href="/ProductList/Create">Add Products</a></li>
+                                <li><a href="/ProductList/Add">Add Quantity</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Profits">Profits</a>
+                        </li>
+                        <li class="drop-down">
+                            Settings
+
+                            <ul>
+                                <li><a href="/AdminSettings">Update Profile</a></li>
+                                <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminProfile">Profile</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Logout">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</header>
+<main id="main ">
+    <div class="container">
+        <br /><br /><br /><br /><br />
+        <div class="row mt-2 justify-content-center">
+            <div class="col-12 col-lg-4 text-center">
+                @using (Html.BeginForm("Create", "BuyingAgentList", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                <table>
+                    <tr>
+                        <td colspan="2" align="center"><h3>Buying Agent Registration</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Full Name</td>
+                        <td><input type="text" name="fullName" data-val="true" data-val-required="Full Name is required." data-val-length-max="30" data-val-length="Too many characters." /></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            @Html.ValidationMessage("fullName", "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>User Name</td>
+                        <td><input type="text" name="userName" data-val="true" data-val-required="User Name is required." data-val-length-max="20" data-val-length="Too many characters." /></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            @Html.ValidationMessage("userName", "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" name="email" data-val="true" data-val-required="Email is required." data-val-email="Enter a valid email." /></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            @Html.ValidationMessage("email", "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" name="password" data-val="true" data-val-required="Password is required." data-val-length-min="6" data-val-length="Password is too weak!!"/></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            @Html.ValidationMessage("password", "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td><input type="text" name="phone" data-val="true" data-val-required="Phone is required." data-val-length-max="11" data-val-length="Enter a valid phone number." /></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            @Html.ValidationMessage("phone", "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td><input type="text" name="address" data-val="true" data-val-required="Address is required." data-val-length-max="150" data-val-length="Too much characters!!" /></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            @Html.ValidationMessage("address", "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Salary</td>
+                        <td><input type="text" name="salary" data-val="true" data-val-required="Salary is required." data-val-range-min="2000"  data-val-range="Incorrect salary!!" /></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            @Html.ValidationMessage("salary", "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr><td colspan="2"><input class="btn btn-block btn-success" type="submit" value="Register" /></td></tr>
+                </table>
+                }
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.intellisense.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate-vsdoc.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.debug.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/modernizr-2.6.2.js"></script>
+
