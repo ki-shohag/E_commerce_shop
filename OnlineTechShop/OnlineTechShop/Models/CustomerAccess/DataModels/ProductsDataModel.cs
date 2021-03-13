@@ -12,7 +12,10 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         {
             return data.Products.OrderByDescending(x=>x.Id).ToList();
         }
-        
+        public int GetProductStockQuantity(int id)
+        {
+            return data.Products.Find(id).Quantity;
+        }
 
         public List<Product> GetAvailableProducts()
         {
@@ -49,6 +52,22 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         public List<String> GetAllProductBrandsByCategory(string category)
         {
             return data.Products.Where(x=>x.Category==category).Select(x => x.Brand).Distinct().ToList();
+        }
+        public List<string> GetAllProductsKeyValue()
+        {
+            //var AllProducts = data.Products.ToList();
+            //var ProductList = new List<KeyValuePair<string, int>>();
+            //foreach (var key in AllProducts )
+            //{
+            //        ProductList.Add(new KeyValuePair<string, int>(key.ProductName, key.Id));
+
+            //}
+            //return ProductList;
+            return data.Products.Where(x => x.Status == "In Stock").Select(x => x.ProductName).ToList();
+        }
+        public int GetProductIdByProductName(string name)
+        {
+            return (int)data.Products.Where(x => x.ProductName == name).Select(x => x.Id).FirstOrDefault();
         }
     }
 }

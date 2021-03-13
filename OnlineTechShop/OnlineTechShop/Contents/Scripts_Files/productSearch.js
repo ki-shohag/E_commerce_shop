@@ -1,31 +1,35 @@
+$(document).ready(function () {
+    mydata = JSON.stringify({ "Category": "Laptop", "Discount": 10.00 });
 
-$(document).ready(function(){
-	$('#searchBox').on('keyup', function(){
-        var searchText = $("#searchBox").val();
-        if(searchText.trim()==''){
-            $('#myTable tbody')=null;
-        }
-        console.log(searchText);
-		$.ajax({
-			url: '/products/search',
-			method: 'post',
-			datatype : 'json',
-			data : {'userName':searchText},
-			success:function(response){
-				if(response.user !== 'error' && response.user !== undefined){
-                    $('#myTable tbody').empty();
-                    //console.log(response.user[0]);
-                    for(var i = 0; i < response.user.length; i++){
-                        $('#myTable tbody:last-child').append('<tr><td>'+response.user[i].name+'</td><td>'+response.user[i].description+'</td><td>'+response.user[i].brand+'</td><td>'+response.user[i].price+'</td><td>'+response.user[i].category+'</td></tr>'); 
+    $.ajax({
+        type: "POST",
+        url: "/Products/GetAllProductsKeyValue",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: mydata,
+        success: function (result) {
+            var tags = JSON.parse(result);
+            //nsole.log(tags);
+            $('#searchBox').autocomplete({
+                source: tags,
+                select: showResult
+            }) 
+            function showResult(event, ui) {
+                //ert(ui.item.label);
+                var name = ui.item.label;
+                mydata = JSON.stringify({ "name": name });
+                $.ajax({
+                    type: "POST",
+                    url: "/Products/GetProductIdByProductName",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: mydata,
+                    success: function (result) {
+                        //ert(result);
+                        window.location.replace("/Products/ShowProduct/" + result);
                     }
-                    //$('#myTable tbody:last-child').append('<tr><td>'+response.user.name+'</td><td>'+response.user.description+'</td><td>'+response.user.brand+'</td><td>'+response.user.price+'</td><td>'+response.user.category+'</td></tr>');
-				}else{
-
-				}
-			},
-			error:function(response){
-				alert('server error');
-			}
-		});
-	});
+                });
+            }
+        }
+    });
 });

@@ -22,6 +22,7 @@ namespace OnlineTechShop.Controllers.Customer
             if (ModelState.IsValid)
             {
                 OnlineTechShop.Models.CustomerAccess.DataModels.CustomerDataModel customerData = new Models.CustomerAccess.DataModels.CustomerDataModel();
+                OnlineTechShop.Models.CustomerAccess.DataModels.OrdersDataModel ordersData = new Models.CustomerAccess.DataModels.OrdersDataModel();
                 if (customerData.GetCustomerByUserName(customer.UserName)!=null)
                 {
                     TempData["msg"] = "User Name is alredy registered!";
@@ -35,6 +36,9 @@ namespace OnlineTechShop.Controllers.Customer
                 else
                 {
                     customerData.InsertCustomer(customer);
+                    Models.OrderData order = new OrderData();
+                    string email = customerData.GetCustomerByEmail(customer.Email).Email.ToString();
+                    ordersData.AddOrderDataOnCustomerRegistration(email);
                     TempData["msg"] = "Registration was successful!\nWant to login?";
                     return RedirectToAction("Index", "CustomerLogin");
                 }
