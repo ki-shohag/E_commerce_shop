@@ -340,6 +340,9 @@
     <Content Include="Views\SalesExecutive\index.cshtml" />
     <Content Include="Views\Shared\_LayoutSalesExecutive.cshtml" />
     <Content Include="Views\SalesExecutive\products.cshtml" />
+    <Content Include="Views\SalesExecutive\availableproducts.cshtml" />
+    <Content Include="Views\SalesExecutive\upcomingproducts.cshtml" />
+    <Content Include="Views\SalesExecutive\discountproducts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

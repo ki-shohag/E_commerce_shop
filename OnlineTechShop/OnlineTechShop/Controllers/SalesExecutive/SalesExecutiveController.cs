@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineTechShop.Models;
+using OnlineTechShop.Models.CustomerAccess.DataModels;
 
 namespace OnlineTechShop.Controllers.SalesExecutive
 {
@@ -14,13 +15,35 @@ namespace OnlineTechShop.Controllers.SalesExecutive
         // GET: SalesExecutive
         public ActionResult Index()
         {
-            ViewData["SalesExecutive"] = context.SalesExecutives.ToList();
+           
             return View(context.SalesExecutives.ToList());
         }
         public ActionResult Products()
         {
-            ViewData["SalesExecutive"] = context.SalesExecutives.ToList();
-            return View();
+           
+            return View(context.Products.ToList());
         }
+        public ActionResult AvailableProducts()
+        {
+             ProductsDataModel data = new ProductsDataModel();
+            return View(data.GetAvailableProducts());
+        }
+        public ActionResult UpcomingProducts()
+        {
+            ProductsDataModel data = new ProductsDataModel();
+            return View(data.GetUpComingProducts());
+        }
+
+        public ActionResult DiscountProducts()
+        {
+            ProductsDataModel data = new ProductsDataModel();
+            return View(data.GetAllDiscountProducts());
+        }
+        public JsonResult SearchByCategory(string SearchValue)
+        {
+            ProductsDataModel data = new ProductsDataModel();
+            return Json(data.GetProductByCategory(SearchValue, 1), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

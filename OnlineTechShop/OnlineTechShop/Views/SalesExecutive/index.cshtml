@@ -6,19 +6,35 @@
 
 
 <div class="w3-container tab">
-    <table border="1">
-        <tr>
-            <td>Category Name</td>
-            <td>Category Id</td>
-            <td>Operations</td>
-        </tr>
+    <h2 style="text-align:center"> Profile </h2>
+    <table width="50%" >
+
         @foreach (var item in Model)
         {
-
             <tr>
+                <td>Name</td>
                 <td> @item.FullName </td>
+
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td> @item.UserName</td>
+
+            </tr>
+            <tr>
+                <td>Email</td>
                 <td> @item.Email</td>
-                <td> <a href="/category/edit/@item.Id"> Edit</a> &nbsp;|&nbsp; <a href="/category/delete/@item.Id"> Delete</a> </td>
+
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td> @item.Address</td>
+
+            </tr>
+            <tr>
+                <td>Phone No.</td>
+                <td> @item.Phone</td>
+
             </tr>
         }
     </table>
