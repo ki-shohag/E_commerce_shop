@@ -12,6 +12,7 @@ namespace OnlineTechShop.Controllers.Customer
     {
         CustomerDataModel customerData = new CustomerDataModel();
         WishListsDataModel wishedData = new WishListsDataModel();
+        OrdersDataModel ordersData = new OrdersDataModel();
         // GET: CustomerProfile
         [HttpGet]
         public ActionResult Index()
@@ -143,6 +144,30 @@ namespace OnlineTechShop.Controllers.Customer
                 TempData["msg"] = "Failed to remove profile picture!";
                 return RedirectToAction("Index");
             }
+        }
+        [HttpGet]
+        public ActionResult PaymentAndShipping()
+        {
+            ViewBag.PaymentAndShippingData = ordersData.GetPaymentAndShippingDataByCustomerId((int)Session["user_id"]);
+            if (ViewBag.PaymentAndShippingData==null)
+            {
+                TempData["msg"]= "Could not found your payment and shipping data!";
+                return RedirectToAction("Index");
+            }
+            return View(customerData.GetCustomerByEmail((string)Session["user_email"]));
+        }
+        [HttpPost]
+        public ActionResult UpdatePaymentAndShipping(Models.OrderData order)
+        {
+            order.Id = ordersData.GetOrderIdByCustomerId((int)Session["user_id"]);
+            order.Customer_Id = (int)Session["user_id"];
+            order.ShippingMethod = "Card Payment";
+            if (ModelState.IsValid)
+            {
+                ordersData.UpdatePaymentAndShippingInfo(order);
+            }
+            TempData["msg"] = "Updated payment and shipping details successfully!";
+            return RedirectToAction("PaymentAndShipping");
         }
     }
 }

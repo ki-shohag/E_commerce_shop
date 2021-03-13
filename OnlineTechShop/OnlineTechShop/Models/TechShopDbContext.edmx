@@ -76,11 +76,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="CardType" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="CardNumber" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ExpirationMonth" Type="smallint" Nullable="false" />
-          <Property Name="ExpirationYear" Type="smallint" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="CardType" Type="varchar" MaxLength="20" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ExpirationMonth" Type="smallint" />
+          <Property Name="ExpirationYear" Type="smallint" />
           <Property Name="ShippingMethod" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ShippingAddress" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
@@ -413,11 +414,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="CardType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ExpirationMonth" Type="Int16" Nullable="false" />
-          <Property Name="ExpirationYear" Type="Int16" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="CardType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ExpirationMonth" Type="Int16" />
+          <Property Name="ExpirationYear" Type="Int16" />
           <Property Name="ShippingMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
@@ -761,6 +763,7 @@
             <EntityTypeMapping TypeName="TechShopDbModel.OrderData">
               <MappingFragment StoreEntitySet="OrderData">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
                 <ScalarProperty Name="CardType" ColumnName="CardType" />
                 <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
                 <ScalarProperty Name="ExpirationMonth" ColumnName="ExpirationMonth" />

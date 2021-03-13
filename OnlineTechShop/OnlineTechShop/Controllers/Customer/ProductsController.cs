@@ -112,5 +112,15 @@ namespace OnlineTechShop.Controllers.Customer
                 return Json(JsonConvert.SerializeObject(new { Id = 0}), JsonRequestBehavior.AllowGet);
             }
         }
+        [HttpPost]
+        public ActionResult GetAllProductsKeyValue(string data)
+        {
+            return Json(new JavaScriptSerializer().Serialize(productsData.GetAllProductsKeyValue()));
+        }
+        [HttpPost]
+        public ActionResult GetProductIdByProductName(string name)
+        {
+            return Json(new JavaScriptSerializer().Serialize(productsData.GetProductIdByProductName(name)));
+        }
     }
 }
