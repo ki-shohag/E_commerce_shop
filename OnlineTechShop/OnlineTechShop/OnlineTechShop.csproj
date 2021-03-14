@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Customer\AccessoriesController.cs" />
     <Compile Include="Controllers\Customer\CartController.cs" />
+    <Compile Include="Controllers\Customer\CheckOutController.cs" />
     <Compile Include="Controllers\Customer\CompareProductsController.cs" />
     <Compile Include="Controllers\Customer\ComponentsController.cs" />
     <Compile Include="Controllers\Customer\CustomerLoginController.cs" />
@@ -209,10 +210,13 @@
     <Compile Include="Models\CustomerAccess\DataModels\ProductsDataModel.cs" />
     <Compile Include="Models\CustomerAccess\DataModels\RatingsDataModel.cs" />
     <Compile Include="Models\CustomerAccess\DataModels\ReviewsDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\SalesLogDataModel.cs" />
     <Compile Include="Models\CustomerAccess\DataModels\WishListsDataModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\CartViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\CustomerViewModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\InvoiceViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\ProductsViewModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\PurchaseViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\ReviewsViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\WishListViewModel.cs" />
     <Compile Include="Models\Old_Products.cs">
@@ -342,6 +346,7 @@
     <Content Include="Views\Accessories\MouseBrand.cshtml" />
     <Content Include="Views\CustomerProfile\PaymentAndShipping.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\CheckOut\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

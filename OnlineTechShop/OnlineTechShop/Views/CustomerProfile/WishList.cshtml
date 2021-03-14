@@ -225,7 +225,7 @@
                                     </p>
                                 </div>
                                 <div class="border-top border-secondary pt-2 pb-2 text-center">
-                                    <button value="@item.Id" id="removeButton" class="btn btn-block btn-danger">Remove from Wish List</button>
+                                    <button value="@item.Id"  class="removeButton btn btn-block btn-danger">Remove from Wish List</button>
                                     @*<a href="/Products/RemoveFromWishList/@item.Id" class="btn-sm btn-danger btn-block">Remove From Wish List</a>*@
                                     <a href="#" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Cart</a>
                                     <a href="/Products/ShowProduct/@item.ProductId" class="btn-sm btn-primary btn-block">View Product</a>
@@ -293,7 +293,7 @@
         </script>*@
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#removeButton').click(function () {
+            $('.removeButton').click(function () {
                 var r = confirm("Are you sure to permanently remove the product from wish list?");
                 if (r == true) {
                     window.location.href = "/Products/RemoveFromWishList/" + $(this).attr("value");

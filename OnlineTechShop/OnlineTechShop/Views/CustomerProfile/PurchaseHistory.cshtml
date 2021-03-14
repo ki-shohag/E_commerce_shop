@@ -220,6 +220,20 @@
                             <th>Status</th>
                             <th>Payment Type</th>
                         </tr>
+                        @foreach (var item in ViewBag.PurchaseHistory)
+                        {
+                            <tr>
+                                <td>@item.ProductName</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.UnitPrice</td>
+                                <td>@item.Tax%</td>
+                                <td>@item.Discount%</td>
+                                <td>@item.TotalPrice</td>
+                                <td>@item.DatePurchased</td>
+                                <td>@item.Status</td>
+                                <td>@item.PaymentType</td>
+                            </tr>
+                        }
                     </table>
                 </div>
             </div>

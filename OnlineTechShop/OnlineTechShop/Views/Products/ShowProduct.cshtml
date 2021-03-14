@@ -391,7 +391,7 @@
                     dataType: "json",
                     data: mydata,
                     success: function (result) {
-                        alert(JSON.parse(result).msg);
+                        //alert(JSON.parse(result).msg);
                         var totalCartQuantity = JSON.parse(result).totalCartQuantity;
                         if (JSON.parse(result).msg == "Added prodcut!") {
                             $('.alert').show();

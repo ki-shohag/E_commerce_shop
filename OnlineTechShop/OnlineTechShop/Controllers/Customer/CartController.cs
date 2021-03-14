@@ -104,7 +104,7 @@ namespace OnlineTechShop.Controllers.Customer
         {
             int stock = productsData.GetProductStockQuantity(data.ProductId);
             int cartQuantity = (int)Session["cart_quantity"];
-            if (stock > data.Quantity)
+            if (stock >= data.Quantity)
             {
                 var currentCart = (List<CartViewModel>)Session["cart"];
                 var selectedCart = currentCart.Where(x => x.ProductId == data.ProductId).FirstOrDefault();

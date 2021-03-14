@@ -71,14 +71,14 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Customer_Id" Type="int" Nullable="false" />
-    <Property Name="CardType" Type="varchar" MaxLength="20" />
-    <Property Name="CardNumber" Type="varchar" MaxLength="20" />
-    <Property Name="ExpirationMonth" Type="smallint" />
-    <Property Name="ExpirationYear" Type="smallint" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="CardType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CardNumber" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ExpirationMonth" Type="smallint" Nullable="false" />
+    <Property Name="ExpirationYear" Type="smallint" Nullable="false" />
     <Property Name="ShippingMethod" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="ShippingAddress" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" />
   </EntityType>
   <EntityType Name="Products">
     <Key>

@@ -15,12 +15,12 @@ namespace OnlineTechShop.Models
     public partial class OrderData
     {
         public int Id { get; set; }
-        public int Customer_Id { get; set; }
         public string CardType { get; set; }
         public string CardNumber { get; set; }
-        public Nullable<short> ExpirationMonth { get; set; }
-        public Nullable<short> ExpirationYear { get; set; }
+        public short ExpirationMonth { get; set; }
+        public short ExpirationYear { get; set; }
         public string ShippingMethod { get; set; }
         public string ShippingAddress { get; set; }
+        public Nullable<int> Customer_Id { get; set; }
     }
 }
