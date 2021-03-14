@@ -45,7 +45,7 @@
                         <li class="drop-down">
                             <a href="/AdminList">Admins</a>
                             <ul>
-                                <li><a href="/AdminList/Create">Register Admin</a></li>
+                                <li><a href="/AdminList/Create">Add Admin</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
@@ -106,8 +106,8 @@
                         <div class="form-horizontal">
                             <table>
                                 <tr>
-                                    <td rowspan="25">
-                                        <img src="~/Contents/Upload_Files/Products/@Html.DisplayFor(model=>model.Images)" alt="~/Contents/Upload_Files/Products/default.jpg" height="500" width="500" />
+                                    <td rowspan="30">
+                                        <img src="~/Contents/Upload_Files/Products/@Html.DisplayFor(model=>model.Images)" alt="" height="500" width="500" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -127,12 +127,14 @@
                                 <tr>
                                     <td>@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })</td>
                                     <td>
-                                        <select name="category" class="form-control">
+                                        <select name="category" class="form-control" readonly>
                                             <option value="@Html.DisplayFor(model=>model.Category)">@Html.DisplayFor(model => model.Category)</option>
                                             <option value="RAM">RAM</option>
+                                            <option value="CPU">CPU</option>
                                             <option value="SSD">SSD</option>
                                             <option value="Laptop">Laptop</option>
-                                            <option value="Monitor">Laptop</option>
+                                            <option value="Monitor">Monitor</option>
+                                            <option value="Casing">Casing</option>
                                             <option value="Keyboard">Keyboard</option>
                                             <option value="Mouse">Mouse</option>
                                             <option value="Cooling Fan">Cooling Fan</option>
@@ -146,7 +148,7 @@
                                 <tr>
                                     <td>@Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })</td>
                                     <td>
-                                        <select name="brand" class="form-control">
+                                        <select name="brand" class="form-control" readonly>
                                             <option value="@Html.DisplayFor(model=>model.Brand)">@Html.DisplayFor(model => model.Brand)</option>
                                             <option value="Avexir">Avexir</option>
                                             <option value="Adata">Adata</option>
@@ -155,6 +157,7 @@
                                             <option value="Samsung">Samsung</option>
                                             <option value="Gigabyte">Gigabyte</option>
                                             <option value="Asus">Asus</option>
+                                            <option value="intel">Intel</option>
                                             <option value="MSI">MSI</option>
                                             <option value="Zotac">Zotac</option>
                                             <option value="Gamdias">Gamdias</option>

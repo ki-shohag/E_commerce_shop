@@ -141,7 +141,24 @@
     <Content Include="Contents\vendor\isotope-layout\isotope.pkgd.js" />
     <Content Include="Contents\vendor\isotope-layout\isotope.pkgd.min.js" />
     <Content Include="Contents\vendor\jquery.easing\jquery.easing.min.js" />
+    <None Include="Contents\vendor\jquery\jqs\jquery-1.8.2.intellisense.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery-1.8.2.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery-1.8.2.min.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery-ui-1.8.24.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery-ui-1.8.24.min.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery.unobtrusive-ajax.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Contents\vendor\jquery\jqs\jquery.validate-vsdoc.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery.validate.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery.validate.min.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery.validate.unobtrusive.js" />
+    <Content Include="Contents\vendor\jquery\jqs\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Contents\vendor\jquery\jqs\knockout-2.2.0.debug.js" />
+    <Content Include="Contents\vendor\jquery\jqs\knockout-2.2.0.js" />
+    <Content Include="Contents\vendor\jquery\jqs\modernizr-2.6.2.js" />
     <Content Include="Contents\vendor\jquery\jquery.min.js" />
+    <Content Include="Contents\vendor\jquery\jquery.validate.min.js" />
+    <Content Include="Contents\vendor\jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Contents\vendor\owl.carousel\assets\ajax-loader.gif" />
     <Content Include="Contents\vendor\owl.carousel\assets\owl.carousel.css" />
     <Content Include="Contents\vendor\owl.carousel\assets\owl.carousel.min.css" />
@@ -171,12 +188,20 @@
     <Content Include="Models\TechShopDbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TechShopDbContext.edmx</DependentUpon>
-      <LastGenOutput>TechShopDbContext1.cs</LastGenOutput>
+      <LastGenOutput>TechShopDbContext.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AdminDashboardController.cs" />
+    <Compile Include="Controllers\Admin\AdminListController.cs" />
+    <Compile Include="Controllers\Admin\AdminLoginController.cs" />
+    <Compile Include="Controllers\Admin\AdminProfileController.cs" />
+    <Compile Include="Controllers\Admin\AdminSettingsController.cs" />
+    <Compile Include="Controllers\Admin\BuyingAgentListController.cs" />
+    <Compile Include="Controllers\Admin\ProductListController.cs" />
+    <Compile Include="Controllers\Admin\SalesExecutiveListController.cs" />
     <Compile Include="Controllers\Customer\AccessoriesController.cs" />
     <Compile Include="Controllers\Customer\CompareProductsController.cs" />
     <Compile Include="Controllers\Customer\ComponentsController.cs" />
@@ -196,6 +221,9 @@
     <Compile Include="Models\Admin.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminModel\AdminDataModel\AdDataModel.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\Admin.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\AdminMetaData.cs" />
     <Compile Include="Models\BuyingAgent.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -243,16 +271,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TechShopDbContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TechShopDbContext.cs" />
+    <Compile Include="Models\TechShopDbContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechShopDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TechShopDbContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TechShopDbContext.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TechShopDbContext1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WishList.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
@@ -336,6 +363,28 @@
     <Content Include="Views\Accessories\Mouse.cshtml" />
     <Content Include="Views\Accessories\KeyboardBrand.cshtml" />
     <Content Include="Views\Accessories\MouseBrand.cshtml" />
+    <Content Include="Views\AdminDashboard\Index.cshtml" />
+    <Content Include="Views\AdminList\Create.cshtml" />
+    <Content Include="Views\AdminList\Delete.cshtml" />
+    <Content Include="Views\AdminList\Index.cshtml" />
+    <Content Include="Views\AdminLogin\Login.cshtml" />
+    <Content Include="Views\AdminProfile\Index.cshtml" />
+    <Content Include="Views\AdminSettings\Index.cshtml" />
+    <Content Include="Views\BuyingAgentList\Create.cshtml" />
+    <Content Include="Views\BuyingAgentList\Delete.cshtml" />
+    <Content Include="Views\BuyingAgentList\Edit.cshtml" />
+    <Content Include="Views\BuyingAgentList\Index.cshtml" />
+    <Content Include="Views\ProductList\Create.cshtml" />
+    <Content Include="Views\ProductList\Delete.cshtml" />
+    <Content Include="Views\ProductList\Edit.cshtml" />
+    <Content Include="Views\ProductList\Index.cshtml" />
+    <Content Include="Views\SalesExecutiveList\Create.cshtml" />
+    <Content Include="Views\SalesExecutiveList\Delete.cshtml" />
+    <Content Include="Views\SalesExecutiveList\Edit.cshtml" />
+    <Content Include="Views\SalesExecutiveList\Index.cshtml" />
+    <Content Include="Views\AdminSettings\ChangePassword.cshtml" />
+    <Content Include="Views\ProductList\Add.cshtml" />
+    <Content Include="Views\ProductList\AddQuantity.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -345,7 +394,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Contents\Upload_Files\Admins\" />
     <Folder Include="Contents\Upload_Files\Customer\ProfilePic\" />
+    <Folder Include="Contents\Upload_Files\Products\" />
     <Folder Include="Views\CustomerLogOut\" />
     <Folder Include="Views\Reviews\" />
   </ItemGroup>

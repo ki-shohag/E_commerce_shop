@@ -27,6 +27,7 @@ namespace OnlineTechShop.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                buyingAgent.ProfilePic = "default.jpg";
                 buyingAgent.JoiningDate = DateTime.Now;
                 buyingAgent.LastUpdated = DateTime.Now;
                 context.BuyingAgents.Add(buyingAgent);

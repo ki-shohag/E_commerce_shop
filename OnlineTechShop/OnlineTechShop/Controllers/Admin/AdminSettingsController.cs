@@ -2,7 +2,6 @@
 using OnlineTechShop.Models.AdminModel.AdminDataModel;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -23,22 +22,29 @@ namespace OnlineTechShop.Controllers.Admin
         }
 
         [HttpPost]
-        public ActionResult UpdateProfile(int id, Models.Admin admin, HttpPostedFileBase image)
+        public ActionResult UpdateProfile(FormCollection collection, HttpPostedFileBase image)
         {
-            string im = "";
+           var admin = context.Admins.Find(Convert.ToInt32(collection["id"]));
+
+            string img = "";
             if (image == null)
             {
-                im = admin.ProfilePic;
+                img = admin.ProfilePic;
             }
+
             else
             {
-                im = AdminProfileImg(image);
+                img = AdminProfileImg(image);
             }
-            admin.Id = id;
-            admin.ProfilePic = im;
+
+            admin.Id = Convert.ToInt32(collection["id"]);
+            admin.Phone = collection["phone"];
+            admin.Address = collection["address"];
+            admin.ProfilePic = img;
             admin.LastUpdated = DateTime.Now;
-            context.Entry(admin).State = EntityState.Modified;
-            return RedirectToAction("Index","AdminProfile");
+            context.Entry(admin).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Index", "AdminProfile");
         }
 
         public string AdminProfileImg(HttpPostedFileBase image)
@@ -52,6 +58,45 @@ namespace OnlineTechShop.Controllers.Admin
             img = Path.GetFileName(image.FileName);
 
             return img;
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            var admin = data.GetAdminByEmail(Session["email"].ToString());
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(FormCollection collection)
+        {
+            //return Content(collection["password"] + " " + collection["newPassword"] + " " + collection["confirmPassword"]);
+            var admin = data.CheckAccountPassword(collection["password"], Session["email"].ToString());
+
+            if (admin == null)
+            {
+                TempData["msg1"] = "Incorrect password!!";
+                return View();
+            }
+
+            else
+            {
+                if (collection["newPassword"].Equals(collection["confirmPassword"]))
+                {
+                    admin.Password = collection["newPassword"];
+                    admin.LastUpdated = DateTime.Now;
+                    context.Entry(admin).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return RedirectToAction("Index", "AdminProfile");
+                    
+
+                }
+                else
+                {
+                    TempData["msg2"] = "Passwords did not match!!";
+                    return View();
+                }
+            }
         }
     }
 }

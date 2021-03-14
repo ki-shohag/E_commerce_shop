@@ -26,6 +26,7 @@ namespace OnlineTechShop.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                admin.ProfilePic = "default.jpg";
                 admin.JoiningDate = DateTime.Now;
                 admin.LastUpdated = DateTime.Now;
                 context.Admins.Add(admin);

@@ -60,9 +60,26 @@
                                 <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
                             </ul>
                         </li>
-                        
                         <li class="drop-down">
-                            <a href="/AdminSettings">Settings</a>
+                            <a href="/ProductList">Products</a>
+                            <ul>
+                                <li><a href="/ProductList/Create">Add Products</a></li>
+                                <li><a href="/ProductList/Add">Add Quantity</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Profits">Profits</a>
+                        </li>
+                        <li class="drop-down">
+                            Settings
+
+                            <ul>
+                                <li><a href="/AdminSettings">Update Profile</a></li>
+                                <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
+                            </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/AdminProfile">Profile</a>
@@ -92,7 +109,7 @@
                         </tr>&nbsp;
                         <tr>
                             <td rowspan="5">
-                                <img src="~/Contents/Upload_Files/Admins/@Html.DisplayFor(model => model.ProfilePic)" alt="" height="200" width="200" />
+                                <img src="~/Contents/Upload_Files/Admins/@Html.DisplayFor(model => model.ProfilePic)" alt=""height="200" width="200" />
                             </td>
                             <td width="30%">User Name</td>
                             <td width="40%">@Html.DisplayFor(model => model.UserName)</td>

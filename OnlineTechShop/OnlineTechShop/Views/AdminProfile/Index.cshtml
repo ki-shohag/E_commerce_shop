@@ -64,8 +64,7 @@
                                 <a href="/ProductList">Products</a>
                                 <ul>
                                     <li><a href="/ProductList/Create">Add Products</a></li>
-                                    <li><a href="/ProductList/Edit">Update Products</a></li>
-                                    <li><a href="/ProductList/Delete">Remove Products</a></li>
+                                    <li><a href="/ProductList/Add">Add Quantity</a></li>
                                 </ul>
                             </li>
                             <li class="drop-down">
@@ -75,7 +74,12 @@
                                 <a href="/Profits">Profits</a>
                             </li>
                             <li class="drop-down">
-                                <a href="/AdminSettings">Settings</a>
+                                Settings
+
+                                <ul>
+                                    <li><a href="/AdminSettings">Update Profile</a></li>
+                                    <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
+                                </ul>
                             </li>
                             <li class="drop-down">
                                 <a href="/AdminProfile">Profile</a>
@@ -121,11 +125,11 @@
                         </tr>&nbsp;&nbsp;
                         <tr>
                             <td>Address</td>
-                            <td>@Html.DisplayFor(model => model.JoiningDate)</td>
+                            <td>@Html.DisplayFor(model => model.Address)</td>
                         </tr>&nbsp;&nbsp;
                         <tr>
                             <td>Joining Date</td>
-                            <td>@Html.DisplayFor(model => model.Address)</td>
+                            <td>@Html.DisplayFor(model => model.JoiningDate)</td>
                         </tr>&nbsp;&nbsp;
                         <tr>
                             <td>Last Updated</td>

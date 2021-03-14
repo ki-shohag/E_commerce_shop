@@ -94,5 +94,33 @@ namespace OnlineTechShop.Controllers.Admin
             context.SaveChanges();
             return RedirectToAction("Index"); ;
         }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View(context.Products.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult AddQuantity(int id)
+        {
+            var product = context.Products.Find(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult AddQuantity(FormCollection collection)
+        {
+            var product = context.Products.Find(Convert.ToInt32(collection["proId"]));
+            product.Quantity = Convert.ToInt32(product.Quantity) + Convert.ToInt32(collection["newStock"]);
+            product.LastUpdated = DateTime.Now;
+            context.Entry(product).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
+
     }
 }

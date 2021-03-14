@@ -1,0 +1,259 @@
+﻿@model OnlineTechShop.Models.Product
+
+@{
+    Layout = null;
+}
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Insert Products</title>
+<meta content="" name="descriptison">
+<meta content="" name="keywords">
+
+<link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="~/Contents/vendor/venobox/venobox.css" rel="stylesheet">
+<link href="~/Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/aos/aos.css" rel="stylesheet">
+<link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<title>Insert</title>
+<style>
+
+    .featured-item-box {
+        min-height: 150px;
+        background: #3b555d;
+        min-width: 80px;
+        color: white;
+        border-radius: 5px;
+        padding-top: 30px;
+    }
+</style>
+<header id="header" class="">
+    <div class="container d-flex align-items-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-1">
+
+            </div>
+
+            <div class="col-12 col-lg-12">
+                <nav class="nav-menu d-none d-lg-block">
+
+                    <ul>
+                        <li class="drop-down">
+                            <a href="/AdminList">Admins</a>
+                            <ul>
+                                <li><a href="/AdminList/Create">Add Admin</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/SalesExecutiveList">Sales Executives</a>
+                            <ul>
+                                <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/BuyingAgentList">BuyingAgents</a>
+                            <ul>
+                                <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/ProductList">Products</a>
+                            <ul>
+                                <li><a href="/ProductList/Create">Add Products</a></li>
+                                <li><a href="/ProductList/Add">Add Quantity</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Profits">Profits</a>
+                        </li>
+                        <li class="drop-down">
+                            Settings
+
+                            <ul>
+                                <li><a href="/AdminSettings">Update Profile</a></li>
+                                <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminProfile">Profile</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Logout">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</header>
+<main id="main ">
+    <div class="container">
+        <br /><br /><br />
+        <div class="row mt-2 justify-content-center">
+            <div class="col-12 col-lg-11 text-center">
+                @using (Html.BeginForm("AddQuantity", "ProductList", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <table>
+                            <tr>
+                                <td rowspan="27">
+                                    <img src="~/Contents/Upload_Files/Products/@Html.DisplayFor(model=>model.Images)" alt="" height="500" width="500" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <input name="proId" value="@Html.DisplayFor(model=>model.Id)" hidden />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td width="50%">@Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })</td></tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>
+                                    <select name="category" class="form-control" readonly>
+                                        <option value="@Html.DisplayFor(model=>model.Category)">@Html.DisplayFor(model => model.Category)</option>
+                                        <option value="RAM">RAM</option>
+                                        <option value="SSD">SSD</option>
+                                        <option value="Laptop">Laptop</option>
+                                        <option value="Monitor">Laptop</option>
+                                        <option value="Keyboard">Keyboard</option>
+                                        <option value="Mouse">Mouse</option>
+                                        <option value="Cooling Fan">Cooling Fan</option>
+                                        <option value="Mother Board">Mother Board</option>
+                                        <option value="Graphics Card">Graphics Card</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>
+                                    <select name="brand" class="form-control" readonly>
+                                        <option value="@Html.DisplayFor(model=>model.Brand)">@Html.DisplayFor(model => model.Brand)</option>
+                                        <option value="Avexir">Avexir</option>
+                                        <option value="Adata">Adata</option>
+                                        <option value="GSkill">GSkill</option>
+                                        <option value="Corsair">Corsair</option>
+                                        <option value="Samsung">Samsung</option>
+                                        <option value="Gigabyte">Gigabyte</option>
+                                        <option value="Asus">Asus</option>
+                                        <option value="MSI">MSI</option>
+                                        <option value="Zotac">Zotac</option>
+                                        <option value="Gamdias">Gamdias</option>
+                                        <option value="Cooler Master">Cooler Master</option>
+                                        <option value="AMD">AMD</option>
+                                        <option value="Acer">Acer</option>
+                                        <option value="Apple">Apple</option>
+                                        <option value="HP">HP</option>
+                                        <option value="Razer">Razer</option>
+                                        <option value="BenQ">BenQ</option>
+                                        <option value="Dell">Dell</option>
+                                        <option value="LG">LG</option>
+                                        <option value="A4Tech">A4Tech</option>
+                                        <option value="Logitech">Logitech</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })</td></tr>
+                            <tr>
+                                <td> @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.ProductDescription, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td> @Html.LabelFor(model => model.Features, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.Features, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Features, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>
+                                    <select name="status" class="form-control" readonly>
+                                        <option value="In Stock">In Stock</option>
+                                        <option value="Out of Stock">Out of Stock</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td> @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2"> @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td> @Html.Label("Newly Stocked", new { @class = "control-label col-md-2" })</td>
+                                <td> <input type="text" name="newStock" class="form-control" data-val="true" data-val-range-min="0" and data-val-range-max="99999999" data-val-range="Enter a valid number"></td>
+                            </tr>
+                            <tr><td colspan="2" align="center"> @Html.ValidationMessage("newStock", "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.BuyingPrice, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.BuyingPrice, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.BuyingPrice, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.SellingPrice, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.SellingPrice, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.SellingPrice, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td>@Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Tax, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td>@Html.ValidationMessageFor(model => model.Tax, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td colspan="3" align="right"><input type="submit" value="Save" class="btn btn-warning" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.intellisense.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate-vsdoc.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.debug.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/modernizr-2.6.2.js"></script>

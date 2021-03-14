@@ -27,6 +27,7 @@ namespace OnlineTechShop.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                salesExecutive.ProfilePic = "default.jpg";
                 salesExecutive.JoiningDate = DateTime.Now;
                 salesExecutive.LastUpdated = DateTime.Now;
                 context.SalesExecutives.Add(salesExecutive);

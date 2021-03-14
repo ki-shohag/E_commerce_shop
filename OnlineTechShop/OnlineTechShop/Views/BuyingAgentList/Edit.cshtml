@@ -45,7 +45,7 @@
                         <li class="drop-down">
                             <a href="/AdminList">Admins</a>
                             <ul>
-                                <li><a href="/AdminList/Create">Register Admin</a></li>
+                                <li><a href="/AdminList/Create">Add Admin</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
@@ -59,12 +59,12 @@
                             <ul>
                                 <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
                             </ul>
+                        </li>
                         <li class="drop-down">
                             <a href="/ProductList">Products</a>
                             <ul>
                                 <li><a href="/ProductList/Create">Add Products</a></li>
-                                <li><a href="/ProductList/Edit">Update Products</a></li>
-                                <li><a href="/ProductList/Delete">Remove Products</a></li>
+                                <li><a href="/ProductList/Add">Add Quantity</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
@@ -74,7 +74,12 @@
                             <a href="/Profits">Profits</a>
                         </li>
                         <li class="drop-down">
-                            <a href="/AdminSettings">Settings</a>
+                            Settings
+
+                            <ul>
+                                <li><a href="/AdminSettings">Update Profile</a></li>
+                                <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
+                            </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/AdminProfile">Profile</a>
@@ -101,10 +106,10 @@
 
                     <div class="form-horizontal">
 
-                        <table border="1">
+                        <table>
                             <tr>
                                 <td rowspan="18">
-                                    <img src="~/Contents/Upload_Files/Admins/@Html.DisplayFor(model=>model.ProfilePic)" alt="" height="350" width="200" />
+                                    <img src="~/Contents/Upload_Files/Admins/@Html.DisplayFor(model=>model.ProfilePic)" alt="" height="300" width="200" />
                                 </td>
                             </tr>
                             <tr>
