@@ -5,7 +5,7 @@
 
 
 <div class="w3-container tab">
-    <div style="float:left"> <h2 style="text-align:center"> Product List </h2></div>
+    <div style="float:left"> <h2 style="text-align:center"> Product List </h2></div><br><br>
     <div class="dropdown" style="float:left; padding:15px;">
 
         <button class="dropbtn" style="text-align:right">Filter By</button>
@@ -23,7 +23,7 @@
             <option value="Name">Name</option>
             <option value="Category">Category</option>
         </select> <br>
-        <input type="text" id="SearchValue">
+        <input type="text"  id="SearchValue">
         <input type="submit" id="SearchButton" value="Search" style="float:right">
     </div>
 
@@ -125,7 +125,15 @@
                         @Html.DisplayFor(modelItem => item.LastUpdated)
                     </td>
                     <td>
-                        @Html.ActionLink("Add to Cart", "AddToCart", "SalesExecutive", new { id = item.Id })
+
+                        @if (item.Status == "In Stock")
+                        {
+                            <input type="number" id="quantity" name="quantity" min="1" max="@item.Quantity" value="1" onchange="quantity(this.value)">
+                            <button class="btn btn-sm btn-block btn-success" id="" onclick="cart(@item.Id)" value="@item.Id">Add to cart</button>
+                        }
+
+
+                        @* @Html.ActionLink("Add to Cart", "AddToCart", "SalesExecutive", new { id = item.Id })*@
                     </td>
                 </tr>
             }
@@ -148,9 +156,9 @@
                 datatype: 'json',
 
                 success: function (result) {
-                 
+
                     if (result.length != 0) {
-                       
+
 
 
                         $.each(result, function (index, value) {
@@ -169,7 +177,7 @@
                                 "<td>" + value.Tax + "</td>" +
                                 "<td>" + value.DateAdded + "</td>" +
                                 "<td>" + value.LastUpdated + "</td>" +
-                                "<td>" + "<a href='/SalesExecutive/AddToCart?id=" + value.Id + "'>Add to Cart</a> </td>" +
+                                "<td>" + "<button class='btn btn-sm btn-block btn-success' id='' onclick='cart(" + value.Id + ") value=" + value.Id + ">Add to cart</button> </td>" +
                                 "</tr>";
                             body.append(Data);
 
@@ -179,4 +187,39 @@
             });
         });
     });
+</script>
+
+<script>
+    //ShoppingCart
+    var q=1;
+    function quantity(qua) {
+        q=qua;
+    }
+
+    function cart(id) {
+        
+            mydata = JSON.stringify({ "ProductId": id, "Quantity": q });
+            //alert(mydata);
+            cartAjax(mydata);
+            function cartAjax(mydata) { }
+            $.ajax({
+                type: "POST",
+                url: "/SalesExecutive/AddProductToCart",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: mydata,
+                success: function (result) {
+                    alert(JSON.parse(result).msg);
+                   
+                    if (JSON.parse(result).msg == "Added prodcut!") {
+                        $('.alert').show();
+                        $("#alertMsg").text("Added product to the cart!");
+                    }
+                    
+                }
+            });
+
+
+        }
+    
 </script>

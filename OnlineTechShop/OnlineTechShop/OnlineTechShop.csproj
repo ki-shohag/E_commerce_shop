@@ -236,6 +236,8 @@
     <Compile Include="Models\SalesExecutive.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sales\DataModels\CartDataModel.cs" />
+    <Compile Include="Models\Sales\ViewModels\CartViewModel.cs" />
     <Compile Include="Models\Sales_Log.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -343,6 +345,7 @@
     <Content Include="Views\SalesExecutive\availableproducts.cshtml" />
     <Content Include="Views\SalesExecutive\upcomingproducts.cshtml" />
     <Content Include="Views\SalesExecutive\discountproducts.cshtml" />
+    <Content Include="Views\SalesExecutive\salescart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
