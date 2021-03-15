@@ -346,6 +346,7 @@
     <Content Include="Views\SalesExecutive\upcomingproducts.cshtml" />
     <Content Include="Views\SalesExecutive\discountproducts.cshtml" />
     <Content Include="Views\SalesExecutive\salescart.cshtml" />
+    <Content Include="Views\SalesExecutive\sell.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

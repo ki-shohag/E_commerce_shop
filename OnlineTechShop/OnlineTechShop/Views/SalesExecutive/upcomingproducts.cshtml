@@ -125,8 +125,14 @@
                         @Html.DisplayFor(modelItem => item.LastUpdated)
                     </td>
                     <td>
-                        <input type="number" id="quantity" name="quantity" min="1" max="@item.Quantity">
-                        <button class="btn btn-sm btn-block btn-success" id="" onclick="cart(@item.Id)" value="@item.Id">Add to cart</button>
+
+                        @if (item.Status == "In Stock")
+                        {
+                            <input type="number" id="quantity" name="quantity" min="1" max="@item.Quantity" value="1" onchange="quantity(this.value)">
+                            <button class="btn btn-sm btn-block btn-success" id="" onclick="cart(@item.Id)" value="@item.Id">Add to cart</button>
+                        }
+
+
                         @* @Html.ActionLink("Add to Cart", "AddToCart", "SalesExecutive", new { id = item.Id })*@
                     </td>
                 </tr>
@@ -171,7 +177,7 @@
                                 "<td>" + value.Tax + "</td>" +
                                 "<td>" + value.DateAdded + "</td>" +
                                 "<td>" + value.LastUpdated + "</td>" +
-                                "<td>" + "<button class='btn btn-sm btn-block btn-success' id='' onclick='cart(" + value.Id + ") value=" + value.Id + ">Add to cart</button> </td>" +
+                                "<td>" + "<input type='number' id='quantity' name='quantity' min='1' max='" + value.Quantity + "' value='1' onchange='quantity(this.value)'>" + "<button class='btn btn-sm btn-block btn-success' id='' onclick='cart(" + value.Id + ")' value='" + value.Id + "'>Add to cart</button> </td>" +
                                 "</tr>";
                             body.append(Data);
 
@@ -185,10 +191,13 @@
 
 <script>
     //ShoppingCart
-
+    var q = 1;
+    function quantity(qua) {
+        q = qua;
+    }
 
     function cart(id) {
-        var q = $("#quantity").val();
+
         mydata = JSON.stringify({ "ProductId": id, "Quantity": q });
         //alert(mydata);
         cartAjax(mydata);
