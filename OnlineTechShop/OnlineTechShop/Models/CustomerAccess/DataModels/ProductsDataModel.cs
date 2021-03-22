@@ -27,7 +27,7 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         }
         public List<Product> GetFeaturedProducts()
         {
-            return data.Products.OrderByDescending(x => x.Id).Take(10).ToList();
+            return data.Products.OrderByDescending(x => x.Id).Take(6).ToList();
         }
         public List<Product> GetAllDiscountProducts()
         {
@@ -84,6 +84,22 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
             }
             data.Entry(p).State = System.Data.Entity.EntityState.Modified;
             data.SaveChanges();
+        }
+        public List<Models.Product> GetRecentlyViewedProducts(List<int> ProductsIdList)
+        {
+            List<Models.Product> products = new List<Product>();
+            int i = 0;
+            foreach (var item in ProductsIdList.Distinct())
+            {
+                i++;
+                products.Add(GetProductById(item));
+                if (i>2)
+                {
+                    break;
+                }
+                
+            }
+            return products;
         }
     }
 }

@@ -200,10 +200,18 @@
                         <h6>@Model.Email</h6>
                         <h6>@Model.Phone</h6>
                     </div>
+                    @using (Html.BeginForm("UploadProfilePic", "CustomerProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div>
+                            @Html.TextBox("image", "", new { type = "file" })
+                            <input class="btn btn-block btn-success mt-2 mb-2  btn-sm " type="submit" value="Upload Profile Picture" />
+                        </div>
+                    }
+                    <a class="btn-block btn-danger rounded btn-sm" href="/CustomerProfile/RemoveProfilePic">Remove Profile Picture</a>
                     <a class="btn-block btn-primary rounded btn-sm" href="/CustomerProfile/Edit/@Model.Id">Edit Profile Info</a>
                     <a class="btn-block btn-success rounded btn-sm" href="/CustomerProfile/PurchaseHistory/@Model.Id">View Purchase History</a>
                     <a class="btn-block btn-warning rounded btn-sm" href="/CustomerProfile/ChangePassword/@Model.Id">Change Password</a>
-                    <a class="btn-block btn-info rounded btn-sm" href="#">Reward Points</a>
+                    <a class="btn-block btn-info rounded btn-sm" href="/CustomerProfile/PaymentandShipping">Payment and Shipping</a>
                     <a class="btn-block btn-secondary rounded btn-sm" href="/CustomerProfile/WishList/@Model.Id">Wish List</a>
                 </div>
                 <div class="col-12 col-lg-9 border border-secondary rounded p-3">
@@ -214,7 +222,7 @@
                         {
                             <div class="col-12 col-lg-4 border border-secondary rounded">
                                 <div class="text-center mt-2 mb-2">
-                                    <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
+                                    <img class="featured-product-img" src="~/Contents/Upload_Files/Products/@item.Image" />
                                     <h5>@item.ProductName</h5>
                                 </div>
                                 <div class="text-left border-top border-secondary">
@@ -225,9 +233,7 @@
                                     </p>
                                 </div>
                                 <div class="border-top border-secondary pt-2 pb-2 text-center">
-                                    <button value="@item.Id"  class="removeButton btn btn-block btn-danger">Remove from Wish List</button>
-                                    @*<a href="/Products/RemoveFromWishList/@item.Id" class="btn-sm btn-danger btn-block">Remove From Wish List</a>*@
-                                    <a href="#" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Cart</a>
+                                    <button value="@item.Id" class="removeButton btn-sm btn btn-block btn-danger">Remove from Wish List</button>
                                     <a href="/Products/ShowProduct/@item.ProductId" class="btn-sm btn-primary btn-block">View Product</a>
                                 </div>
                             </div>

@@ -118,6 +118,36 @@
     <Content Include="Contents\Scripts_Files\main.js" />
     <Content Include="Contents\Scripts_Files\productComparison.js" />
     <Content Include="Contents\Scripts_Files\productSearch.js" />
+    <Content Include="Contents\Upload_Files\Admins\default.jpg" />
+    <Content Include="Contents\Upload_Files\Admins\jack.png" />
+    <Content Include="Contents\Upload_Files\Admins\kevin.png" />
+    <Content Include="Contents\Upload_Files\Admins\nelly.jpg" />
+    <Content Include="Contents\Upload_Files\Admins\nora.jpg" />
+    <Content Include="Contents\Upload_Files\Products\A4 Tech KB-8A.PNG" />
+    <Content Include="Contents\Upload_Files\Products\A4 Tech KR-92.PNG" />
+    <Content Include="Contents\Upload_Files\Products\A4 Tech OP-620D.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Acer Extensa 15.PNG" />
+    <Content Include="Contents\Upload_Files\Products\AMD Ryzen 7 5800X Processor.PNG" />
+    <Content Include="Contents\Upload_Files\Products\ASUS GeForce GT 1030 2GB GDDR5 low Profile Graphics Card.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Asus GeForce GT 710 2GB DDR5 Graphics Card.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Asus TUF Gaming H470-Pro Wi-Fi 10th Gen ATX Motherboard.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Cooler Master i70.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Cooler Master MasterBox MB400L Mini Tower %28Tempered Glass Side Window%29 Black Gaming Desktop Case #MCB-B400L-KG5N-S00.png" />
+    <Content Include="Contents\Upload_Files\Products\Corsair 4000D Airflow.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Corsair A500.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Dell Inspiron AIO 22 3280.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Dell Optiplex 5480 10th Gen Intel Core i5.PNG" />
+    <Content Include="Contents\Upload_Files\Products\G.Skill 4GB DDR3 1600MHz Desktop RAM.PNG" />
+    <Content Include="Contents\Upload_Files\Products\G.Skill 4GB DDR4 2400MHz Desktop RAM #F4-2400C15S-4GNT.png" />
+    <Content Include="Contents\Upload_Files\Products\G.Skill 4GB DDR4 2400MHz Desktop RAM.PNG" />
+    <Content Include="Contents\Upload_Files\Products\HP 15s-du1068TU.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Intel 10th Gen Core i5-10400F Processor.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Logitech K120.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Logitech M171.PNG" />
+    <Content Include="Contents\Upload_Files\Products\MSI MAG B460M Mortar Wi-Fi Intel 10th Gen Micro-ATX Motherboard.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Samsung 860 EVO 250GB 2.5 Inch SATAIII SSD #MZ-76E250BW.png" />
+    <Content Include="Contents\Upload_Files\Products\Samsung 860 EVO 250GB 2.5 Inch SATAIII SSD.PNG" />
+    <Content Include="Contents\Upload_Files\Products\Samsung 970 EVO Plus NVMe 500GB M.2 2280 PCIe Gen 3.0x4 SSD Drive.png" />
     <Content Include="Contents\vendor\aos\aos.css" />
     <Content Include="Contents\vendor\aos\aos.js" />
     <Content Include="Contents\vendor\bootstrap\css\bootstrap-grid.css" />
@@ -192,6 +222,7 @@
     <Compile Include="Controllers\Customer\MonitorController.cs" />
     <Compile Include="Controllers\Customer\ProductsController.cs" />
     <Compile Include="Controllers\Customer\ReviewsController.cs" />
+    <Compile Include="Controllers\Customer\SellProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,6 +237,7 @@
     </Compile>
     <Compile Include="Models\CustomerAccess\DataModels\CartDataModel.cs" />
     <Compile Include="Models\CustomerAccess\DataModels\CustomerDataModel.cs" />
+    <Compile Include="Models\CustomerAccess\DataModels\OldProudctsDataModel.cs" />
     <Compile Include="Models\CustomerAccess\DataModels\OrdersDataModel.cs" />
     <Compile Include="Models\CustomerAccess\DataModels\ProductsDataModel.cs" />
     <Compile Include="Models\CustomerAccess\DataModels\RatingsDataModel.cs" />
@@ -347,6 +379,10 @@
     <Content Include="Views\CustomerProfile\PaymentAndShipping.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\CheckOut\Index.cshtml" />
+    <Content Include="Views\SellProduct\Index.cshtml" />
+    <Content Include="Views\SellProduct\PendingSellPosts.cshtml" />
+    <Content Include="Views\SellProduct\Edit.cshtml" />
+    <Content Include="Views\SellProduct\SoldProducts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

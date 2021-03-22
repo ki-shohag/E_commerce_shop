@@ -23,6 +23,25 @@ namespace OnlineTechShop.Controllers.Customer
         [HttpGet]
         public ActionResult ShowProduct(int id)
         {
+            if (Request.Cookies["RecentlyViewedProductsListCookie"] != null)
+            {
+                List<int> RecentlyViewedProductsList = Request.Cookies["RecentlyViewedProductsListCookie"].Value.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+                RecentlyViewedProductsList.Insert(0,id);
+                var RecentlyViewedProductsListString = String.Join(",", RecentlyViewedProductsList);
+                HttpCookie RecentlyViewedProductsListCookie = new HttpCookie("RecentlyViewedProductsListCookie", RecentlyViewedProductsListString);
+                Response.Cookies.Add(RecentlyViewedProductsListCookie);
+                RecentlyViewedProductsListCookie.Expires = DateTime.Now.AddDays(7);
+            }
+            else
+            {
+                List<int> RecentlyViewedProductsList = new List<int>();
+                RecentlyViewedProductsList.Insert(0,id);
+                var RecentlyViewedProductsListString = String.Join(",", RecentlyViewedProductsList);
+                HttpCookie RecentlyViewedProductsListCookie = new HttpCookie("RecentlyViewedProductsListCookie", RecentlyViewedProductsListString);
+                Response.Cookies.Add(RecentlyViewedProductsListCookie);
+                RecentlyViewedProductsListCookie.Expires = DateTime.Now.AddDays(7);
+            }
+
             ViewBag.ReviewsList = reviewsData.GetReviewByProductId(id);
             ViewBag.Rating = ratingsData.GetProductRatingByProductId(id);
             ViewBag.RatingData = ratingsData.GetRatingDataByProductId(id);

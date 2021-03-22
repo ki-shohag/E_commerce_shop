@@ -42,16 +42,16 @@
     <header id="header" class="">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-7">
+                <div class="col-12 col-lg-6">
                     <h1 class="logo"><a href="/Home" class="text-success">Online Tech Shop</a></h1>
                 </div>
-                <div class="col-lg-5 col-12">
+                <div class="col-lg-6 col-12">
                     <a href="/Cart" class="btn btn-light btn-sm">
                         <i class="icofont-cart-alt h6"> Cart <span class="badge  badge-danger">@Session["cart_quantity"]</span> </i>
                     </a> | <a href="/CompareProducts" class="btn-sm  btn-info">Compare Products</a>
                     @if ((string)Session["user_status"] == "Active")
                     {
-                        <a href="/CustomerProfile" class="btn-sm btn-success">My Account</a> <a href="/CustomerLogOut" class="btn-sm btn-danger">Logout</a>
+                        <a href="/SellProduct" class="btn-sm btn-warning">Sell Products</a> <a href="/CustomerProfile" class="btn-sm btn-success">My Account</a> <a href="/CustomerLogOut" class="btn-sm btn-danger">Logout</a>
                     }
                     else
                     {
@@ -183,9 +183,9 @@
     <!-- End Header -->
     <!--Main Body Starts-->
     <main id="main ">
-        <div class="container">
+        <div class="">
             <div class="row mt-2 justify-content-center">
-                <div class=" col-12 text-center">
+                <div class=" col-12 col-lg-9 text-center">
                     <h3><u><i>Compare Products</i></u></h3><br /><br />
                     <h5 class="border-bottom text-left">Category</h5>
                     <select class="form-control text-center" name="categoryDropDown" id="categoryDropDown">
@@ -196,7 +196,7 @@
                         }
                     </select><br />
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
                     <h5 class="border-bottom">Product-1</h5>
                     <select class="form-control" name="product1SelectBox" id="product1SelectBox">
                         <option disabled selected>Select Product</option>
@@ -207,7 +207,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
                     <h5 class="border-bottom">Product-2</h5>
                     <select class="form-control" name="product2SelectBox" id="product2SelectBox">
                         <option disabled selected>Select Product</option>
@@ -314,8 +314,11 @@
                 success: function (result) {
                     //alert("Successfully rated " + JSON.stringify(result) + "!");
                     mydata = JSON.parse(result);
+                    mydata.Images = "Contents/Upload_Files/Products/" + mydata.Images;
                     $("#productTable2 > tbody").html("");
                     $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Product Name : </b></td><td>" + mydata.ProductName + "</td></tr>");
+                    $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Product Image : </b></td><td><img id='imageBox2' src='' ></td></tr>");
+                    $("#imageBox2").attr({ "src": mydata.Images });
                     $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Product Category : </b></td><td>" + mydata.Category + "</td></tr>");
                     $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Brand : </b></td><td>" + mydata.Brand + "</td></tr>");
                     $("#productTable2 > tbody").append("<tr><td class='w-25'><b>Description : </b></td><td>" + mydata.ProductDescription + "</td></tr>");
@@ -340,8 +343,11 @@
                 success: function (result) {
                     //alert("Successfully rated " + JSON.stringify(result) + "!");
                     mydata = JSON.parse(result);
+                    mydata.Images = "Contents/Upload_Files/Products/" + mydata.Images;
                     $("#productTable > tbody").html("");
                     $("#productTable > tbody").append("<tr><td class='w-25'><b>Product Name : </b></td><td>" + mydata.ProductName + "</td></tr>");
+                    $("#productTable > tbody").append("<tr><td class='w-25'><b>Product Image : </b></td><td><img id='imageBox' src='' ></td></tr>");
+                    $("#imageBox").attr({ "src": mydata.Images });
                     $("#productTable > tbody").append("<tr><td class='w-25'><b>Product Category : </b></td><td>" + mydata.Category + "</td></tr>");
                     $("#productTable > tbody").append("<tr><td class='w-25'><b>Brand : </b></td><td>" + mydata.Brand + "</td></tr>");
                     $("#productTable > tbody").append("<tr><td class='w-25'><b>Description : </b></td><td>" + mydata.ProductDescription + "</td></tr>");
