@@ -1,15 +1,12 @@
-﻿@model OnlineTechShop.Models.BuyingAgent
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Buying History</title>
+    <title>Home</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
-
 
     <link href="~/Contents/vendor/img/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -48,26 +45,15 @@
     <!-- End Header -->
     <!--Main Body Starts-->
     <main id="main ">
-        <div class="container">
+        <div class="">
             <div class="row mt-2 justify-content-around">
-                <div class="col-12 col-lg-3 border border-secondary rounded p-3">
-                    @if (Session["buyingAgent_profile_pic"] == null)
-                    {
-                        <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
-                    }
-                    else
-                    {
-                        <img class="featured-product-img" src="~/Contents/Upload_Files/Buying_Agent/ProfilePic/@Session["buyingAgent_profile_pic"]" />
-                    }
+                <div class="col-12 col-lg-2 border border-secondary rounded p-3">
                     <div class="text-left mt-2">
-                        <h5>@Model.FullName</h5>
-                        <h6>@Model.Email</h6>
-                        <h6>@Model.Phone</h6>
+                        <a class="btn-block btn-primary rounded btn-sm" href="/BuyingAgentProfile">Profile</a>
+                        <a class="btn-block btn-success rounded btn-sm" href="/BuyingAgentProfile/BuyingHistory">View Buying History</a>
+                        <a class="btn-block btn-secondary rounded btn-sm" href="/Chart">Buying Category Chart</a>
+                        <a class="btn-block btn-danger rounded btn-sm" href="/BuyingAgentLogOut">Logout</a>
                     </div>
-                    <a class="btn-block btn-primary rounded btn-sm" href="/BuyingAgentProfile/Edit/@Model.Id">Edit Profile Info</a>
-                    <a class="btn-block btn-success rounded btn-sm" href="/BuyingAgentProfile/BuyingHistory/@Model.Id">View Buying History</a>
-                    <a class="btn-block btn-warning rounded btn-sm" href="/BuyingAgentProfile/ChangePassword/@Model.Id">Change Password</a>
-                    <a class="btn-block btn-danger rounded btn-sm" href="/BuyingAgentLogOut">Logout</a>
                 </div>
                 <div class="col-12 col-lg-9 border border-secondary rounded p-3">
                     <h5>Buying History : </h5>
@@ -87,7 +73,7 @@
                             <th>Quantity</th>
                             <th>Purchased Date</th>
                         </tr>
-                        @foreach(var item in ViewBag.Data)
+                        @foreach (var item in ViewBag.Data)
                         {
                             <tr>
                                 <td>@item.CustomerId</td>
@@ -108,6 +94,7 @@
         </div>
 
     </main>
+
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container d-md-flex py-4">
@@ -137,3 +124,5 @@
 </body>
 
 </html>
+
+
