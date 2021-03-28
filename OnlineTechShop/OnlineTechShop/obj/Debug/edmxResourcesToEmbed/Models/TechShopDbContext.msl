@@ -72,6 +72,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="OrderDatas">
+      <EntityTypeMapping TypeName="TechShopDbModel.OrderData">
+        <MappingFragment StoreEntitySet="OrderData">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="ExpirationMonth" ColumnName="ExpirationMonth" />
+          <ScalarProperty Name="ExpirationYear" ColumnName="ExpirationYear" />
+          <ScalarProperty Name="ShippingMethod" ColumnName="ShippingMethod" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="TechShopDbModel.Product">
         <MappingFragment StoreEntitySet="Products">
@@ -88,6 +101,8 @@
           <ScalarProperty Name="Images" ColumnName="Images" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -148,10 +163,11 @@
           <ScalarProperty Name="SalesExecutiveId" ColumnName="SalesExecutiveId" />
           <ScalarProperty Name="DateSold" ColumnName="DateSold" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Sale" ColumnName="Sale" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="Tax" ColumnName="Tax" />
           <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Profits" ColumnName="Profits" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -169,6 +185,16 @@
           <ScalarProperty Name="Salary" ColumnName="Salary" />
           <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
           <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WishLists">
+      <EntityTypeMapping TypeName="TechShopDbModel.WishList">
+        <MappingFragment StoreEntitySet="WishLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="DateWished" ColumnName="DateWished" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

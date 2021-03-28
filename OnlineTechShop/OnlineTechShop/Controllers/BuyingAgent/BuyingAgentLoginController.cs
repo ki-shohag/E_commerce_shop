@@ -25,7 +25,8 @@ namespace OnlineTechShop.Controllers.BuyingAgent
                 Session["buyingAgent_name"] = buyingAgent.UserName;
                 Session["buyingAgent_email"] = buyingAgent.Email;
                 Session["buyingAgent_id"] = buyingAgent.Id;
-                return RedirectToAction("Index", "BuyingAgentProfile");    
+                Session["buyingAgent_profile_pic"] = buyingAgent.ProfilePic;
+                return RedirectToAction("Index", "BuyingAgentHome");    
             }
             else
             {

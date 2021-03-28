@@ -17,6 +17,7 @@ namespace OnlineTechShop.Models.BuyingAgentAccess.ViewModels
         public string Profile_Pic { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
         public string Email { get; set; }
         public int Phone { get; set; }
         public string Address { get; set; }
@@ -35,7 +36,7 @@ namespace OnlineTechShop.Models.BuyingAgentAccess.ViewModels
             }
             return buyingAgentsList;
         }
-        public BuyingAgentViewModel ShowCustomerByEmail(string email)
+        public BuyingAgentViewModel ShowBuyingAgentByEmail(string email)
         {
             return buyingAgentData.ConvertToBuyingAgentViewModel(buyingAgentData.GetBuyingAgentByEmail(email));
         }

@@ -15,7 +15,7 @@ namespace OnlineTechShop.Models
     public partial class Old_Products
     {
         public int Id { get; set; }
-        public Nullable<int> CutomerId { get; set; }
+        public int CutomerId { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public string Status { get; set; }

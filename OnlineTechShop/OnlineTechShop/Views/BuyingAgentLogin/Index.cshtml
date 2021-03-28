@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Home</title>
+    <title>Login</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -38,7 +38,7 @@
         <div class="container d-flex align-items-center">
             <div class="row justify-content-center">
                 <div class="col">
-                    <h1 class="logo text-center"><a href="/Home" class="text-success" style="margin-left:16em">Online Tech Shop</a></h1>
+                    <h1 class="logo text-center"><a href="/BuyingAgentLogin" class="text-success" style="margin-left:15em">Online Tech Shop</a></h1>
                 </div>
             </div>
         </div>
@@ -49,14 +49,14 @@
         <div class="container">
             <div class="row mt-2 justify-content-center">
                 <div class="col-12 col-lg-6 text-center border border-success rounded m-5 p-5">
-                    <form method="post" action="" name="loginForm" onsubmit="return validateLogin();">
+                    <form method="post" action="" name="loginForm" @*onsubmit="return validateLogin();*@">
                         <h3 class="text-muted mb-3">Please enter your login details.</h3>
                         <span id="msg" class="text-danger mb-2">@TempData["msg"]</span>
                         <input class="form-control mb-2" placeholder="Email" type="email" name="email" />
                         <input class="form-control mb-2" placeholder="Password" type="password" name="password" />
                         <button class="btn btn-block btn-success" type="submit">Login</button>
                     </form><br />
-                    <a href="/CustomerPassword">Forgot password? Click to recover.</a><br />
+                    <a href="/BuyingAgentPassword">Forgot password? Click to recover.</a><br />
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container d-md-flex py-4">
-            <a href="/Home" style="margin-left: 30em"> Online Tech Shop </a> <p style="margin-right: 30em"> &copy All rights reserved </p>
+            <a href="/Home" style="margin-left: 30em"> Online Tech Shop &nbsp; </a> <p style="margin-right: 30em"> &copy All rights reserved </p>
         </div>
     </footer>
 

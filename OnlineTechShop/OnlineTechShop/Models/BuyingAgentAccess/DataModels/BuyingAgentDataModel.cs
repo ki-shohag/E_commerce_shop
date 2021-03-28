@@ -30,13 +30,6 @@ namespace OnlineTechShop.Models.BuyingAgentAccess.DataModels
             model.UserName = buyingAgent.UserName;
             return model;
         }
-        public void InsertBuyingAgent(BuyingAgent buyingAgent)
-        {
-            buyingAgent.JoiningDate = DateTime.Now;
-            buyingAgent.LastUpdated = DateTime.Now;
-            data.BuyingAgents.Add(buyingAgent);
-            data.SaveChanges();
-        }
         public BuyingAgent GetValidBuyingAgent(string email, string password)
         {
             return data.BuyingAgents.Where(x => x.Email == email && x.Password == password).FirstOrDefault();
@@ -57,6 +50,11 @@ namespace OnlineTechShop.Models.BuyingAgentAccess.DataModels
         {
             data.Entry(buyingAgent).State = System.Data.Entity.EntityState.Modified;
             data.SaveChanges();
+        }
+        public List<Purchase_Log> GetAllBuyingData()
+        {
+            List<Purchase_Log> buyingData = data.Purchase_Log.Where(x => x.Status == "Accepted").OrderBy(x => x.Id).ToList();
+            return buyingData;
         }
     }
 }

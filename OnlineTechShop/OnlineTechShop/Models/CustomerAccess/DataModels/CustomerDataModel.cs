@@ -24,7 +24,7 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
             model.Email = customer.Email;
             model.Address = customer.Address;
             model.JoiningDate = customer.JoiningDate;
-            model.LastUpdated = customer.LastUpdated;
+            model.LastUpdated = (DateTime)customer.LastUpdated;
             model.Password = customer.Password;
             model.Profile_Pic = customer.ProfilePic;
             model.Status = customer.Status;
