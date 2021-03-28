@@ -1970,3 +1970,7 @@ section {
 .featured-product-img {
     max-width:250px;
 }
+#product-image{
+    width:350px;
+    height: 320px;
+}

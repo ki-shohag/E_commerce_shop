@@ -36,5 +36,26 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         {
             return (int)data.OrderDatas.Where(x => x.Customer_Id == id).Select(x => x.Id).FirstOrDefault();
         }
+        public InvoiceViewModel GetInvoiceData(int id)
+        {
+            var result = (from c in data.Customers
+             join o in data.OrderDatas on c.Id equals o.Customer_Id
+             where c.Id == id
+             select new InvoiceViewModel {
+                CustomerId = c.Id,
+                CustomerFullName = c.FullName,
+                CustomerStatus = c.Status,
+                CardNumber = o.CardNumber,
+                CardType = o.CardType,
+                BillingAddress = c.Address,
+                ShippingAddress = o.ShippingAddress,
+                ExpirationMonth = (int)o.ExpirationMonth,
+                ExpirationYear = (int)o.ExpirationYear,
+                OrderId = o.Id,
+                ShippingMethod = o.ShippingMethod,
+                Phone = c.Phone
+             });
+            return result.FirstOrDefault();
+        }
     }
 }

@@ -76,13 +76,13 @@
       <EntityTypeMapping TypeName="TechShopDbModel.OrderData">
         <MappingFragment StoreEntitySet="OrderData">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
           <ScalarProperty Name="CardType" ColumnName="CardType" />
           <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
           <ScalarProperty Name="ExpirationMonth" ColumnName="ExpirationMonth" />
           <ScalarProperty Name="ExpirationYear" ColumnName="ExpirationYear" />
           <ScalarProperty Name="ShippingMethod" ColumnName="ShippingMethod" />
           <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

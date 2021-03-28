@@ -45,16 +45,16 @@
     <header id="header" class="">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-7">
+                <div class="col-12 col-lg-6">
                     <h1 class="logo"><a href="/Home" class="text-success">Online Tech Shop</a></h1>
                 </div>
-                <div class="col-lg-5 col-12">
+                <div class="col-lg-6 col-12">
                     <a href="/Cart" class="btn btn-light btn-sm">
-                        <i class="icofont-cart-alt h6"> Cart <span id="cartQuantity" class="badge  badge-danger">@Session["cart_quantity"]</span> </i>
+                        <i class="icofont-cart-alt h6"> Cart <span class="badge  badge-danger">@Session["cart_quantity"]</span> </i>
                     </a> | <a href="/CompareProducts" class="btn-sm  btn-info">Compare Products</a>
                     @if ((string)Session["user_status"] == "Active")
                     {
-                        <a href="/CustomerProfile" class="btn-sm btn-success">My Account</a> <a href="/CustomerLogOut" class="btn-sm btn-danger">Logout</a>
+                        <a href="/SellProduct" class="btn-sm btn-warning">Sell Products</a> <a href="/CustomerProfile" class="btn-sm btn-success">My Account</a> <a href="/CustomerLogOut" class="btn-sm btn-danger">Logout</a>
                     }
                     else
                     {
@@ -178,7 +178,7 @@
                     <!-- .nav-menu -->
                 </div>
                 <div class="col-12 col-lg-8 text-center">
-                    <input class="form-control" id="searchBox" name="searchtext" placeholder="Search Products..." type="text">
+                    <input class="form-control" id="searchBox" name="autocomplete" placeholder="Search Products..." type="text">
                 </div>
             </div>
         </div>
@@ -189,7 +189,7 @@
         <div class="container">
             <div class="row justify-content-center mt-3">
                 <div class="col-12 col-lg-6">
-                    <img src="~/Contents/vendor/Images/default_product_pic.png" /><br />
+                    <img src="~/Contents/Upload_Files/Products/@Model.Images" /><br />
                 </div>
                 <div class="col-12 col-lg-8 mt-3 mb-3">
                     <div class="text-left ">
@@ -228,43 +228,29 @@
                                 <td colspan="3">@(Model.SellingPrice-((Model.Discount*Model.SellingPrice)/100)- ((Model.Tax* Model.SellingPrice) / 100))</td>
                             </tr>
                             <tr>
+                                <th>Status : </th>
+                                <td>@Model.Status</td>
+                            </tr>
+                            <tr>
                                 <th>Product Rating</th>
                                 <td colspan="3">@ViewBag.Rating / 5</td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <button class="btn btn-sm btn-block btn-success" id="addToCartBtn" value="@Model.Id">Add to cart</button>
-                                    <button class="btn btn-sm btn-block btn-primary">Buy Now</button>
+                                    <a href="/Products/AddToWishList/@Model.Id" class="btn-sm btn-success btn-block mt-2 mb-2 text-center">Add to Wishlist</a>
+                                    @if (Model.Status == "In Stock")
+                                    {
+                                        <button class="btn btn-sm btn-block btn-primary" id="addToCartBtn" value="@Model.Id">Add to cart</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-sm btn-block btn-primary">Currently Unavailable</button>
+                                    }
+
                                 </td>
                             </tr>
                         </table>
-                        <h4>Specifications</h4>
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>abcd</th>
-                                <td>asdfadsgaSD</td>
-                            </tr>
-                            <tr>
-                                <th>abcd</th>
-                                <td>asdfadsgaSD</td>
-                            </tr>
-                            <tr>
-                                <th>abcd</th>
-                                <td>asdfadsgaSD</td>
-                            </tr>
-                            <tr>
-                                <th>abcd</th>
-                                <td>asdfadsgaSD</td>
-                            </tr>
-                            <tr>
-                                <th>abcd</th>
-                                <td>asdfadsgaSD</td>
-                            </tr>
-                            <tr>
-                                <th>abcd</th>
-                                <td>asdfadsgaSD</td>
-                            </tr>
-                        </table>
+
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 mt-2">
@@ -342,11 +328,20 @@
     <script src="~/Contents/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="~/Contents/vendor/aos/aos.js"></script>
     <script src="~/Contents/Scripts_Files/main.js"></script>
+    <script src="~/Contents/Scripts_Files/productSearch.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -391,7 +386,7 @@
                     dataType: "json",
                     data: mydata,
                     success: function (result) {
-                        alert(JSON.parse(result).msg);
+                        //alert(JSON.parse(result).msg);
                         var totalCartQuantity = JSON.parse(result).totalCartQuantity;
                         if (JSON.parse(result).msg == "Added prodcut!") {
                             $('.alert').show();

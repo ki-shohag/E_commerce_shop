@@ -13,6 +13,7 @@ namespace OnlineTechShop.Controllers.Customer
         CustomerDataModel customerData = new CustomerDataModel();
         WishListsDataModel wishedData = new WishListsDataModel();
         OrdersDataModel ordersData = new OrdersDataModel();
+        SalesLogDataModel salesLogData = new SalesLogDataModel();
         // GET: CustomerProfile
         [HttpGet]
         public ActionResult Index()
@@ -84,8 +85,9 @@ namespace OnlineTechShop.Controllers.Customer
             }
         }
         [HttpGet]
-        public ActionResult PurchaseHistory(int? id)
+        public ActionResult PurchaseHistory(int id)
         {
+            ViewBag.PurchaseHistory = salesLogData.GetPurchaseHistoryByCustomerId(id);
             return View(customerData.GetCustomerByEmail((string)Session["user_email"]));
         }
 

@@ -27,7 +27,7 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         }
         public List<Product> GetFeaturedProducts()
         {
-            return data.Products.OrderByDescending(x => x.Id).Take(10).ToList();
+            return data.Products.OrderByDescending(x => x.Id).Take(6).ToList();
         }
         public List<Product> GetAllDiscountProducts()
         {
@@ -63,11 +63,43 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
 
             //}
             //return ProductList;
-            return data.Products.Where(x => x.Status == "In Stock").Select(x => x.ProductName).ToList();
+            return data.Products.Select(x => x.ProductName).ToList();
         }
         public int GetProductIdByProductName(string name)
         {
             return (int)data.Products.Where(x => x.ProductName == name).Select(x => x.Id).FirstOrDefault();
+        }
+        public decimal GetBuyingPriceByProductId(int id)
+        {
+            return data.Products.Where(x => x.Id == id).Select(x => x.BuyingPrice).FirstOrDefault();
+        }
+        public void UpdateProductQuantityOnPurchase(int id, int quantity)
+        {
+            Models.Product p = new Product();
+            p = GetProductById(id);
+            p.Quantity -= quantity;
+            if (p.Quantity==0)
+            {
+                p.Status = "Out of Stock";
+            }
+            data.Entry(p).State = System.Data.Entity.EntityState.Modified;
+            data.SaveChanges();
+        }
+        public List<Models.Product> GetRecentlyViewedProducts(List<int> ProductsIdList)
+        {
+            List<Models.Product> products = new List<Product>();
+            int i = 0;
+            foreach (var item in ProductsIdList.Distinct())
+            {
+                i++;
+                products.Add(GetProductById(item));
+                if (i>2)
+                {
+                    break;
+                }
+                
+            }
+            return products;
         }
     }
 }
