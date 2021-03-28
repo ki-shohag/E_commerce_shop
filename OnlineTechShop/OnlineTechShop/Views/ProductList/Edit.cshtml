@@ -6,31 +6,29 @@
 
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Insert Products</title>
+<title>Update Products</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
 <link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
-<link href="~/Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="~/Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
-<link href="~/Contents/vendor/venobox/venobox.css" rel="stylesheet">
-<link href="~/Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-<link href="~/Contents/vendor/aos/aos.css" rel="stylesheet">
 <link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-<title>Insert</title>
 <style>
-
-    .featured-item-box {
-        min-height: 150px;
-        background: #3b555d;
-        min-width: 80px;
-        color: white;
-        border-radius: 5px;
-        padding-top: 30px;
+    .table-view {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
     }
+
+        .table-view th,
+        .table-view td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
 </style>
+
 <header id="header" class="">
     <div class="container d-flex align-items-center">
         <div class="row justify-content-center">
@@ -42,49 +40,67 @@
                 <nav class="nav-menu d-none d-lg-block">
 
                     <ul>
+                        <li class="dropdown-header">
+                            <a href="/AdminDashboard/">Dashboard</a>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/AdminProfile">Profile</a>
+                        </li>
                         <li class="drop-down">
                             <a href="/AdminList">Admins</a>
                             <ul>
+                                <li><a href="/AdminList">Admin List</a></li>
                                 <li><a href="/AdminList/Create">Add Admin</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/SalesExecutiveList">Sales Executives</a>
                             <ul>
+                                <li><a href="/SalesExecutiveList">Sales Executive List</a></li>
                                 <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/BuyingAgentList">BuyingAgents</a>
                             <ul>
+                                <li><a href="/BuyingAgentList">Buying Agent List</a></li>
                                 <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/ProductList">Products</a>
                             <ul>
+                                <li><a href="/ProductList">Product List</a></li>
                                 <li><a href="/ProductList/Create">Add Products</a></li>
                                 <li><a href="/ProductList/Add">Add Quantity</a></li>
+                                <li><a href="/OldProductList">Used Products</a></li>
                             </ul>
                         </li>
-                        <li class="drop-down">
-                            <a href="/Sales">Sales</a>
+                        <li class="dropdown-header">
+                            <a href="/PurchaseList">Purchases</a>
                         </li>
                         <li class="drop-down">
+                            <a href="/CustomerList">Customers</a>
+                            <ul>
+                                <li><a href="/CustomerList">Active Customers</a></li>
+                                <li><a href="/CustomerList/Restricted">Restricted Customers</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="dropdown-header">
                             <a href="/Profits">Profits</a>
                         </li>
                         <li class="drop-down">
-                            Settings
-
+                            <a href="/AdminSettings">Settings</a>
                             <ul>
                                 <li><a href="/AdminSettings">Update Profile</a></li>
                                 <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
                             </ul>
                         </li>
-                        <li class="drop-down">
-                            <a href="/AdminProfile">Profile</a>
-                        </li>
-                        <li class="drop-down">
+
+                        <li class="dropdown-header">
                             <a href="/Logout">Logout</a>
                         </li>
                     </ul>
@@ -99,165 +115,181 @@
         <br /><br /><br />
         <div class="row mt-2 justify-content-center">
             <div class="col-12 col-lg-11 text-center">
-                    @using (Html.BeginForm("Edit", "ProductList", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        @Html.AntiForgeryToken()
+                @using (Html.BeginForm("Edit", "ProductList", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
 
-                        <div class="form-horizontal">
-                            <table>
-                                <tr>
-                                    <td rowspan="30">
-                                        <img src="~/Contents/Upload_Files/Products/@Html.DisplayFor(model=>model.Images)" alt="" height="500" width="500" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                        @Html.HiddenFor(model => model.Id)
-                                        @Html.HiddenFor(model => model.Images)
-                                        
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td width="50%">@Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                </tr>
-                                <tr><td colspan="2">@Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })</td></tr>
-                                <tr>
-                                    <td>@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>
-                                        <select name="category" class="form-control" readonly>
-                                            <option value="@Html.DisplayFor(model=>model.Category)">@Html.DisplayFor(model => model.Category)</option>
-                                            <option value="RAM">RAM</option>
-                                            <option value="CPU">CPU</option>
-                                            <option value="SSD">SSD</option>
-                                            <option value="Laptop">Laptop</option>
-                                            <option value="Monitor">Monitor</option>
-                                            <option value="Casing">Casing</option>
-                                            <option value="Keyboard">Keyboard</option>
-                                            <option value="Mouse">Mouse</option>
-                                            <option value="Cooling Fan">Cooling Fan</option>
-                                            <option value="Mother Board">Mother Board</option>
-                                            <option value="Graphics Card">Graphics Card</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })</td></tr>
+                    <div class="form-horizontal">
+                        <table class="table-view">
+                            <tr>
+                                <td rowspan="30">
+                                    <img src="~/Contents/Upload_Files/Products/@Html.DisplayFor(model => model.Images)" alt="" height="500" width="500" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.HiddenFor(model => model.Images)
 
-                                <tr>
-                                    <td>@Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>
-                                        <select name="brand" class="form-control" readonly>
-                                            <option value="@Html.DisplayFor(model=>model.Brand)">@Html.DisplayFor(model => model.Brand)</option>
-                                            <option value="Avexir">Avexir</option>
-                                            <option value="Adata">Adata</option>
-                                            <option value="GSkill">GSkill</option>
-                                            <option value="Corsair">Corsair</option>
-                                            <option value="Samsung">Samsung</option>
-                                            <option value="Gigabyte">Gigabyte</option>
-                                            <option value="Asus">Asus</option>
-                                            <option value="intel">Intel</option>
-                                            <option value="MSI">MSI</option>
-                                            <option value="Zotac">Zotac</option>
-                                            <option value="Gamdias">Gamdias</option>
-                                            <option value="Cooler Master">Cooler Master</option>
-                                            <option value="AMD">AMD</option>
-                                            <option value="Acer">Acer</option>
-                                            <option value="Apple">Apple</option>
-                                            <option value="HP">HP</option>
-                                            <option value="Razer">Razer</option>
-                                            <option value="BenQ">BenQ</option>
-                                            <option value="Dell">Dell</option>
-                                            <option value="LG">LG</option>
-                                            <option value="A4Tech">A4Tech</option>
-                                            <option value="Logitech">Logitech</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })</td></tr>
-                                <tr>
-                                    <td> @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>@Html.EditorFor(model => model.ProductDescription, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                </tr>
-                                <tr><td colspan="2">@Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })</td></tr>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%"> <label class="col-form-label-sm">Product Name</label></td>
+                                <td width="50%"><input type="text" name="productName" class="form-control col-form-label-sm" value="@Html.DisplayFor(model => model.ProductName)" data-val="true" data-val-required="Product Name is required." data-val-length-max="100" data-val-length="Too many characters." /></td>
 
-                                <tr>
-                                    <td> @Html.LabelFor(model => model.Features, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>@Html.EditorFor(model => model.Features, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                </tr>
-                                <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Features, "", new { @class = "text-danger" })</td></tr>
+                            </tr>
+                            <tr><td colspan="2" align="center">@Html.ValidationMessage("productName", "", new { @class = "text-danger col-form-label-sm" })</td></tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Category,"Category", htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td>
+                                    <select name="category" class="form-control col-form-label-sm" data-val="true" data-val-required="Category is required.">
+                                        <option value="@Html.DisplayFor(model=>model.Category)">@Html.DisplayFor(model => model.Category)</option>
+                                        <option value="Casing">Casing</option>
+                                        <option value="Cooling Fan">Cooling Fan</option>
+                                        <option value="CPU">CPU</option>
+                                        <option value="Graphics Card">Graphics Card</option>
+                                        <option value="Hard Disk Drive">Hard Disk Drive</option>
+                                        <option value="Keyboard">Keyboard</option>
+                                        <option value="Laptop">Laptop</option>
+                                        <option value="Monitor">Monitor</option>
+                                        <option value="Mother Board">Mother Board</option>
+                                        <option value="Mouse">Mouse</option>
+                                        <option value="Power Supply">Power Supply</option>
+                                        <option value="Processor">Processor</option>
+                                        <option value="RAM">RAM</option>
+                                        <option value="Sound Card">Sound Card</option>
+                                        <option value="SSD">SSD</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td colspan="2" align="center">@Html.ValidationMessage("category", "", new { @class = "text-danger col-form-label-sm" })</td></tr>
 
-                                <tr>
-                                    <td> @Html.Label("Images", htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td><input type="file" name="image" /></td>
-                                </tr>
-                                <tr><td colspan="2">@Html.ValidationMessage("image", new { @class = "text-danger" })</td></tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Brand,"Brand", htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td>
+                                    <select name="brand" class="form-control" data-val="true" data-val-required="Brand is required.">
+                                        <option value="@Html.DisplayFor(model=>model.Brand)">@Html.DisplayFor(model => model.Brand)</option>
+                                        <option value="A4Tech">A4Tech</option>
+                                        <option value="Acer">Acer</option>
+                                        <option value="Adata">Adata</option>
+                                        <option value="AMD">AMD</option>
+                                        <option value="Apple">Apple</option>
+                                        <option value="Asus">Asus</option>
+                                        <option value="Avexir">Avexir</option>
+                                        <option value="BenQ">BenQ</option>
+                                        <option value="Cooler Master">Cooler Master</option>
+                                        <option value="Corsair">Corsair</option>
+                                        <option value="Dell">Dell</option>
+                                        <option value="Gamdias">Gamdias</option>
+                                        <option value="Gigabyte">Gigabyte</option>
+                                        <option value="GSkill">GSkill</option>
+                                        <option value="HP">HP</option>
+                                        <option value="Intel">Intel</option>
+                                        <option value="Lenovo">Lenovo</option>
+                                        <option value="Lexar">Lexar</option>
+                                        <option value="LG">LG</option>
+                                        <option value="Lian Li">Lian Li</option>
+                                        <option value="Logitech">Logitech</option>
+                                        <option value="MaxGreen">MaxGreen</option>
+                                        <option value="Microsoft">Microsoft</option>
+                                        <option value="MSI">MSI</option>
+                                        <option value="Patriot">Patriot</option>
+                                        <option value="Razer">Razer</option>
+                                        <option value="Ryzen">Ryzen</option>
+                                        <option value="Samsung">Samsung</option>
+                                        <option value="Seagate">Seagate</option>
+                                        <option value="Zotac">Zotac</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td colspan="2" align="center">@Html.ValidationMessage("brand", "", new { @class = "text-danger col-form-label-sm" })</td></tr>
+                            <tr>
+                                <td> @Html.LabelFor(model => model.ProductDescription,"Description", htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td width="50%"><input type="text" name="productDescription" class="form-control col-form-label-sm" value="@Html.DisplayFor(model => model.ProductDescription)" data-val="true" data-val-required="Product Description is required." data-val-length-max="2000" data-val-length="Too many characters." /></td>
 
-                                <tr>
-                                    <td>@Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>
-                                        <select name="status" class="form-control">
-                                            <option value="In Stock">In Stock</option>
-                                            <option value="Out of Stock">Out of Stock</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })</td></tr>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessage("productDescription", "", new { @class = "text-danger col-form-label-sm" })</td></tr>
 
-                                <tr>
-                                    <td> @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>@Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                </tr>
-                                <tr><td colspan="2"> @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })</td></tr>
+                            <tr>
+                                <td> @Html.LabelFor(model => model.Features,"Features", htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td>@Html.EditorFor(model => model.Features, new { htmlAttributes = new { @class = "form-control col-form-label-sm" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Features, "", new { @class = "text-danger col-form-label-sm" })</td></tr>
+
+                            <tr>
+                                <td> @Html.Label("Images", htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td><input type="file" name="image"/></td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessage("image", new { @class = "text-danger col-form-label-sm" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td>
+                                    <select name="status" class="form-control col-form-label-sm">
+                                        <option value="In Stock">In Stock</option>
+                                        <option value="Out of Stock">Out of Stock</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger col-form-label-sm" })</td></tr>
+
+                            <tr>
+                                <td> @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td><input type="text" name="quantity" class="form-control col-form-label-sm" value="@Html.DisplayFor(model => model.Quantity)" data-val="true" data-val-required="Quantity is required." data-val-range-min="0" data-val-range="Invalid Quantity" /></td>
+                            </tr>
+                            <tr><td colspan="2" align="center">@Html.ValidationMessage("quantity", "", new { @class = "text-danger col-form-label-sm" })</td></tr>
 
 
-                                <tr>
-                                    <td>@Html.LabelFor(model => model.BuyingPrice, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>@Html.EditorFor(model => model.BuyingPrice, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                </tr>
-                                <tr><td colspan="2">@Html.ValidationMessageFor(model => model.BuyingPrice, "", new { @class = "text-danger" })</td></tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.BuyingPrice,"Buying Price", htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td><input type="text" name="buyingPrice" class="form-control col-form-label-sm" value="@Html.DisplayFor(model => model.BuyingPrice)" data-val="true" data-val-required="Price is required." data-val-range-min="0" data-val-range="Invalid price" /></td>
+                            </tr>
+                            <tr><td colspan="2" align="center"> @Html.ValidationMessage("buyingPrice", "", new { @class = "text-danger col-form-label-sm" })</td></tr>
 
-                                <tr>
-                                    <td>@Html.LabelFor(model => model.SellingPrice, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>@Html.EditorFor(model => model.SellingPrice, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                </tr>
-                                <tr><td colspan="2">@Html.ValidationMessageFor(model => model.SellingPrice, "", new { @class = "text-danger" })</td></tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.SellingPrice,"Selling Price", htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td><input type="text" name="sellingPrice" class="form-control col-form-label-sm" value="@Html.DisplayFor(model => model.SellingPrice)" data-val="true" data-val-required="Price is required." data-val-range-min="0" data-val-range="Invalid price" /></td>
+                            </tr>
+                            <tr><td colspan="2" align="center"> @Html.ValidationMessage("sellingPrice", "", new { @class = "text-danger col-form-label-sm" })</td></tr>
 
-                                <tr>
-                                    <td>@Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>@Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                </tr>
-                                <tr><td>@Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })</td></tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td><input type="text" name="discount" class="form-control col-form-label-sm" value="@Html.DisplayFor(model => model.Discount)" data-val="true" data-val-range-min="0" data-val-range="Discount Amount Invalid" /></td>
+                            </tr>
+                            <tr><td colspan="2" align="center">@Html.ValidationMessage("discount", "", new { @class = "text-danger col-form-label-sm" })</td></tr>
 
-                                <tr>
-                                    <td>@Html.LabelFor(model => model.Tax, htmlAttributes: new { @class = "control-label col-md-2" })</td>
-                                    <td>@Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                </tr>
-                                <tr><td>@Html.ValidationMessageFor(model => model.Tax, "", new { @class = "text-danger" })</td></tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Tax, htmlAttributes: new { @class = "col-form-label-sm" })</td>
+                                <td><input type="text" name="tax" class="form-control col-form-label-sm" value="@Html.DisplayFor(model => model.Tax)" data-val="true" data-val-range-min="0" data-val-range="Invalid entry" /></td>
+                            </tr>
+                            <tr><td colspan="2" align="center">@Html.ValidationMessage("tax", "", new { @class = "text-danger col-form-label-sm" })</td></tr>
 
-                                <tr>
-                                    <td colspan="3" align="right"><input type="submit" value="Save" class="btn btn-warning" /></td>
-                                </tr>
-                            </table>
-                        </div>
-                    }
+                            <tr>
+                                <td colspan="3" align="right"><input type="submit" value="Save" class="btn btn-warning" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                }
             </div>
         </div>
     </div>
 
 </main>
 
-<script src="~/Contents/vendor/jquery/jquery.min.js"></script>
-<script src="~/Contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="~/Contents/vendor/jquery.easing/jquery.easing.min.js"></script>
-<script src="~/Contents/vendor/php-email-form/validate.js"></script>
-<script src="~/Contents/vendor/waypoints/jquery.waypoints.min.js"></script>
-<script src="~/Contents/vendor/counterup/counterup.min.js"></script>
-<script src="~/Contents/vendor/venobox/venobox.min.js"></script>
-<script src="~/Contents/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="~/Contents/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="~/Contents/vendor/aos/aos.js"></script>
-<script src="~/Contents/Scripts_Files/main.js"></script>
-<script src="~/Contents/Scripts_Files/productSearch.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.intellisense.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate-vsdoc.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.debug.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/modernizr-2.6.2.js"></script>

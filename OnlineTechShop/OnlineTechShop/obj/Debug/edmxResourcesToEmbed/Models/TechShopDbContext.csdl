@@ -130,6 +130,7 @@
     <Property Name="Features" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PurchasedDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Rating">
     <Key>

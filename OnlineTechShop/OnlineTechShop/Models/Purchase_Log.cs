@@ -24,5 +24,7 @@ namespace OnlineTechShop.Models
         public string Features { get; set; }
         public int Quantity { get; set; }
         public string Images { get; set; }
+        public Nullable<System.DateTime> PurchasedDate { get; set; }
+        public int CustomerId { get; set; }
     }
 }

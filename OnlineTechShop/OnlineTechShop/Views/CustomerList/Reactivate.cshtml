@@ -1,0 +1,160 @@
+﻿@model OnlineTechShop.Models.Customer
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Reactivate Customer</title>
+<meta content="" name="descriptison">
+<meta content="" name="keywords">
+
+<link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+<link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+<style>
+
+    .table-view {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+        .table-view th,
+        .table-view td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+</style>
+<header id="header" class="">
+    <div class="container d-flex align-items-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-1">
+
+            </div>
+
+            <div class="col-12 col-lg-12">
+                <nav class="nav-menu d-none d-lg-block">
+
+                    <ul>
+                        <li class="dropdown-header">
+                            <a href="/AdminDashboard/">Dashboard</a>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/AdminProfile">Profile</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminList">Admins</a>
+                            <ul>
+                                <li><a href="/AdminList">Admin List</a></li>
+                                <li><a href="/AdminList/Create">Add Admin</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/SalesExecutiveList">Sales Executives</a>
+                            <ul>
+                                <li><a href="/SalesExecutiveList">Sales Executive List</a></li>
+                                <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/BuyingAgentList">BuyingAgents</a>
+                            <ul>
+                                <li><a href="/BuyingAgentList">Buying Agent List</a></li>
+                                <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/ProductList">Products</a>
+                            <ul>
+                                <li><a href="/ProductList">Product List</a></li>
+                                <li><a href="/ProductList/Create">Add Products</a></li>
+                                <li><a href="/ProductList/Add">Add Quantity</a></li>
+                                <li><a href="/OldProductList">Used Products</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/PurchaseList">Purchases</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/CustomerList">Customers</a>
+                            <ul>
+                                <li><a href="/CustomerList">Active Customers</a></li>
+                                <li><a href="/CustomerList/Restricted">Restricted Customers</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/Profits">Profits</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminSettings">Settings</a>
+                            <ul>
+                                <li><a href="/AdminSettings">Update Profile</a></li>
+                                <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-header">
+                            <a href="/Logout">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</header>
+<main id="main ">
+    <div class="container">
+        <br /><br /><br /><br /><br />
+        <div class="row mt-2 justify-content-center">
+            <div class="col-12 col-lg-8 text-center">
+                @using (Html.BeginForm("ReactivateCustomer", "CustomerList", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <table class="table-view">
+                        <tr>
+                            <td colspan="3" align="center"><h3>@Html.DisplayFor(model => model.FullName)'s Information</h3></td>
+                        </tr>&nbsp;
+                        <tr>
+                            <td rowspan="7">
+                                <img src="~/Contents/Upload_Files/Admins/@Html.DisplayFor(model => model.ProfilePic)" alt="" height="300" width="300" />
+                            </td>
+                            <td width="30%"><label class="col-form-label-sm">User Name</label></td>
+                            <td width="40%"><label class="col-form-label-sm">@Html.DisplayFor(model => model.UserName)</label></td>
+                        </tr>&nbsp;
+                        <tr>
+                            <td width="30%"><label class="col-form-label-sm">Email</label></td>
+                            <td width="40%"><label class="col-form-label-sm">@Html.DisplayFor(model => model.Email)</label></td>
+                        <tr>
+                            <td width="30%"><label class="col-form-label-sm">Phone</label></td>
+                            <td width="40%"><label class="col-form-label-sm">@Html.DisplayFor(model => model.Phone)</label></td>
+                        </tr>&nbsp;
+                        <tr>
+                            <td width="30%"><label class="col-form-label-sm">Address</label></td>
+                            <td width="40%"><label class="col-form-label-sm">@Html.DisplayFor(model => model.Address)</label></td>
+                        </tr>&nbsp;
+                        <tr>
+                            <td width="30%"><label class="col-form-label-sm">Joined</label></td>
+                            <td width="40%"><label class="col-form-label-sm">@Html.DisplayFor(model => model.JoiningDate)</label></td>
+                        </tr>&nbsp;
+                        <tr>
+                            <td width="30%"><label class="col-form-label-sm">Last Updated</label></td>
+                            <td width="40%"><label class="col-form-label-sm">@Html.DisplayFor(model => model.LastUpdated)</label></td>
+                        </tr>&nbsp;
+                        <tr>
+                            <td colspan="3" align="center">
+                                <input type="hidden" name="id" value="@Html.DisplayFor(model=>model.Id)" />
+                                <input type="submit" value="Reactivate" class="btn btn-warning" />
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</main>

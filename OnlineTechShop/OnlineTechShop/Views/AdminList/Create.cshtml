@@ -12,23 +12,27 @@
 
 <link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
-<link href="~/Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="~/Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
-<link href="~/Contents/vendor/venobox/venobox.css" rel="stylesheet">
-<link href="~/Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-<link href="~/Contents/vendor/aos/aos.css" rel="stylesheet">
 <link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-<title>Admin Registration</title>
+
 <style>
 
-    .featured-item-box {
-        min-height: 150px;
-        background: #3b555d;
-        min-width: 80px;
-        color: white;
-        border-radius: 5px;
-        padding-top: 30px;
+    .table-view tr:hover {
+        color: #212529;
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    .table-view {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+    .table-view th,
+    .table-view td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
     }
 </style>
 <header id="header" class="">
@@ -42,49 +46,67 @@
                 <nav class="nav-menu d-none d-lg-block">
 
                     <ul>
+                        <li class="dropdown-header">
+                            <a href="/AdminDashboard/">Dashboard</a>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/AdminProfile">Profile</a>
+                        </li>
                         <li class="drop-down">
                             <a href="/AdminList">Admins</a>
                             <ul>
+                                <li><a href="/AdminList">Admin List</a></li>
                                 <li><a href="/AdminList/Create">Add Admin</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/SalesExecutiveList">Sales Executives</a>
                             <ul>
+                                <li><a href="/SalesExecutiveList">Sales Executive List</a></li>
                                 <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/BuyingAgentList">BuyingAgents</a>
                             <ul>
+                                <li><a href="/BuyingAgentList">Buying Agent List</a></li>
                                 <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/ProductList">Products</a>
                             <ul>
+                                <li><a href="/ProductList">Product List</a></li>
                                 <li><a href="/ProductList/Create">Add Products</a></li>
                                 <li><a href="/ProductList/Add">Add Quantity</a></li>
+                                <li><a href="/OldProductList">Used Products</a></li>
                             </ul>
                         </li>
-                        <li class="drop-down">
-                            <a href="/Sales">Sales</a>
+                        <li class="dropdown-header">
+                            <a href="/PurchaseList">Purchases</a>
                         </li>
                         <li class="drop-down">
+                            <a href="/CustomerList">Customers</a>
+                            <ul>
+                                <li><a href="/CustomerList">Active Customers</a></li>
+                                <li><a href="/CustomerList/Restricted">Restricted Customers</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="dropdown-header">
                             <a href="/Profits">Profits</a>
                         </li>
                         <li class="drop-down">
-                            Settings
-
+                            <a href="/AdminSettings">Settings</a>
                             <ul>
                                 <li><a href="/AdminSettings">Update Profile</a></li>
                                 <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
                             </ul>
                         </li>
-                        <li class="drop-down">
-                            <a href="/AdminProfile">Profile</a>
-                        </li>
-                        <li class="drop-down">
+
+                        <li class="dropdown-header">
                             <a href="/Logout">Logout</a>
                         </li>
                     </ul>
@@ -103,13 +125,13 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        <table>
+                        <table class="table-view">
                             <tr>
                                 <td colspan="2" align="center"><h3>Admin Registration</h3></td>
                             </tr>
                             <tr>
-                                <td>Full Name</td>
-                                <td><input type="text" name="fullName" data-val="true" data-val-required="Full Name is required." data-val-length-max="30" data-val-length="Too many characters." /></td>
+                                <td><label class="col-form-label-sm">Full Name</label></td>
+                                <td><input type="text" name="fullName" class="form-control" data-val="true" data-val-required="Full Name is required." data-val-length-max="30" data-val-length="Too many characters." /></td>
 
                             </tr>
                             <tr>
@@ -118,8 +140,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>User Name</td>
-                                <td><input type="text" name="userName" data-val="true" data-val-required="User Name is required." data-val-length-max="20" data-val-length="Too many characters." /></td>
+                                <td><label class="col-form-label-sm">User Name</label></td>
+                                <td><input type="text" name="userName" class="form-control" data-val="true" data-val-required="User Name is required." data-val-length-max="20" data-val-length="Too many characters." /></td>
 
                             </tr>
                             <tr>
@@ -128,8 +150,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Email</td>
-                                <td><input type="email" name="email" data-val="true" data-val-required="Email is required." data-val-email="Enter a valid email." /></td>
+                                <td><label class="col-form-label-sm">Email</label></td>
+                                <td><input type="email" name="email" class="form-control" data-val="true" data-val-required="Email is required." data-val-email="Enter a valid email." /></td>
 
                             </tr>
                             <tr>
@@ -138,8 +160,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Password</td>
-                                <td><input type="password" name="password" data-val="true" data-val-required="Password is required." /></td>
+                                <td><label class="col-form-label-sm">Password</label></td>
+                                <td><input type="password" name="password" class="form-control" data-val="true" data-val-length-min="6" data-val-length="Password is too weak." data-val-required="Password is required." /></td>
 
                             </tr>
                             <tr>
@@ -148,8 +170,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Phone</td>
-                                <td><input type="text" name="phone" data-val="true" data-val-required="Phone is required." data-val-length-max="11" data-val-length="Enter a valid phone number." /></td>
+                                <td><label class="col-form-label-sm">Phone</label></td>
+                                <td><input type="text" name="phone" class="form-control" data-val="true" data-val-required="Phone is required." data-val-range-max="99999999999" data-val-range="Enter a valid phone number." /></td>
 
                             </tr>
                             <tr>
@@ -158,8 +180,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Address</td>
-                                <td><input type="text" name="address" data-val="true" data-val-required="Address is required." data-val-length-max="30" data-val-length="Too much characters!!" /></td>
+                                <td><label class="col-form-label-sm">Address</label></td>
+                                <td><input type="text" name="address" class="form-control" data-val="true" data-val-required="Address is required." data-val-length-max="150" data-val-length="Too much characters!!" /></td>
 
                             </tr>
                             <tr>

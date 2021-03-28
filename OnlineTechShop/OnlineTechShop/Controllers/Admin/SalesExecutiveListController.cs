@@ -7,13 +7,20 @@ using System.Web.Mvc;
 
 namespace OnlineTechShop.Controllers.Admin
 {
-    public class SalesExecutiveListController : Controller
+    public class SalesExecutiveListController : AdminBaseController
     {
         TechShopDbEntities context = new TechShopDbEntities();
-        // GET: SalesExecutiveList
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
-            return View(context.SalesExecutives.ToList());
+            if (name == null)
+            {
+                return View(context.SalesExecutives.ToList());
+            }
+            else
+            {
+                var salesExecutives = context.SalesExecutives.Where(p => p.FullName.Contains(name)).ToList();
+                return View(salesExecutives);
+            }
         }
 
         [HttpGet]

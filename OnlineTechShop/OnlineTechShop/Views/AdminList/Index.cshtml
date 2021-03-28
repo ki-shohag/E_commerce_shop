@@ -12,24 +12,28 @@
 
 <link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
-<link href="~/Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="~/Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
-<link href="~/Contents/vendor/venobox/venobox.css" rel="stylesheet">
-<link href="~/Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-<link href="~/Contents/vendor/aos/aos.css" rel="stylesheet">
 <link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-<title>Admins</title>
+
 <style>
 
-    .featured-item-box {
-        min-height: 150px;
-        background: #3b555d;
-        min-width: 80px;
-        color: white;
-        border-radius: 5px;
-        padding-top: 30px;
+    .table-view tr:hover {
+        color: #212529;
+        background-color: rgba(0, 0, 0, 0.075);
     }
+
+    .table-view {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+        .table-view th,
+        .table-view td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
 </style>
 <header id="header" class="">
     <div class="container d-flex align-items-center">
@@ -42,49 +46,67 @@
                 <nav class="nav-menu d-none d-lg-block">
 
                     <ul>
+                        <li class="dropdown-header">
+                            <a href="/AdminDashboard/">Dashboard</a>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/AdminProfile">Profile</a>
+                        </li>
                         <li class="drop-down">
                             <a href="/AdminList">Admins</a>
                             <ul>
+                                <li><a href="/AdminList">Admin List</a></li>
                                 <li><a href="/AdminList/Create">Add Admin</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/SalesExecutiveList">Sales Executives</a>
                             <ul>
+                                <li><a href="/SalesExecutiveList">Sales Executive List</a></li>
                                 <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/BuyingAgentList">BuyingAgents</a>
                             <ul>
+                                <li><a href="/BuyingAgentList">Buying Agent List</a></li>
                                 <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
                             </ul>
                         </li>
                         <li class="drop-down">
                             <a href="/ProductList">Products</a>
                             <ul>
+                                <li><a href="/ProductList">Product List</a></li>
                                 <li><a href="/ProductList/Create">Add Products</a></li>
                                 <li><a href="/ProductList/Add">Add Quantity</a></li>
+                                <li><a href="/OldProductList">Used Products</a></li>
                             </ul>
                         </li>
-                        <li class="drop-down">
-                            <a href="/Sales">Sales</a>
+                        <li class="dropdown-header">
+                            <a href="/PurchaseList">Purchases</a>
                         </li>
                         <li class="drop-down">
+                            <a href="/CustomerList">Customers</a>
+                            <ul>
+                                <li><a href="/CustomerList">Active Customers</a></li>
+                                <li><a href="/CustomerList/Restricted">Restricted Customers</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="dropdown-header">
                             <a href="/Profits">Profits</a>
                         </li>
                         <li class="drop-down">
-                            Settings
-
+                            <a href="/AdminSettings">Settings</a>
                             <ul>
                                 <li><a href="/AdminSettings">Update Profile</a></li>
                                 <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
                             </ul>
                         </li>
-                        <li class="drop-down">
-                            <a href="/AdminProfile">Profile</a>
-                        </li>
-                        <li class="drop-down">
+
+                        <li class="dropdown-header">
                             <a href="/Logout">Logout</a>
                         </li>
                     </ul>
@@ -99,8 +121,24 @@
         <br /><br /><br /><br /><br />
         <div class="row mt-2 justify-content-center">
             <div class="col-12 col-lg-12 text-center">
-                <table class="table">
+            <form action="" method="post">
+                <table>
                     <tr>
+                        <td width="20%"><input type="text" name="name" class="form-control" placeholder="Search by Admin Name" /></td>
+                        
+                        <td width="1%">
+                            <input type="submit" class="btn-sm" name="submit" value="Search" />
+                        </td>
+                    </tr>
+                    </table>
+            </form>
+            </div>
+            <div class="col-12 col-lg-12 text-center">
+                <table class="table-view">
+                    <tr>
+                        <th>
+                            
+                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.FullName)
                         </th>
@@ -128,6 +166,9 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>
+                                <img src="~/Contents/Upload_Files/Admins/@Html.DisplayFor(modelItem => item.ProfilePic)" alt="" height="50" wight="50" />
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.FullName)
                             </td>

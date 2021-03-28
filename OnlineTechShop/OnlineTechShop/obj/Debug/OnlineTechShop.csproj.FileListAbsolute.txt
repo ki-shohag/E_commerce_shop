@@ -123,6 +123,7 @@ G:\20-21~Spring\ADVANCED PROGRAMMING WITH .NET\Mid Project\E_commerce_shop\Onlin
 G:\20-21~Spring\ADVANCED PROGRAMMING WITH .NET\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Helpers.xml
 G:\20-21~Spring\ADVANCED PROGRAMMING WITH .NET\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Mvc.xml
 G:\20-21~Spring\ADVANCED PROGRAMMING WITH .NET\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\20-21~Spring\ADVANCED PROGRAMMING WITH .NET\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csprojAssemblyReference.cache
 G:\20-21~Spring\ADVANCED PROGRAMMING WITH .NET\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csproj.CoreCompileInputs.cache
 G:\20-21~Spring\ADVANCED PROGRAMMING WITH .NET\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csproj.CopyComplete
 G:\20-21~Spring\ADVANCED PROGRAMMING WITH .NET\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.dll

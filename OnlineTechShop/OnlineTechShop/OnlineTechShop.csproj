@@ -190,17 +190,27 @@
       <DependentUpon>TechShopDbContext.edmx</DependentUpon>
       <LastGenOutput>TechShopDbContext.cs</LastGenOutput>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AdminBaseController.cs" />
     <Compile Include="Controllers\Admin\AdminDashboardController.cs" />
     <Compile Include="Controllers\Admin\AdminListController.cs" />
     <Compile Include="Controllers\Admin\AdminLoginController.cs" />
     <Compile Include="Controllers\Admin\AdminProfileController.cs" />
     <Compile Include="Controllers\Admin\AdminSettingsController.cs" />
     <Compile Include="Controllers\Admin\BuyingAgentListController.cs" />
+    <Compile Include="Controllers\Admin\CustomerListController.cs" />
+    <Compile Include="Controllers\Admin\LogoutController.cs" />
+    <Compile Include="Controllers\Admin\OldProductListController.cs" />
     <Compile Include="Controllers\Admin\ProductListController.cs" />
+    <Compile Include="Controllers\Admin\ProfitsController.cs" />
+    <Compile Include="Controllers\Admin\PurchaseListController.cs" />
+    <Compile Include="Controllers\Admin\ProductReviewsController.cs" />
+    <Compile Include="Controllers\Admin\SalesController.cs" />
     <Compile Include="Controllers\Admin\SalesExecutiveListController.cs" />
     <Compile Include="Controllers\Customer\AccessoriesController.cs" />
     <Compile Include="Controllers\Customer\CompareProductsController.cs" />
@@ -222,8 +232,15 @@
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminModel\AdminDataModel\AdDataModel.cs" />
+    <Compile Include="Models\AdminModel\AdminDataModel\CustomerDataModel.cs" />
     <Compile Include="Models\AdminModel\AdminViewModel\Admin.cs" />
     <Compile Include="Models\AdminModel\AdminViewModel\AdminMetaData.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\BuyingAgent.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\BuyingAgentMetaData.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\Product.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\ProductMetaData.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\SalesExecutive.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\SalesExecutiveMetaData.cs" />
     <Compile Include="Models\BuyingAgent.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -385,6 +402,18 @@
     <Content Include="Views\AdminSettings\ChangePassword.cshtml" />
     <Content Include="Views\ProductList\Add.cshtml" />
     <Content Include="Views\ProductList\AddQuantity.cshtml" />
+    <Content Include="Views\CustomerList\Index.cshtml" />
+    <Content Include="Views\CustomerList\Block.cshtml" />
+    <Content Include="Views\CustomerList\Restricted.cshtml" />
+    <Content Include="Views\CustomerList\Reactivate.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\PurchaseList\Index.cshtml" />
+    <Content Include="Views\CustomerList\ViewHistory.cshtml" />
+    <Content Include="Views\OldProductList\Index.cshtml" />
+    <Content Include="Views\Reviews\Index.cshtml" />
+    <Content Include="Views\ProductReviews\ProductReview.cshtml" />
+    <Content Include="Views\CustomerList\CustomerReview.cshtml" />
+    <Content Include="Views\Profits\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -397,8 +426,9 @@
     <Folder Include="Contents\Upload_Files\Admins\" />
     <Folder Include="Contents\Upload_Files\Customer\ProfilePic\" />
     <Folder Include="Contents\Upload_Files\Products\" />
+    <Folder Include="Views\AdminBase\" />
     <Folder Include="Views\CustomerLogOut\" />
-    <Folder Include="Views\Reviews\" />
+    <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

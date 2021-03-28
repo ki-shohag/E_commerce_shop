@@ -122,6 +122,7 @@
     <Property Name="Features" Type="text" />
     <Property Name="Quantity" Type="int" Nullable="false" />
     <Property Name="Images" Type="varchar" MaxLength="250" />
+    <Property Name="PurchasedDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Ratings">
     <Key>

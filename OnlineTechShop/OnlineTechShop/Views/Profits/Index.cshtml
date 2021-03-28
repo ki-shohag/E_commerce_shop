@@ -1,0 +1,306 @@
+﻿@model IEnumerable<OnlineTechShop.Models.Sales_Log>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Profits</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <script src="~/Contents/vendor/jquery/jquery.min.js"></script>
+
+    <script src="~/Contents/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/Contents/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.intellisense.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate-vsdoc.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.debug.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/modernizr-2.6.2.js"></script>
+
+    <style>
+
+        #nav-bar {
+            position: fixed;
+        }
+
+        .table-view {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+
+            .table-view th,
+            .table-view td {
+                padding: 0.75rem;
+                vertical-align: top;
+                border-top: 1px solid #dee2e6;
+            }
+
+    </style>
+</head>
+
+<header id="header" class="">
+    <div class="container d-flex align-items-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-1">
+
+            </div>
+
+            <div class="col-12 col-lg-12">
+                <nav class="nav-menu d-none d-lg-block">
+
+                    <ul>
+                        <li class="dropdown-header">
+                            <a href="/AdminDashboard/">Dashboard</a>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/AdminProfile">Profile</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminList">Admins</a>
+                            <ul>
+                                <li><a href="/AdminList">Admin List</a></li>
+                                <li><a href="/AdminList/Create">Add Admin</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/SalesExecutiveList">Sales Executives</a>
+                            <ul>
+                                <li><a href="/SalesExecutiveList">Sales Executive List</a></li>
+                                <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/BuyingAgentList">BuyingAgents</a>
+                            <ul>
+                                <li><a href="/BuyingAgentList">Buying Agent List</a></li>
+                                <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/ProductList">Products</a>
+                            <ul>
+                                <li><a href="/ProductList">Product List</a></li>
+                                <li><a href="/ProductList/Create">Add Products</a></li>
+                                <li><a href="/ProductList/Add">Add Quantity</a></li>
+                                <li><a href="/OldProductList">Used Products</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/PurchaseList">Purchases</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/CustomerList">Customers</a>
+                            <ul>
+                                <li><a href="/CustomerList">Active Customers</a></li>
+                                <li><a href="/CustomerList/Restricted">Restricted Customers</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/Profits">Profits</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminSettings">Settings</a>
+                            <ul>
+                                <li><a href="/AdminSettings">Update Profile</a></li>
+                                <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-header">
+                            <a href="/Logout">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</header>
+ <main id="main ">
+        <div class="container">
+            <br /><br /><br /><br /><br />
+            <div class="row mt-2 justify-content-center">
+                <div class="col-12 col-lg-8 text-center">
+                    <div id="category">
+                    </div>
+                    <br /><br />
+                    <div id="productName"></div>
+                    <script>
+                        $(document).ready(function () {
+                            $.getJSON("/Profits/GetDataCategory", function (data) {
+                                var Names = []
+                                var Qts = []
+                                for (var i = 0; i < data.length; i++) {
+                                    Names.push(data[i].name);
+                                    Qts.push(data[i].count);
+                                }
+
+                                Highcharts.chart('category', {
+                                    chart: {
+                                        type: 'column'
+                                    },
+                                    title: {
+                                        text: 'Alltime Catagorywise Profit'
+                                    },
+                                    subtitle: {
+                                        text: ''
+                                    },
+                                    xAxis: {
+                                        categories: Names
+                                    },
+                                    yAxis: {
+                                        title: {
+                                            text: 'Quantity'
+                                        }
+                                    },
+                                    plotOptions: {
+                                        line: {
+                                            dataLabels: {
+                                                enabled: true
+                                            },
+                                            enableMouseTracking: false
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'Total',
+                                        colorByPoint: true,
+                                        data: Qts
+                                    }]
+                                });
+                            });
+                        });
+
+
+                        $(document).ready(function () {
+                            $.getJSON("/Profits/GetDataProductName", function (data) {
+                                var Names = []
+                                var Qts = []
+                                for (var i = 0; i < data.length; i++) {
+                                    Names.push(data[i].name);
+                                    Qts.push(data[i].count);
+                                }
+
+                                Highcharts.chart('productName', {
+                                    chart: {
+                                        type: 'bar'
+                                    },
+                                    title: {
+                                        text: 'Alltime Productwise profit'
+                                    },
+                                    subtitle: {
+                                        text: ''
+                                    },
+                                    xAxis: {
+                                        categories: Names
+                                    },
+                                    yAxis: {
+                                        title: {
+                                            text: 'Quantity'
+                                        }
+                                    },
+                                    plotOptions: {
+                                        line: {
+                                            dataLabels: {
+                                                enabled: true
+                                            },
+                                            enableMouseTracking: false
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'Total',
+                                        colorByPoint: true,
+                                        data: Qts
+                                    }]
+                                });
+                            });
+                        });
+
+
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+<main id="main ">
+    <div class="container">
+        <br /><br /><br /><br /><br />
+        <div class="row mt-2 justify-content-center">
+
+            <div class="row mt-2 justify-content-center">
+                <div class="col-12 col-lg-10 text-center">
+                    <h5>Datewise Profits</h5>
+                </div>
+                <div class="col-12 col-lg-5 text-center">
+                    <form action="" method="post">
+                        <table>
+                            <tr>
+                                <td align="right"><label class="col-form-label-sm">From</label></td>
+                                <td width="20%"><input type="date" name="fromDate" class="form-control" data-val="true" data-val-required="You must Enter Dates for search." /></td>
+                                <td align="right"><label class="col-form-label-sm">To</label></td>
+                                <td width="20%"><input type="date" name="toDate" class="form-control" data-val="true" data-val-required="You must Enter Dates for search." /></td>
+                                <td width="1%">
+                                    <input type="submit" class="btn-sm" name="submit" value="Search" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">@Html.ValidationMessage("fromDate", "", new { @class = "text-danger" })</td>
+                                <td colspan="2">@Html.ValidationMessage("toDate", "", new { @class = "text-danger" })</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="col-12 col-lg-10 text-center">
+                    <table class="table-view">
+                        <tr>
+                            <th>Date Sold</th>
+                            <th>Product Name</th>
+                            <th>Profit</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateSold)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Profits)
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

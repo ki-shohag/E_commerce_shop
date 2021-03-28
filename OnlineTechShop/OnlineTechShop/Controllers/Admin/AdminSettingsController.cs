@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace OnlineTechShop.Controllers.Admin
 {
-    public class AdminSettingsController : Controller
+    public class AdminSettingsController : AdminBaseController
     {
         TechShopDbEntities context = new TechShopDbEntities();
         AdDataModel data = new AdDataModel();
@@ -36,15 +36,18 @@ namespace OnlineTechShop.Controllers.Admin
             {
                 img = AdminProfileImg(image);
             }
-
-            admin.Id = Convert.ToInt32(collection["id"]);
-            admin.Phone = collection["phone"];
-            admin.Address = collection["address"];
-            admin.ProfilePic = img;
-            admin.LastUpdated = DateTime.Now;
-            context.Entry(admin).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
-            return RedirectToAction("Index", "AdminProfile");
+            if (ModelState.IsValid)
+            {
+                admin.Id = Convert.ToInt32(collection["id"]);
+                admin.Phone = collection["phone"];
+                admin.Address = collection["address"];
+                admin.ProfilePic = img;
+                admin.LastUpdated = DateTime.Now;
+                context.Entry(admin).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+                return RedirectToAction("Index", "AdminProfile");
+            }
+            return RedirectToAction("Index");
         }
 
         public string AdminProfileImg(HttpPostedFileBase image)

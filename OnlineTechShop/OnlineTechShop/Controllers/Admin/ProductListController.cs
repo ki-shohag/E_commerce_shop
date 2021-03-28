@@ -8,15 +8,22 @@ using System.IO;
 
 namespace OnlineTechShop.Controllers.Admin
 {
-    public class ProductListController : Controller
+    public class ProductListController : AdminBaseController
     {
         TechShopDbEntities context = new TechShopDbEntities();
-        // GET: ProductList
-        public ActionResult Index()
+        
+        public ActionResult Index(string name)
         {
-            return View(context.Products.ToList());
+            if (name == null)
+            {
+                return View(context.Products.ToList());
+            }
+            else
+            {
+                var products = context.Products.Where(p => p.ProductName.Contains(name)).ToList();
+                return View(products);
+            }
         }
-
         [HttpGet]
         public ActionResult Create()
         {
@@ -73,12 +80,16 @@ namespace OnlineTechShop.Controllers.Admin
                 im = ProductImage(image);
             }
 
-            product.Id = id;
-            product.Images = im;
-            product.LastUpdated = DateTime.Now;
-            context.Entry(product).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                product.Id = id;
+                product.Images = im;
+                product.LastUpdated = DateTime.Now;
+                context.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(context.Products.Find(id));
         }
 
         [HttpGet]
@@ -92,7 +103,7 @@ namespace OnlineTechShop.Controllers.Admin
         {
             context.Products.Remove(context.Products.Find(id));
             context.SaveChanges();
-            return RedirectToAction("Index"); ;
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
