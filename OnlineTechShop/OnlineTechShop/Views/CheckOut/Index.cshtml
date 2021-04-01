@@ -188,7 +188,7 @@
                 <div class="col-12 text-center">
                     <h1 class="border-bottom">Checkout</h1>
                 </div>
-                <div class=" col-12 col-lg-5 text-center p-5">
+                <div class=" col-12 col-lg-6 text-center p-5">
                     <span class="text-danger">@TempData["msg"]</span>
                     <h3>Order Overview</h3>
                     <table class="table table-striped table-bordered">
@@ -209,9 +209,9 @@
 
                             foreach (var item in ViewBag.Cart)
                             {
-                                totalDiscount = @item.Discount + totalDiscount;
-                                totalTax = @item.Tax + totalTax;
-                                subtotal = (@item.TotalPrice * @item.Quantity) + subtotal;
+                                totalDiscount += ((item.UnitPrice * item.Quantity) * (item.Discount * item.Quantity)) / 100;
+                                totalTax += ((item.UnitPrice * item.Quantity) * (item.Tax * item.Quantity)) / 100;
+                                subtotal += (item.UnitPrice * item.Quantity) - ((item.UnitPrice * item.Quantity) * (item.Discount * item.Quantity) / 100) + ((item.UnitPrice * item.Quantity) * (item.Tax * item.Quantity)) / 100;
 
                             <tr>
                                 <td>P-@item.ProductId</td>
@@ -221,18 +221,18 @@
                                 <td>
                                     @item.Quantity Pcs
                                 </td>
-                                <td>@item.Discount%</td>
-                                <td>@item.Tax%</td>
-                                <td>@(item.TotalPrice * item.Quantity) BDT</td>
+                                <td>@(((item.UnitPrice * item.Quantity)*(item.Discount*item.Quantity))/100) BDT (@(item.Discount*item.Quantity))%</td>
+                                <td>@(((item.UnitPrice * item.Quantity)*(item.Tax*item.Quantity)/100)) BDT (@(item.Tax*item.Quantity))%</td>
+                                <td>@((item.UnitPrice * item.Quantity)-((item.UnitPrice*item.Quantity)*(item.Discount*item.Quantity)/100)+((item.UnitPrice * item.Quantity)*(item.Tax*item.Quantity))/100) BDT</td>
                             </tr>
                             }
                         <tr class="text-left">
                             <td colspan="1"><b>Total Tax:</b> </td>
-                            <td colspan="8">@(subtotal * totalTax / 100) BDT (@totalTax%)</td>
+                            <td colspan="8">@totalTax BDT</td>
                         </tr>
                         <tr class="text-left">
                             <td colspan="1"><b>Total Discount:</b> </td>
-                            <td colspan="8">@(subtotal * totalDiscount / 100) BDT (@totalDiscount%)</td>
+                            <td colspan="8">@totalDiscount BDT</td>
                         </tr>
                         <tr class="text-left">
                             <td colspan="1"><b>Sub Total:</b> </td>
@@ -241,7 +241,7 @@
                             }
                     </table>
                 </div>
-                <div class="col-12 col-lg-4 p-5">
+                <div class="col-12 col-lg-5 p-5">
                     <h3>Payment and Shipping Details</h3>
                     <form method="post" action="">
                         <table class="table table-bordered table-striped">

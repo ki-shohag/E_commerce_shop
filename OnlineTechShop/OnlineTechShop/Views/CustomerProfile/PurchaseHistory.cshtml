@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Home</title>
+    <title>Purchase History</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -26,6 +26,7 @@
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
           rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <style>
         .featured-item-box {
@@ -214,9 +215,15 @@
                     <a class="btn-block btn-info rounded btn-sm" href="/CustomerProfile/PaymentandShipping">Payment and Shipping</a>
                     <a class="btn-block btn-secondary rounded btn-sm" href="/CustomerProfile/WishList/@Model.Id">Wish List</a>
                 </div>
-                <div class="col-12 col-lg-9   border border-secondary rounded p-3">
+                <div class="col-12 col-lg-10   border border-secondary rounded p-3">
                     <h5>Purchase History : </h5>
-                    <table class="table table-bordered table-striped">
+                    <div class="row justify-content-between">
+                        <div class="col-12 col-lg-6" id="donutchart" style="width: 900px; height: 500px;"></div>
+                        <div class="col-12 col-lg-6" id="series_chart_div" style="width: 900px; height: 500px;"></divclass="col-12>
+                    </div>
+                    
+                    <div class="mb-5" id="columnchart_material" style="width: 1500px; height: 350px;"></div><br />
+                    <table class="table table-bordered table-striped mt-5">
                         <tr>
                             <th>Product Name</th>
                             <th>Quantity</th>
@@ -289,6 +296,111 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-</body>
+    @*<script type="text/javascript">
+        $(document).ready(function () {
+            var visualData = Array();
+            $.ajax({
+                type: 'GET',
+                dataType: "json",
+                contentType: "application/json",
+                url: '/CustomerProfile/GetPurchaseCategoryData',
+                success: function (result) {
+                    result = JSON.parse(result);
+                    //console.log(result);
+                    visualData.push(['Year', 'Laptop', 'Monitor', 'Ram', 'SSD', 'Graphics Card', 'Mother Board', 'Casing', 'CPU', 'Cooling Fan', 'Keyboard', 'Mouse']);
+                    for (var i = 0; i < result.length; i++) {
+                        visualData.push([result[i].DatePurchased, result[i].LaptopQuantity, result[i].MonitorQuantity, result[i].RamQuantity, result[i].SSDQuantity, result[i].GraphicsCardQuantity, result[i].MotherboardQuantity, result[i].CasingQuantity, result[i].CPUQuantity, result[i].CoolingFanQuantity, result[i].KeyboardQuantity, result[i].MouseQuantity]);
+                    }
+                    //console.log(visualData);
+                }
+            });
+            google.charts.load('current', { 'packages': ['bar'] });
+            google.charts.setOnLoadCallback(drawChart);
 
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable(visualData);
+
+                var options = {
+                    chart: {
+                        title: 'Purchased Categories with Quantity',
+                        subtitle: 'Products purchased categories : 2020-2022',
+                    }
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+        });
+        $(document).ready(function () {
+            var soldData = Array();
+            soldData.push(['Categories', 'Quantity (Pcs)']);
+            $.ajax({
+                type: 'GET',
+                dataType: "json",
+                contentType: "application/json",
+                url: '/SellProduct/GetMostSoldCategoriesData',
+                success: function (result) {
+                    result = JSON.parse(result);
+                    //console.log(result);
+                    for (var i = 0; i < result.length; i++) {
+                        soldData.push([result[i].Key, result[i].Value]);
+                    }
+                    console.log(soldData);
+                }
+            });
+            google.charts.load("current", { packages: ["corechart"] });
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable(soldData);
+
+                var options = {
+                    title: 'Most Purchased Categories',
+                    pieHole: 0.4,
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                chart.draw(data, options);
+            }
+        });
+    </script>*@
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var purchaseData = Array();
+            purchaseData.push(["ID", "Product Name", "Tax", "Category", "Price"]);
+            $.ajax({
+                type: 'GET',
+                dataType: "json",
+                contentType: "application/json",
+                url: '/SellProduct/GetPurchasedProductsData',
+                success: function (result) {
+                    result = JSON.parse(result);
+                    //console.log(result);
+                    for (var i = 0; i < result.length; i++) {
+                        purchaseData.push([result[i].ProductName, result[i].ID, result[i].Tax, result[i].Category, result[i].Price]);
+                    }
+                    //console.log(purchaseData);
+                }
+            });
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawSeriesChart);
+
+            function drawSeriesChart() {
+
+                var data = google.visualization.arrayToDataTable(purchaseData);
+
+                var options = {
+                    title: 'Purchased Product Details',
+                    hAxis: { title: 'Products' },
+                    vAxis: { title: 'Tax Rate (%)' },
+                    bubble: { textStyle: { fontSize: 11 } }
+                };
+
+                var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
+                chart.draw(data, options);
+            }
+        });
+    </script>
+</body>
 </html>

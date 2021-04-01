@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OnlineTechShop.Models.SalesExecutive>
+@{
+    Layout = "~/Views/Shared/_LayoutSalesExecutive.cshtml";
+}
+
+
+
+<div class="w3-container tab">
+    <h2 style="text-align:center"> Profile </h2>
+    <table width="50%" >
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>Name</td>
+                <td> @item.FullName </td>
+
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td> @item.UserName</td>
+
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td> @item.Email</td>
+
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td> @item.Address</td>
+
+            </tr>
+            <tr>
+                <td>Phone No.</td>
+                <td> @item.Phone</td>
+
+            </tr>
+        }
+    </table>
+</div>

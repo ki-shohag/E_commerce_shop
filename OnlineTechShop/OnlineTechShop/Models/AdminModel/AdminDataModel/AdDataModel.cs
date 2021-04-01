@@ -22,6 +22,10 @@ namespace OnlineTechShop.Models.AdminModel.AdminDataModel
             return admin;
         }
 
-        
+        public Admin CheckAccountPassword(string password, string email)
+        {
+            Admin admin = context.Admins.Where(m => m.Email == email && m.Password == password).FirstOrDefault();
+            return admin;
+        }
     }
 }

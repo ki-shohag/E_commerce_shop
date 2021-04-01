@@ -1,0 +1,53 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_LayoutSalesExecutive.cshtml";
+}
+
+<div class="w3-container tab">
+    <h1 style="text-align:center">Sell</h1>
+    @if (Model != null)
+    {
+
+        decimal subtotal = 0;
+        <form method="post" action="">
+            <br>
+            <br>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <td>Name </td>
+                    <td><input type="text" name="FullName"> @TempData["fn"] </td> 
+                    
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><input type="text" name="Address"> @TempData["a"]</td> 
+                </tr>
+                <tr>
+                    <td>Phone No. </td>
+                    <td><input type="text" name="Phone"> @TempData["p"]</td> 
+                </tr>
+                <tr>
+                    <td>Items</td>
+                    <td>
+                        @foreach (var item in Model)
+                        {
+                            @item.ProductName <br>
+                            subtotal = (item.UnitPrice * item.Quantity) + subtotal;
+
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total Price</td>
+                    <td>@subtotal</td>
+                </tr>
+
+
+            </table>
+            <input type="submit" value="Sell" class="btn text-light btn-success w-50">
+        </form>
+
+
+    }
+</div>

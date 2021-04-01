@@ -7,13 +7,20 @@ using System.Web.Mvc;
 
 namespace OnlineTechShop.Controllers.Admin
 {
-    public class BuyingAgentListController : Controller
+    public class BuyingAgentListController : AdminBaseController
     {
         TechShopDbEntities context = new TechShopDbEntities();
-        // GET: BuyingAgentList
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
-            return View(context.BuyingAgents.ToList());
+            if (name == null)
+            {
+                return View(context.BuyingAgents.ToList());
+            }
+            else
+            {
+                var buyingAgents = context.BuyingAgents.Where(p => p.FullName.Contains(name)).ToList();
+                return View(buyingAgents);
+            }
         }
 
         [HttpGet]
@@ -27,6 +34,7 @@ namespace OnlineTechShop.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                buyingAgent.ProfilePic = "default.jpg";
                 buyingAgent.JoiningDate = DateTime.Now;
                 buyingAgent.LastUpdated = DateTime.Now;
                 context.BuyingAgents.Add(buyingAgent);
@@ -47,11 +55,15 @@ namespace OnlineTechShop.Controllers.Admin
         [HttpPost]
         public ActionResult Edit(int id, Models.BuyingAgent buyingAgent)
         {
-            buyingAgent.Id = id;
-            buyingAgent.LastUpdated = DateTime.Now;
-            context.Entry(buyingAgent).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                buyingAgent.Id = id;
+                buyingAgent.LastUpdated = DateTime.Now;
+                context.Entry(buyingAgent).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(context.BuyingAgents.Find(id));
         }
 
         [HttpGet]

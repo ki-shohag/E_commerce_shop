@@ -27,6 +27,7 @@
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
           rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <style>
         .featured-item-box {
@@ -192,34 +193,45 @@
                     <a href="/SellProduct/PendingSellPosts" class="btn btn-outline-dark text-light">Pending Sell Posts</a>
                     <a href="/SellProduct/SoldProducts" class="btn btn-outline-dark text-light">Sold Items</a>
                 </div>
-                <div class="col-10 mt-5">
-                    <h2 class="border-bottom mb-4 text-center">Sell Product</h2>
+                <div class="col-12 text-center">
+                    <div id="piechart_3d" class="text-center" style="width: 900px; height: 400px;"></div>
+                </div>
+                <div class="col-10">
+                    <h2 class="border-bottom mb-4 text-center">Sold Products Report</h2>
                     <span class="text-danger h4">*@TempData["msg"]</span><br />
-                                                                         <table class="table table-bordered table-striped table-secondary">
-                                                                             <tr>
-                                                                                 <th>Product ID</th>
-                                                                                 <th>Proudct Name</th>
-                                                                                 <th>Category</th>
-                                                                                 <th>Brand</th>
-                                                                                 <th>Asking Price</th>
-                                                                                 <th>Image</th>
-                                                                                 <th>Status</th>
-                                                                                 <th colspan="2">Action</th>
-                                                                             </tr>
-                                                                             @foreach (var item in Model)
-                                                                             {
-                                                                         <tr>
-                                                                             <td>P-0-@item.Id</td>
-                                                                             <td>@item.ProductName</td>
-                                                                             <td>@item.Category</td>
-                                                                             <td>@item.Brand</td>
-                                                                             <td>@item.SellingPrice</td>
-                                                                             <td>@item.Images</td>
-                                                                             <td>@item.Status</td>
-                                                                             <td></td>
-                                                                         </tr>
-                                                                             }
-                                                                         </table>
+                    <input type="hidden" id="customInput" data-value="@ViewBag.soldData" />
+                    <table class="table table-bordered table-striped table-secondary" id="soldTable">
+                        <tr class="bg-light">
+                            <td colspan="8">Date : @DateTime.Now</td>
+                        </tr>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Proudct Name</th>
+                            <th>Category</th>
+                            <th>Brand</th>
+                            <th>Asking Price</th>
+                            <th>Image</th>
+                            <th>Status</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>P-0-@item.Id</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.Category</td>
+                                <td>@item.Brand</td>
+                                <td>@item.SellingPrice</td>
+                                <td>@item.Images</td>
+                                <td>@item.Status</td>
+                                <td>
+                                    <button class="btn btn-block btn-info btn-sm">View Details</button>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <button class="btn btn-sm btn-primary btn-block" id="downloadAllSoldDataBtn">Download Excel</button>
+                    <button class="btn btn-sm btn-success btn-block" id="downloadAllSoldDataBtnPDF" onclick="generate()">Download PDF</button>
                 </div>
             </div>
         </div>
@@ -266,6 +278,98 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
 
+    <script src="~/Contents/Scripts_Files/jquery.table2excel.js"></script>
+    <script>
+        $("#downloadAllSoldDataBtn").click(function () {
+            $("#soldTable").table2excel({
+                exclude: ".noExl",
+                name: "Worksheet Name",
+                filename: "Products Sold Data",
+                fileext: ".xls",
+                exclude_img: false,
+                exclude_links: true,
+                exclude_inputs: true
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function generate() {
+            var doc = new jsPDF('p', 'pt', 'letter');
+            var htmlstring = '';
+            var tempVarToCheckPageHeight = 0;
+            var pageHeight = 0;
+            pageHeight = doc.internal.pageSize.height;
+            specialElementHandlers = {
+                // element with id of "bypass" - jQuery style selector
+                '#bypassme': function (element, renderer) {
+                    // true = "handled elsewhere, bypass text extraction"
+                    return true
+                }
+            };
+            margins = {
+                top: 150,
+                bottom: 60,
+                left: 40,
+                right: 40,
+                width: 600
+            };
+            $("tr").each(function () {
+                $(this).children("td:eq(7)").remove();
+                $(this).children("th:eq(7)").remove();
+            });
+            var y = 20;
+            doc.setLineWidth(2);
+            doc.text(200, y = y + 30, "Total Sold Prouducts");
+            doc.autoTable({
+                html: '#soldTable',
+                startY: 70,
+                theme: 'grid',
+                styles: {
+                    minCellHeight: 40
+                }
+            })
+            doc.save('Sold_Products.pdf');
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var soldData = Array();
+            soldData.push(['Categories', 'Quantity (Pcs)']);
+            $.ajax({
+                type: 'GET',
+                dataType: "json",
+                contentType: "application/json",
+                url: '/SellProduct/GetMostSoldCategoriesData',
+                success: function (result) {
+                    result = JSON.parse(result);
+                    //console.log(result);
+                    for (var i = 0; i < result.length; i++) {
+                        soldData.push([result[i].Key, result[i].Value]);
+                    }
+                    //console.log(soldData);
+                }
+            });
+
+            google.charts.load("current", { packages: ["corechart"] });
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable(
+                    soldData
+                );
+
+                var options = {
+                    title: 'Most Sold Categories',
+                    is3D: true,
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                chart.draw(data, options);
+            }
+        });
+    </script>
+</body>
 </html>

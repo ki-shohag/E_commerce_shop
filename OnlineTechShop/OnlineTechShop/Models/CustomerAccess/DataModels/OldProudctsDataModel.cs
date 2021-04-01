@@ -33,7 +33,7 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         }
         public List<Models.Old_Products> GetSoldProductsByCustomerId(int id)
         {
-            return data.Old_Products.Where(x => x.CutomerId == id && x.Status == "Sold").ToList();
+            return data.Old_Products.Where(x => x.CutomerId == id && x.Status == "Accepted").ToList();
         }
     }
 }

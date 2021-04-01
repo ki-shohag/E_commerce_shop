@@ -40,11 +40,11 @@ namespace OnlineTechShop.Controllers.Customer
                     sales_Log.DateSold = DateTime.Now;
                     sales_Log.ProductId = item.ProductId;
                     sales_Log.Quantity = item.Quantity;
-                    sales_Log.Discount = item.Discount;
-                    sales_Log.Tax = item.Tax;
+                    sales_Log.Discount = item.Discount*item.Quantity;
+                    sales_Log.Tax = item.Tax*item.Quantity;
                     sales_Log.Status = "Pending";
-                    sales_Log.TotalPrice = (decimal)item.TotalPrice*item.Quantity;
-                    sales_Log.Profits = sales_Log.TotalPrice - (productsData.GetBuyingPriceByProductId(item.ProductId)*item.Quantity);
+                    sales_Log.TotalPrice = (decimal)((item.UnitPrice * item.Quantity) + ((item.UnitPrice * item.Quantity)*(item.Tax * item.Quantity)/100) - ((item.UnitPrice * item.Quantity) * (item.Discount * item.Quantity) / 100));
+                    sales_Log.Profits = (decimal)((item.UnitPrice * item.Quantity) + ((item.UnitPrice * item.Quantity) * (item.Tax * item.Quantity) / 100) - ((item.UnitPrice * item.Quantity) * (item.Discount * item.Quantity) / 100)) - (productsData.GetBuyingPriceByProductId(item.ProductId)*item.Quantity);
                     salesLogData.AddSalesLog(sales_Log);
                     productsData.UpdateProductQuantityOnPurchase(sales_Log.ProductId, sales_Log.Quantity);
                 }

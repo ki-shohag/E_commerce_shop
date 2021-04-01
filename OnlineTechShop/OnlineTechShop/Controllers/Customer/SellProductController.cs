@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace OnlineTechShop.Controllers.Customer
 {
     public class SellProductController : Controller
     {
         OldProudctsDataModel oldProductsData = new OldProudctsDataModel();
+        ProductsDataModel ProductsData = new ProductsDataModel();
         // GET: SellProduct
         public ActionResult Index()
         {
@@ -80,7 +82,25 @@ namespace OnlineTechShop.Controllers.Customer
         [HttpGet]
         public ActionResult SoldProducts()
         {
-            return View(oldProductsData.GetSoldProductsByCustomerId((int)Session["user_id"]));
+            var model = oldProductsData.GetSoldProductsByCustomerId((int)Session["user_id"]);
+            return View(model);
+        }
+        [HttpGet]
+        public ActionResult GetMostSoldCategoriesData()
+        {
+            var MyList = new List<KeyValuePair<string, int>>();
+            var list = oldProductsData.GetSoldProductsByCustomerId((int)Session["user_id"]);
+            foreach (var item in list)
+            {
+                MyList.Add(new KeyValuePair<string, int>(item.Category, item.Quantity));
+            }
+            return Json(new JavaScriptSerializer().Serialize(MyList), JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public ActionResult GetPurchasedProductsData()
+        {
+            var list = ProductsData.GetPurchasedProductData((int)Session["user_id"]);
+            return Json(new JavaScriptSerializer().Serialize(list), JsonRequestBehavior.AllowGet);
         }
     }
 }

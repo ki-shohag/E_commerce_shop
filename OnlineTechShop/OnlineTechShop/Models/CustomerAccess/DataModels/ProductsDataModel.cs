@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,7 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
     public class ProductsDataModel
     {
         TechShopDbEntities data = new TechShopDbEntities();
+        RatingsDataModel RatingsData = new RatingsDataModel();
         public List<Product> GetAllProducts()
         {
             return data.Products.OrderByDescending(x=>x.Id).ToList();
@@ -55,14 +57,6 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         }
         public List<string> GetAllProductsKeyValue()
         {
-            //var AllProducts = data.Products.ToList();
-            //var ProductList = new List<KeyValuePair<string, int>>();
-            //foreach (var key in AllProducts )
-            //{
-            //        ProductList.Add(new KeyValuePair<string, int>(key.ProductName, key.Id));
-
-            //}
-            //return ProductList;
             return data.Products.Select(x => x.ProductName).ToList();
         }
         public int GetProductIdByProductName(string name)
@@ -100,6 +94,18 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
                 
             }
             return products;
+        }
+        public IQueryable GetPurchasedProductData(int id)
+        {
+            var result = (from p in data.Products join s in data.Sales_Log on p.Id equals s.ProductId
+                          where s.UserId ==id select new { 
+                              ID = p.Id,
+                              ProductName = p.ProductName,
+                              Price = p.SellingPrice,
+                              Tax = p.Tax,
+                              Category = p.Category
+                          });
+            return result;
         }
     }
 }
