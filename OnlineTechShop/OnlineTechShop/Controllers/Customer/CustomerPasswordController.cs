@@ -32,7 +32,7 @@ namespace OnlineTechShop.Controllers.Customer
                     //Send email
                     var message = new MimeMessage();
                     message.From.Add(new MailboxAddress("Verification Code", "shohag.cse45@gmail.com"));
-                    message.To.Add(new MailboxAddress("Customer", "koushikur.aiub@gmail.com"));
+                    message.To.Add(new MailboxAddress("Customer", (string)Session["user_email"]));
                     message.Subject = "Password Reset";
                     message.Body = new TextPart("plain")
                     {

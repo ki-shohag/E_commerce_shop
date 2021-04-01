@@ -5,12 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace OnlineTechShop.Controllers
+namespace OnlineTechShop.Controllers.Admin
 {
-    public class AdminProfileController : Controller
+    public class AdminProfileController : AdminBaseController
     {
         AdDataModel data = new AdDataModel();
-        // GET: AdminProfile
         public ActionResult Index()
         {
             var admin = data.GetAdminByEmail(Session["email"].ToString());

@@ -62,6 +62,12 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.Core.2.0.0\lib\net45\Rotativa.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.MVC.2.0.3\lib\net45\Rotativa.MVC.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
     </Reference>
@@ -112,9 +118,94 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DB\TechShopDb.mdf" />
+    <Content Include="App_Data\DB\TechShopDb_log.ldf">
+      <DependentUpon>TechShopDb.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\DB\Upload_Files\Admins\default.jpg" />
+    <Content Include="App_Data\DB\Upload_Files\Admins\jack.png" />
+    <Content Include="App_Data\DB\Upload_Files\Customer\ProfilePic\shohag%40gmail.com.jpg" />
+    <Content Include="App_Data\DB\Upload_Files\Products\A4 Tech KB-8A.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\A4 Tech KR-92.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\A4 Tech OP-620D.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Acer Extensa 15.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\AMD Ryzen 7 5800X Processor.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\ASUS GeForce GT 1030 2GB GDDR5 low Profile Graphics Card.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Asus GeForce GT 710 2GB DDR5 Graphics Card.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Asus TUF Gaming H470-Pro Wi-Fi 10th Gen ATX Motherboard.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Cooler Master i70.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Cooler Master MasterBox MB400L Mini Tower %28Tempered Glass Side Window%29 Black Gaming Desktop Case #MCB-B400L-KG5N-S00.png" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Corsair 4000D Airflow.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Corsair A500.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Dell Inspiron AIO 22 3280.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Dell Optiplex 5480 10th Gen Intel Core i5.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\G.Skill 4GB DDR3 1600MHz Desktop RAM #F3-1600C11S-4GNT.png" />
+    <Content Include="App_Data\DB\Upload_Files\Products\G.Skill 4GB DDR3 1600MHz Desktop RAM.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\G.Skill 4GB DDR4 2400MHz Desktop RAM #F4-2400C15S-4GNT.png" />
+    <Content Include="App_Data\DB\Upload_Files\Products\G.Skill 4GB DDR4 2400MHz Desktop RAM.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\HP 15s-du1068TU.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Intel 10th Gen Core i5-10400F Processor.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Logitech K120.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Logitech M171.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\MSI MAG B460M Mortar Wi-Fi Intel 10th Gen Micro-ATX Motherboard.PNG" />
+    <Content Include="App_Data\DB\Upload_Files\Products\Samsung 860 EVO 250GB 2.5 Inch SATAIII SSD.PNG" />
+    <Content Include="bin\BouncyCastle.Crypto.dll" />
+    <Content Include="bin\BouncyCastle.Crypto.xml" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\MailKit.dll" />
+    <Content Include="bin\MailKit.pdb" />
+    <Content Include="bin\MailKit.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\MimeKit.dll" />
+    <Content Include="bin\MimeKit.pdb" />
+    <Content Include="bin\MimeKit.xml" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\OnlineTechShop.dll" />
+    <Content Include="bin\OnlineTechShop.pdb" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Buffers.dll" />
+    <Content Include="bin\System.Buffers.xml" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.Deployment.dll" />
+    <Content Include="bin\System.Web.Webpages.Deployment.xml" />
+    <Content Include="bin\System.Web.Webpages.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.xml" />
+    <Content Include="Contents\CSS_Files\j-rating-advance.css" />
     <Content Include="Contents\CSS_Files\style.css" />
     <Content Include="Contents\Scripts_Files\clientProfile.js" />
     <Content Include="Contents\Scripts_Files\customerRegistration.js" />
+    <Content Include="Contents\Scripts_Files\jquery.starrating.js" />
+    <Content Include="Contents\Scripts_Files\jquery.table2excel.js" />
     <Content Include="Contents\Scripts_Files\main.js" />
     <Content Include="Contents\Scripts_Files\productComparison.js" />
     <Content Include="Contents\Scripts_Files\productSearch.js" />
@@ -122,6 +213,7 @@
     <Content Include="Contents\Upload_Files\Admins\jack.png" />
     <Content Include="Contents\Upload_Files\Admins\kevin.png" />
     <Content Include="Contents\Upload_Files\Admins\nelly.jpg" />
+    <Content Include="Contents\Upload_Files\Admins\nina.jpg" />
     <Content Include="Contents\Upload_Files\Admins\nora.jpg" />
     <Content Include="Contents\Upload_Files\Products\A4 Tech KB-8A.PNG" />
     <Content Include="Contents\Upload_Files\Products\A4 Tech KR-92.PNG" />
@@ -203,10 +295,43 @@
       <DependentUpon>TechShopDbContext.edmx</DependentUpon>
       <LastGenOutput>TechShopDbContext1.cs</LastGenOutput>
     </Content>
+    <Content Include="obj\Debug\OnlineTechShop.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\OnlineTechShop.dll" />
+    <Content Include="obj\Debug\OnlineTechShop.pdb" />
+    <Content Include="obj\Debug\TempPE\Models.TechShopDbContext.Context.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.TechShopDbContext.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.TechShopDbContext.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.TechShopDbContext1.cs.dll" />
+    <Content Include="obj\Debug\TempPE\TechShopDbContext.Context.cs.dll" />
+    <Content Include="obj\Debug\TempPE\TechShopDbContext.cs.dll" />
+    <Content Include="obj\Debug\TempPE\TechShopDbContext.Designer.cs.dll" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AdminBaseController.cs" />
+    <Compile Include="Controllers\Admin\AdminDashboardController.cs" />
+    <Compile Include="Controllers\Admin\AdminListController.cs" />
+    <Compile Include="Controllers\Admin\AdminLoginController.cs" />
+    <Compile Include="Controllers\Admin\AdminProfileController.cs" />
+    <Compile Include="Controllers\Admin\AdminSettingsController.cs" />
+    <Compile Include="Controllers\Admin\BuyingAgentListController.cs" />
+    <Compile Include="Controllers\Admin\CustomerListController.cs" />
+    <Compile Include="Controllers\Admin\LogoutController.cs" />
+    <Compile Include="Controllers\Admin\OldProductListController.cs" />
+    <Compile Include="Controllers\Admin\ProductListController.cs" />
+    <Compile Include="Controllers\Admin\ProductReviewsController.cs" />
+    <Compile Include="Controllers\Admin\ProfitsController.cs" />
+    <Compile Include="Controllers\Admin\PurchaseListController.cs" />
+    <Compile Include="Controllers\Admin\SalesController.cs" />
+    <Compile Include="Controllers\Admin\SalesExecutiveListController.cs" />
+    <Compile Include="Controllers\BuyingAgent\BuyingAgentHomeController.cs" />
+    <Compile Include="Controllers\BuyingAgent\BuyingAgentLoginController.cs" />
+    <Compile Include="Controllers\BuyingAgent\BuyingAgentLogOutController.cs" />
+    <Compile Include="Controllers\BuyingAgent\BuyingAgentPasswordController.cs" />
+    <Compile Include="Controllers\BuyingAgent\BuyingAgentProfileController.cs" />
+    <Compile Include="Controllers\BuyingAgent\ChartController.cs" />
     <Compile Include="Controllers\Customer\AccessoriesController.cs" />
     <Compile Include="Controllers\Customer\CartController.cs" />
     <Compile Include="Controllers\Customer\CheckOutController.cs" />
@@ -223,15 +348,29 @@
     <Compile Include="Controllers\Customer\ProductsController.cs" />
     <Compile Include="Controllers\Customer\ReviewsController.cs" />
     <Compile Include="Controllers\Customer\SellProductController.cs" />
+    <Compile Include="Controllers\SalesExecutive\SalesExecutiveController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminModel\AdminDataModel\AdDataModel.cs" />
+    <Compile Include="Models\AdminModel\AdminDataModel\CustomerDataModel.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\Admin.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\AdminMetaData.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\BuyingAgent.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\BuyingAgentMetaData.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\Product.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\ProductMetaData.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\SalesExecutive.cs" />
+    <Compile Include="Models\AdminModel\AdminViewModel\SalesExecutiveMetaData.cs" />
     <Compile Include="Models\BuyingAgent.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BuyingAgentAccess\DataModels\BuyingAgentDataModel.cs" />
+    <Compile Include="Models\BuyingAgentAccess\DataModels\OldProductDataModel.cs" />
+    <Compile Include="Models\BuyingAgentAccess\ViewModels\BuyingAgentViewModel.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -248,6 +387,7 @@
     <Compile Include="Models\CustomerAccess\ViewModels\CustomerViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\InvoiceViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\ProductsViewModel.cs" />
+    <Compile Include="Models\CustomerAccess\ViewModels\PurchaseDataViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\PurchaseViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\ReviewsViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\WishListViewModel.cs" />
@@ -275,6 +415,8 @@
     <Compile Include="Models\SalesExecutive.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sales\DataModels\CartDataModel.cs" />
+    <Compile Include="Models\Sales\ViewModels\CartViewModel.cs" />
     <Compile Include="Models\Sales_Log.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -297,6 +439,7 @@
     <Compile Include="Models\WishList.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -325,6 +468,24 @@
     <Content Include="Contents\vendor\remixicon\remixicon.ttf" />
     <Content Include="Contents\vendor\remixicon\remixicon.woff" />
     <Content Include="Contents\vendor\remixicon\remixicon.woff2" />
+    <Content Include="bin\OnlineTechShop.dll.config" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TechShopDbContext.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TechShopDbContext.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TechShopDbContext.ssdl" />
+    <Content Include="obj\Debug\OnlineTechShop.csproj.CopyComplete" />
+    <Content Include="obj\Debug\OnlineTechShop.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\OnlineTechShop.csprojAssemblyReference.cache" />
+    <Content Include="App_Browsers\qt.browser" />
     <EntityDeploy Include="Models\TechShopDbContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TechShopDbContext.Designer.cs</LastGenOutput>
@@ -383,6 +544,43 @@
     <Content Include="Views\SellProduct\PendingSellPosts.cshtml" />
     <Content Include="Views\SellProduct\Edit.cshtml" />
     <Content Include="Views\SellProduct\SoldProducts.cshtml" />
+    <Content Include="Views\AdminDashboard\Index.cshtml" />
+    <Content Include="Views\AdminList\Create.cshtml" />
+    <Content Include="Views\AdminList\Delete.cshtml" />
+    <Content Include="Views\AdminList\Index.cshtml" />
+    <Content Include="Views\AdminLogin\Login.cshtml" />
+    <Content Include="Views\AdminProfile\Index.cshtml" />
+    <Content Include="Views\AdminSettings\ChangePassword.cshtml" />
+    <Content Include="Views\AdminSettings\Index.cshtml" />
+    <Content Include="Views\BuyingAgentList\Create.cshtml" />
+    <Content Include="Views\BuyingAgentList\Delete.cshtml" />
+    <Content Include="Views\BuyingAgentList\Edit.cshtml" />
+    <Content Include="Views\BuyingAgentList\Index.cshtml" />
+    <Content Include="Views\ProductList\Create.cshtml" />
+    <Content Include="Views\ProductList\Delete.cshtml" />
+    <Content Include="Views\ProductList\Edit.cshtml" />
+    <Content Include="Views\ProductList\Index.cshtml" />
+    <Content Include="Views\SalesExecutiveList\Create.cshtml" />
+    <Content Include="Views\SalesExecutiveList\Delete.cshtml" />
+    <Content Include="Views\SalesExecutiveList\Edit.cshtml" />
+    <Content Include="Views\SalesExecutiveList\Index.cshtml" />
+    <Content Include="Views\BuyingAgentHome\Index.cshtml" />
+    <Content Include="Views\BuyingAgentLogin\Index.cshtml" />
+    <Content Include="Views\BuyingAgentPassword\Index.cshtml" />
+    <Content Include="Views\BuyingAgentProfile\BuyingHistory.cshtml" />
+    <Content Include="Views\BuyingAgentProfile\ChangePassword.cshtml" />
+    <Content Include="Views\BuyingAgentProfile\Edit.cshtml" />
+    <Content Include="Views\BuyingAgentProfile\ExportHelper.cshtml" />
+    <Content Include="Views\BuyingAgentProfile\Index.cshtml" />
+    <Content Include="Views\Chart\Index.cshtml" />
+    <Content Include="Views\SalesExecutive\availableproducts.cshtml" />
+    <Content Include="Views\SalesExecutive\discountproducts.cshtml" />
+    <Content Include="Views\SalesExecutive\index.cshtml" />
+    <Content Include="Views\SalesExecutive\products.cshtml" />
+    <Content Include="Views\SalesExecutive\salescart.cshtml" />
+    <Content Include="Views\SalesExecutive\sell.cshtml" />
+    <Content Include="Views\SalesExecutive\upcomingproducts.cshtml" />
+    <Content Include="Views\Shared\_LayoutSalesExecutive.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -391,9 +589,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Contents\Upload_Files\Customer\ProfilePic\" />
+    <Folder Include="Models\DataModel\Customer\" />
+    <Folder Include="Models\ViewModel\Customer\" />
     <Folder Include="Views\CustomerLogOut\" />
+    <Folder Include="Views\Customer\" />
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
   <ItemGroup>

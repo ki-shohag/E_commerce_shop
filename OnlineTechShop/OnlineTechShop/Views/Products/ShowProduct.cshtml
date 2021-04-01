@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Home</title>
+    <title>Show Product</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -378,7 +378,7 @@
         $(document).ready(function () {
             $("#addToCartBtn").click(function () {
                 mydata = JSON.stringify({ "ProductId": this.value, "Quantity": 1 });
-                //alert(mydata);
+                alert("Product added to cart!");
                 $.ajax({
                     type: "POST",
                     url: "/Cart/AddProductToCart",

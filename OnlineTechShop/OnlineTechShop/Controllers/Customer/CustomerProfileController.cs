@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using OnlineTechShop.Models.CustomerAccess.DataModels;
 using System.IO;
+using System.Web.Script.Serialization;
 
 namespace OnlineTechShop.Controllers.Customer
 {
@@ -170,6 +171,12 @@ namespace OnlineTechShop.Controllers.Customer
             }
             TempData["msg"] = "Updated payment and shipping details successfully!";
             return RedirectToAction("PaymentAndShipping");
+        }
+        [HttpGet]
+        public ActionResult GetPurchaseCategoryData()
+        {
+            var list = salesLogData.GetPurchaseVisualizationData((int)Session["user_id"], 2020,2021);
+            return Json(new JavaScriptSerializer().Serialize(list) ,JsonRequestBehavior.AllowGet);
         }
     }
 }

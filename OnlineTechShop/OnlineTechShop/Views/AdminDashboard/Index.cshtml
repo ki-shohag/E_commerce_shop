@@ -1,32 +1,39 @@
 ﻿<head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Updating profile</title>
+    <title>Admin Dashboard</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
     <script src="~/Contents/vendor/jquery/jquery.min.js"></script>
+
     <script src="~/Contents/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/Contents/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <script src="~/Contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
-    <link href="~/Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="~/Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="~/Contents/vendor/venobox/venobox.css" rel="stylesheet">
-    <link href="~/Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="~/Contents/vendor/aos/aos.css" rel="stylesheet">
     <link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-    <style>
 
-        .featured-item-box {
-            min-height: 150px;
-            background: #3b555d;
-            min-width: 80px;
-            color: white;
-            border-radius: 5px;
-            padding-top: 30px;
-        }
-    </style>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.intellisense.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate-vsdoc.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.debug.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.js"></script>
+    <script src="~/Contents/vendor/jquery/jqs/modernizr-2.6.2.js"></script>
+
 </head>
 <body>
     <header id="header" class="">
@@ -40,48 +47,67 @@
                     <nav class="nav-menu d-none d-lg-block">
 
                         <ul>
+                            <li class="dropdown-header">
+                                <a href="/AdminDashboard/">Dashboard</a>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="/AdminProfile">Profile</a>
+                            </li>
                             <li class="drop-down">
                                 <a href="/AdminList">Admins</a>
                                 <ul>
+                                    <li><a href="/AdminList">Admin List</a></li>
                                     <li><a href="/AdminList/Create">Add Admin</a></li>
                                 </ul>
                             </li>
                             <li class="drop-down">
                                 <a href="/SalesExecutiveList">Sales Executives</a>
                                 <ul>
+                                    <li><a href="/SalesExecutiveList">Sales Executive List</a></li>
                                     <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
                                 </ul>
                             </li>
                             <li class="drop-down">
                                 <a href="/BuyingAgentList">BuyingAgents</a>
                                 <ul>
+                                    <li><a href="/BuyingAgentList">Buying Agent List</a></li>
                                     <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
                                 </ul>
                             </li>
                             <li class="drop-down">
                                 <a href="/ProductList">Products</a>
                                 <ul>
+                                    <li><a href="/ProductList">Product List</a></li>
                                     <li><a href="/ProductList/Create">Add Products</a></li>
                                     <li><a href="/ProductList/Add">Add Quantity</a></li>
+                                    <li><a href="/OldProductList">Used Products</a></li>
                                 </ul>
                             </li>
+                            <li class="dropdown-header">
+                                <a href="/PurchaseList">Purchases</a>
+                            </li>
                             <li class="drop-down">
+                                <a href="/CustomerList">Customers</a>
+                                <ul>
+                                    <li><a href="/CustomerList">Active Customers</a></li>
+                                    <li><a href="/CustomerList/Restricted">Restricted Customers</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">
                                 <a href="/Sales">Sales</a>
                             </li>
-                            <li class="drop-down">
+                            <li class="dropdown-header">
                                 <a href="/Profits">Profits</a>
                             </li>
-                            <li class="drop-down">Settings
-                                
+                            <li class="drop-down">
+                                <a href="/AdminSettings">Settings</a>
                                 <ul>
                                     <li><a href="/AdminSettings">Update Profile</a></li>
                                     <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
                                 </ul>
                             </li>
-                            <li class="drop-down">
-                                <a href="/AdminProfile">Profile</a>
-                            </li>
-                            <li class="drop-down">
+
+                            <li class="dropdown-header">
                                 <a href="/Logout">Logout</a>
                             </li>
                         </ul>
@@ -92,20 +118,109 @@
         </div>
     </header>
 
+    <main id="main ">
+        <div class="container">
+            <br /><br /><br /><br /><br />
+            <div class="row mt-2 justify-content-center">
+                <div class="col-12 col-lg-8 text-center">
+                    <div id="category"></div>
+                    <br /><br />
+                    <div id="brand"></div>
+                    <script>
+                        $(document).ready(function () {
+                            $.getJSON("/AdminDashboard/GetDataCategory", function (data) {
+                                var Names = []
+                                var Qts = []
+                                for (var i = 0; i < data.length; i++) {
+                                    Names.push(data[i].name);
+                                    Qts.push(data[i].count);
+                                }
 
-    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
-    <div id="preloader"></div>
-    <script src="~/Contents/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Contents/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="~/Contents/vendor/php-email-form/validate.js"></script>
-    <script src="~/Contents/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="~/Contents/vendor/counterup/counterup.min.js"></script>
-    <script src="~/Contents/vendor/venobox/venobox.min.js"></script>
-    <script src="~/Contents/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="~/Contents/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="~/Contents/vendor/aos/aos.js"></script>
-    <script src="~/Contents/Scripts_Files/main.js"></script>
-    <script src="~/Contents/Scripts_Files/productSearch.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                                Highcharts.chart('category', {
+                                    chart: {
+                                        type: 'column'
+                                    },
+                                    title: {
+                                        text: 'Most Popular Categories'
+                                    },
+                                    subtitle: {
+                                        text: ''
+                                    },
+                                    xAxis: {
+                                        categories: Names
+                                    },
+                                    yAxis: {
+                                        title: {
+                                            text: 'Quantity'
+                                        }
+                                    },
+                                    plotOptions: {
+                                        line: {
+                                            dataLabels: {
+                                                enabled: true
+                                            },
+                                            enableMouseTracking: false
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'Total',
+                                        colorByPoint: true,
+                                        data: Qts
+                                    }]
+                                });
+                            });
+                        });
+
+
+                        $(document).ready(function () {
+                            $.getJSON("/AdminDashboard/GetDataBrand", function (data) {
+                                var Names = []
+                                var Qts = []
+                                for (var i = 0; i < data.length; i++) {
+                                    Names.push(data[i].name);
+                                    Qts.push(data[i].count);
+                                }
+
+                                Highcharts.chart('brand', {
+                                    chart: {
+                                        type: 'column'
+                                    },
+                                    title: {
+                                        text: 'Most Popular Brands'
+                                    },
+                                    subtitle: {
+                                        text: ''
+                                    },
+                                    xAxis: {
+                                        categories: Names
+                                    },
+                                    yAxis: {
+                                        title: {
+                                            text: 'Quantity'
+                                        }
+                                    },
+                                    plotOptions: {
+                                        line: {
+                                            dataLabels: {
+                                                enabled: true
+                                            },
+                                            enableMouseTracking: false
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'Total',
+                                        colorByPoint: true,
+                                        data: Qts
+                                    }]
+                                });
+                            });
+                        });
+
+
+                    </script>
+                </div>
+            </div>
+        </div>
+    </main>
+
 </body>

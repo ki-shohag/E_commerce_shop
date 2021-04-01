@@ -26,11 +26,14 @@ namespace OnlineTechShop.Controllers.Customer
             if (Request.Cookies["RecentlyViewedProductsListCookie"] != null)
             {
                 List<int> RecentlyViewedProductsList = Request.Cookies["RecentlyViewedProductsListCookie"].Value.Split(',').Select(x => Convert.ToInt32(x)).ToList();
-                RecentlyViewedProductsList.Insert(0,id);
-                var RecentlyViewedProductsListString = String.Join(",", RecentlyViewedProductsList);
-                HttpCookie RecentlyViewedProductsListCookie = new HttpCookie("RecentlyViewedProductsListCookie", RecentlyViewedProductsListString);
-                Response.Cookies.Add(RecentlyViewedProductsListCookie);
-                RecentlyViewedProductsListCookie.Expires = DateTime.Now.AddDays(7);
+                    if (!RecentlyViewedProductsList.Contains(id))
+                    {
+                        RecentlyViewedProductsList.Insert(0, id);
+                        var RecentlyViewedProductsListString = String.Join(",", RecentlyViewedProductsList);
+                        HttpCookie RecentlyViewedProductsListCookie = new HttpCookie("RecentlyViewedProductsListCookie", RecentlyViewedProductsListString.);
+                        Response.Cookies.Add(RecentlyViewedProductsListCookie);
+                        RecentlyViewedProductsListCookie.Expires = DateTime.Now.AddDays(7);
+                    }
             }
             else
             {

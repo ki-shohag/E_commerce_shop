@@ -193,8 +193,8 @@
     <!--Main Body Starts-->
     <main id="main ">
         <div class="container">
-            <div class="row mt-2 mt-5">
-                <div class="col-12">
+            <div class="row justify-content-center mt-2 mt-5">
+                <div class="col-10">
                     <h4 class="list-group-item list-group-item-primary rounded">Featured Products</h4>
                 </div>
                 @foreach (var item in ViewBag.FeaturedProducts)
@@ -217,7 +217,7 @@
                         </div>
                     </div>
                 }
-                <div class="col-12 mt-5">
+                <div class="col-10 mt-5">
                     <h4 class="list-group-item list-group-item-success rounded">Up Coming Products</h4>
                 </div>
                 @foreach (var item in ViewBag.UpComingProducts)
@@ -240,7 +240,7 @@
                         </div>
                     </div>
                 }
-                <div class="col-12 mt-5">
+                <div class="col-10 mt-5">
                     <h4 class="list-group-item list-group-item-success rounded">Recently Viewed Products</h4>
                 </div>
                 @if (ViewBag.RecentlyViewedProducts != null)

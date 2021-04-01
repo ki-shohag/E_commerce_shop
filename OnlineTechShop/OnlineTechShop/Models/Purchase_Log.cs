@@ -15,6 +15,7 @@ namespace OnlineTechShop.Models
     public partial class Purchase_Log
     {
         public int Id { get; set; }
+        public int CustomerId { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public string Status { get; set; }
@@ -24,5 +25,6 @@ namespace OnlineTechShop.Models
         public string Features { get; set; }
         public int Quantity { get; set; }
         public string Images { get; set; }
+        public Nullable<System.DateTime> PurchasedDate { get; set; }
     }
 }

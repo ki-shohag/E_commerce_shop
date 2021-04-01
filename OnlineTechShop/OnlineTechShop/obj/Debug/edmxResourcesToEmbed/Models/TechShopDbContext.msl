@@ -121,6 +121,7 @@
       <EntityTypeMapping TypeName="TechShopDbModel.Purchase_Log">
         <MappingFragment StoreEntitySet="Purchase_Log">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -130,6 +131,7 @@
           <ScalarProperty Name="Features" ColumnName="Features" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="PurchasedDate" ColumnName="PurchasedDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

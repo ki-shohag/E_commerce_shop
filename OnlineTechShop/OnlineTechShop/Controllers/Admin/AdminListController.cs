@@ -8,13 +8,21 @@ using System.Web.Mvc;
 
 namespace OnlineTechShop.Controllers.Admin
 {
-    public class AdminListController : Controller
+    public class AdminListController : AdminBaseController
     {
         TechShopDbEntities context = new TechShopDbEntities();
         // GET: AdminList
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
-            return View(context.Admins.ToList());
+            if (name == null)
+            {
+                return View(context.Admins.ToList());
+            }
+            else
+            {
+                var admin = context.Admins.Where(p => p.FullName.Contains(name)).ToList();
+                return View(admin);
+            }
         }
         [HttpGet]
         public ActionResult Create()
@@ -26,6 +34,7 @@ namespace OnlineTechShop.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                admin.ProfilePic = "default.jpg";
                 admin.JoiningDate = DateTime.Now;
                 admin.LastUpdated = DateTime.Now;
                 context.Admins.Add(admin);

@@ -8,7 +8,7 @@
     var address = document.forms["customerRegistrationForm"]["address"].value;
 
     if (fullName == "" || fullName.length < 1) {
-        document.getElementById('msg').innerHTML = "*Company Name can not be empty!";
+        document.getElementById('msg').innerHTML = "*Full Name can not be empty!";
         return false;
     } else if (phone == "" || phone.length < 1) {
         document.getElementById('msg').innerHTML = "*Phone can not be empty!";
