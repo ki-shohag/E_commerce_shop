@@ -191,6 +191,7 @@
     <Compile Include="Controllers\Customer\ProductsController.cs" />
     <Compile Include="Controllers\Customer\ReviewsController.cs" />
     <Compile Include="Controllers\SalesExecutive\SalesExecutiveController.cs" />
+    <Compile Include="Controllers\SalesExecutive\SalesExecutiveLoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,8 @@
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sales\DataModels\CartDataModel.cs" />
+    <Compile Include="Models\Sales\DataModels\SalesExecutiveDataModel.cs" />
+    <Compile Include="Models\Sales\DataModels\SalesLogDataModel.cs" />
     <Compile Include="Models\Sales\ViewModels\CartViewModel.cs" />
     <Compile Include="Models\Sales_Log.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
@@ -347,6 +350,8 @@
     <Content Include="Views\SalesExecutive\discountproducts.cshtml" />
     <Content Include="Views\SalesExecutive\salescart.cshtml" />
     <Content Include="Views\SalesExecutive\sell.cshtml" />
+    <Content Include="Views\SalesExecutive\SellChart.cshtml" />
+    <Content Include="Views\SalesExecutiveLogin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

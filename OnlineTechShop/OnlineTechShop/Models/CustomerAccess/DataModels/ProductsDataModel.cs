@@ -39,7 +39,7 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         }
         public List<Product> GetProductByCategory(string category, int limit)
         {
-            return data.Products.Where(x => x.Category == category && x.Status == "In Stock").Take(limit).ToList();
+            return data.Products.Where(x => x.Category == category && x.Status == "In Stock").ToList();
         }
         public List<Product> GetProductByCategoryAndBrand(string category, string brand, int limit)
         {
@@ -68,6 +68,11 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         public int GetProductIdByProductName(string name)
         {
             return (int)data.Products.Where(x => x.ProductName == name).Select(x => x.Id).FirstOrDefault();
+        }
+        public void UpdateProduct(Product prd)
+        {
+            data.Entry(prd).State = System.Data.Entity.EntityState.Modified;
+            data.SaveChanges();
         }
     }
 }

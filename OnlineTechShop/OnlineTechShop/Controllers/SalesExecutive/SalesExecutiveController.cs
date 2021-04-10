@@ -8,13 +8,15 @@ using OnlineTechShop.Models;
 using OnlineTechShop.Models.CustomerAccess.DataModels;
 using OnlineTechShop.Models.Sales.ViewModels;
 using OnlineTechShop.Models.Sales.DataModels;
+using System.Web.Script.Serialization;
 
 
 namespace OnlineTechShop.Controllers.SalesExecutive
 {
     public class SalesExecutiveController : Controller
     {
-        private TechShopDbEntities context = new TechShopDbEntities();
+        TechShopDbEntities context = new TechShopDbEntities();
+    
         CartDataModel cartData = new CartDataModel();
         ProductsDataModel productsData = new ProductsDataModel();
 
@@ -167,8 +169,62 @@ namespace OnlineTechShop.Controllers.SalesExecutive
             else if (formCollection.Get("Phone") == "") { TempData["p"] = "The Phone field is required"; return RedirectToAction("Sell"); }
             List<CartViewModel> carts = (List<CartViewModel>)obj;
 
-            return RedirectToAction("Index");
+            ProductsDataModel data = new ProductsDataModel();
+            Models.Product SellingProduct = new Product();
+          
+            var CurrentQuantity=0;
+            var UpdatedQuantity=0;
+            var id=0;
+            foreach ( var c in carts) {
+               
+                id = c.ProductId;
+    
+                SellingProduct = data.GetProductById(id);
 
+                CurrentQuantity = SellingProduct.Quantity;
+                UpdatedQuantity = CurrentQuantity - c.Quantity;
+                SellingProduct.Quantity = UpdatedQuantity;
+                data.UpdateProduct(SellingProduct);
+
+            }
+            // SellingProduct = data.GetProductById(id);
+
+            // SellingProduct.Quantity = SellingProduct.Quantity -1;
+
+            //context.Entry(SellingProduct).State = System.Data.Entity.EntityState.Modified;
+            //context.SaveChanges();
+            // data.UpdateProduct(SellingProduct);
+
+            Session["SalesCart"] = null;
+            return RedirectToAction("Products");
+
+        }
+        public ActionResult SellChart()
+        {
+            return View();
+        }
+
+        public ActionResult LoadChart()
+        {
+            SalesLogDataModel log = new SalesLogDataModel();
+           
+           // var categoryNameQuantity = new List<KeyValuePair<string, int>>();
+            var DateAndQuantity = new List<KeyValuePair<string, int>>();
+            var alllog = log.GetAllSalesLog().ToList();
+
+            Dictionary<DateTime, bool> check = new Dictionary<DateTime, bool>();
+            foreach (var item in alllog)
+            {
+                check.Add((item.DateSold), true);
+            }
+            foreach (KeyValuePair<DateTime, bool> item in check)
+            {
+                DateTime currDate = item.Key;
+                
+                int totalQuantity = context.Sales_Log.Where(x => x.DateSold== currDate).Count();
+                DateAndQuantity.Add(new KeyValuePair<string, int>(currDate.ToString(), totalQuantity));
+            }
+            return Json(new JavaScriptSerializer().Serialize(DateAndQuantity), JsonRequestBehavior.AllowGet);
         }
 
     }

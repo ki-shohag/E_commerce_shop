@@ -1,0 +1,48 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_LayoutSalesExecutive.cshtml";
+}
+
+<div class="w3-container tab">
+    <h1 style="text-align:center">Sell Chart</h1>
+    <div id="piechart">
+
+
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    $(document).ready(function () {
+        var soldData = Array();
+        soldData.push(['Categories', 'Quantity (Pcs)']);
+        $.ajax({
+            type: 'GET',
+            dataType: "json",
+            contentType: "application/json",
+            url: '/SalesExecutive/LoadChart',
+            success: function (result) {
+                result = JSON.parse(result);
+                for (var i = 0; i < result.length; i++) {
+                    soldData.push([result[i].Key, result[i].Value]);
+                }
+            }
+        });
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(
+                soldData
+            );
+            var options = {
+                title: 'Sold by Date Pie-Chart',
+                is3D: true,
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    });
+</script>
