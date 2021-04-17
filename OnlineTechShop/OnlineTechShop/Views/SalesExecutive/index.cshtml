@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OnlineTechShop.Models.SalesExecutive>
+﻿@model OnlineTechShop.Models.SalesExecutive
 @{
     Layout = "~/Views/Shared/_LayoutSalesExecutive.cshtml";
 }
@@ -9,33 +9,32 @@
     <h2 style="text-align:center"> Profile </h2>
     <table width="50%" >
 
-        @foreach (var item in Model)
-        {
+       
             <tr>
                 <td>Name</td>
-                <td> @item.FullName </td>
+                <td> @Model.FullName </td>
 
             </tr>
             <tr>
                 <td>Username</td>
-                <td> @item.UserName</td>
+                <td> @Model.UserName</td>
 
             </tr>
             <tr>
                 <td>Email</td>
-                <td> @item.Email</td>
+                <td> @Model.Email</td>
 
             </tr>
             <tr>
                 <td>Address</td>
-                <td> @item.Address</td>
+                <td> @Model.Address</td>
 
             </tr>
             <tr>
                 <td>Phone No.</td>
-                <td> @item.Phone</td>
+                <td> @Model.Phone</td>
 
             </tr>
-        }
+     
     </table>
 </div>

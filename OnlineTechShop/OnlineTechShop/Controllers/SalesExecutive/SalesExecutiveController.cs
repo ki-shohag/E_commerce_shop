@@ -16,40 +16,61 @@ namespace OnlineTechShop.Controllers.SalesExecutive
     public class SalesExecutiveController : Controller
     {
         TechShopDbEntities context = new TechShopDbEntities();
-    
+         public int seid2 = 0;
+
         CartDataModel cartData = new CartDataModel();
         ProductsDataModel productsData = new ProductsDataModel();
 
         // GET: SalesExecutive
         public ActionResult Index()
         {
-           
-            return View(context.SalesExecutives.ToList());
+            var seid = Session["seid"];
+
+            if (Session["seid"] == null)
+            {
+                TempData["msg"] = "Please First Login";
+                return RedirectToAction("Index", "SalesExecutiveLogin");
+            }
+            else {
+                return View(context.SalesExecutives.Find(seid));
+            }
+          
+            
         }
         public ActionResult Products()
         {
-           
-            return View(context.Products.ToList());
+            if (Session["seid"] == null)
+            {
+                return RedirectToAction("Index", "SalesExecutiveLogin");
+            }
+            else
+            {
+                return View(context.Products.ToList());
+            }
         }
         public ActionResult AvailableProducts()
         {
              ProductsDataModel data = new ProductsDataModel();
+            if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
             return View(data.GetAvailableProducts());
         }
         public ActionResult UpcomingProducts()
         {
             ProductsDataModel data = new ProductsDataModel();
+            if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
             return View(data.GetUpComingProducts());
         }
 
         public ActionResult DiscountProducts()
         {
             ProductsDataModel data = new ProductsDataModel();
+            if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
             return View(data.GetAllDiscountProducts());
         }
         public JsonResult SearchByCategory(string SearchValue)
         {
             ProductsDataModel data = new ProductsDataModel();
+
             return Json(data.GetProductByCategory(SearchValue, 5), JsonRequestBehavior.AllowGet);
         }
 
@@ -60,11 +81,13 @@ namespace OnlineTechShop.Controllers.SalesExecutive
             {
                 TempData["msg"] = "Cart is empty!";
                 List<CartViewModel> carts = null;
+                if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
                 return View(carts);
             }
             else
             {
                 List<CartViewModel> carts = (List<CartViewModel>)obj;
+                if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
                 return View(carts);
             }
         }
@@ -124,6 +147,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
         {
             if (Session["SalesCart"] == null)
             {
+                if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
                 return RedirectToAction("SalesCart");
             }
             else
@@ -136,6 +160,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
                 //Session["cart_quantity"] = cartQuantity;
                 Session["SalesCart"] = currentCart;
                 TempData["msg"] = "Proudct is removed!";
+                if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
                 return RedirectToAction("SalesCart");
             }
         }
@@ -143,8 +168,8 @@ namespace OnlineTechShop.Controllers.SalesExecutive
         public ActionResult ClearCart()
         {
                 Session["SalesCart"] = null;
-            
-                return RedirectToAction("SalesCart");
+            if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
+            return RedirectToAction("SalesCart");
             
             
           
@@ -155,6 +180,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
             Object obj = Session["SalesCart"];
 
             List<CartViewModel> carts = (List<CartViewModel>)obj;
+            if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
             return View(carts);
 
         }
@@ -162,7 +188,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
         public ActionResult Sell(FormCollection formCollection )
         {
             Object obj = Session["SalesCart"];
-            
+            seid2 = (int)Session["seid"];
 
             if (formCollection.Get("FullName") =="" ) { TempData["fn"] = "The Name field is required"; return RedirectToAction("Sell"); }
             else if (formCollection.Get("Address") == "") { TempData["a"] = "The Address field is required"; return RedirectToAction("Sell"); }
@@ -171,6 +197,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
 
             ProductsDataModel data = new ProductsDataModel();
             Models.Product SellingProduct = new Product();
+          
           
             var CurrentQuantity=0;
             var UpdatedQuantity=0;
@@ -185,7 +212,20 @@ namespace OnlineTechShop.Controllers.SalesExecutive
                 UpdatedQuantity = CurrentQuantity - c.Quantity;
                 SellingProduct.Quantity = UpdatedQuantity;
                 data.UpdateProduct(SellingProduct);
-
+                var sl = new Sales_Log() {
+                    UserId = 2,
+                    ProductId=c.ProductId,
+                    SalesExecutiveId= seid2,
+                    DateSold= DateTime.Today,
+                    Quantity = c.Quantity,
+                    Discount= SellingProduct.Discount,
+                    Tax= SellingProduct.Tax,
+                    TotalPrice=(decimal)c.TotalPrice,
+                    Status="Sold",
+                    Profits= ((SellingProduct.SellingPrice) *c.Quantity) - ((SellingProduct.BuyingPrice) * c.Quantity)
+                };
+                context.Sales_Log.Add(sl);
+                context.SaveChanges();
             }
             // SellingProduct = data.GetProductById(id);
 
@@ -196,11 +236,13 @@ namespace OnlineTechShop.Controllers.SalesExecutive
             // data.UpdateProduct(SellingProduct);
 
             Session["SalesCart"] = null;
+            if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
             return RedirectToAction("Products");
 
         }
         public ActionResult SellChart()
         {
+            if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
             return View();
         }
 

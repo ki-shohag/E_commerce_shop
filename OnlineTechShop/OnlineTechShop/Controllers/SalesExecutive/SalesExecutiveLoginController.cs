@@ -33,6 +33,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
                 Session["seid"] = se.Id;
                
                 return RedirectToAction("Index", "SalesExecutive");
+               
             }
             else
             {

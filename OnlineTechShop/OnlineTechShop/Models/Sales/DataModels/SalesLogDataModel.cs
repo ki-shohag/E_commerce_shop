@@ -12,7 +12,7 @@ namespace OnlineTechShop.Models.Sales.DataModels
 
         public List<Sales_Log> GetAllSalesLog()
         {
-            List<Sales_Log> SalesLog = data.Sales_Log.ToList();
+            List<Sales_Log> SalesLog = data.Sales_Log.GroupBy(x =>x.DateSold).Select(grp => grp.FirstOrDefault()).ToList();
             return SalesLog;
         }
        

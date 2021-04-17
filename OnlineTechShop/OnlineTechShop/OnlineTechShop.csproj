@@ -192,6 +192,7 @@
     <Compile Include="Controllers\Customer\ReviewsController.cs" />
     <Compile Include="Controllers\SalesExecutive\SalesExecutiveController.cs" />
     <Compile Include="Controllers\SalesExecutive\SalesExecutiveLoginController.cs" />
+    <Compile Include="Controllers\SalesExecutive\SalesExecutiveLogOutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
