@@ -11,12 +11,13 @@ using OnlineTechShop.Models.Sales.DataModels;
 using System.Web.Script.Serialization;
 
 
+
 namespace OnlineTechShop.Controllers.SalesExecutive
 {
     public class SalesExecutiveController : Controller
     {
         TechShopDbEntities context = new TechShopDbEntities();
-         public int seid2 = 0;
+        public int seid2 = 0;
 
         CartDataModel cartData = new CartDataModel();
         ProductsDataModel productsData = new ProductsDataModel();
@@ -34,8 +35,8 @@ namespace OnlineTechShop.Controllers.SalesExecutive
             else {
                 return View(context.SalesExecutives.Find(seid));
             }
-          
-            
+
+
         }
         public ActionResult Products()
         {
@@ -50,7 +51,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
         }
         public ActionResult AvailableProducts()
         {
-             ProductsDataModel data = new ProductsDataModel();
+            ProductsDataModel data = new ProductsDataModel();
             if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
             return View(data.GetAvailableProducts());
         }
@@ -67,11 +68,13 @@ namespace OnlineTechShop.Controllers.SalesExecutive
             if (Session["seid"] == null) { return RedirectToAction("Index", "SalesExecutiveLogin"); }
             return View(data.GetAllDiscountProducts());
         }
-        public JsonResult SearchByCategory(string SearchValue)
+        [HttpGet]
+        public ActionResult SearchByCategory(string SearchValue)
         {
             ProductsDataModel data = new ProductsDataModel();
 
-            return Json(data.GetProductByCategory(SearchValue, 5), JsonRequestBehavior.AllowGet);
+             //return Json(data.GetProductByCategory(SearchValue, 5), JsonRequestBehavior.AllowGet);
+             return Json(JsonConvert.SerializeObject(data.GetProductByCategory(SearchValue, 5)), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SalesCart()
@@ -210,6 +213,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
 
                 CurrentQuantity = SellingProduct.Quantity;
                 UpdatedQuantity = CurrentQuantity - c.Quantity;
+               // if (UpdatedQuantity == 0) { }
                 SellingProduct.Quantity = UpdatedQuantity;
                 data.UpdateProduct(SellingProduct);
                 var sl = new Sales_Log() {

@@ -9,9 +9,10 @@
 
 namespace OnlineTechShop.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Sales_Log
     {
         public int Id { get; set; }
@@ -25,9 +26,11 @@ namespace OnlineTechShop.Models
         public decimal TotalPrice { get; set; }
         public string Status { get; set; }
         public Nullable<decimal> Profits { get; set; }
-    
+        [JsonIgnore]
         public virtual Customer Customer { get; set; }
+        [JsonIgnore]
         public virtual Product Product { get; set; }
+        [JsonIgnore]
         public virtual SalesExecutive SalesExecutive { get; set; }
     }
 }

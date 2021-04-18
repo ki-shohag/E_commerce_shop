@@ -39,10 +39,13 @@ namespace OnlineTechShop.Models
         public Nullable<System.DateTime> LastUpdated { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [Newtonsoft.Json.JsonIgnore]
         public virtual ICollection<Rating> Ratings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [Newtonsoft.Json.JsonIgnore]
         public virtual ICollection<Review> Reviews { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [Newtonsoft.Json.JsonIgnore]
         public virtual ICollection<Sales_Log> Sales_Log { get; set; }
     }
 }

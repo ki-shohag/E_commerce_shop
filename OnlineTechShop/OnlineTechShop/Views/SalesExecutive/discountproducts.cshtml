@@ -110,7 +110,7 @@
                         @Html.DisplayFor(modelItem => item.Quantity)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Images)
+                        <img src="@Html.DisplayFor(modelItem => item.Images)" alt="Product Preview" width="100" height="100">
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Discount)
@@ -172,7 +172,7 @@
                                 "<td>" + value.Brand + "</td>" +
                                 "<td>" + value.Features + "</td>" +
                                 "<td>" + value.Quantity + "</td>" +
-                                "<td>" + value.Images + "</td>" +
+                                "<td>" + "<img src='" + value.Images + "' alt='Product Preview' width='100' height='100'>" + "</td>" +
                                 "<td>" + value.Discount + "</td>" +
                                 "<td>" + value.Tax + "</td>" +
                                 "<td>" + value.DateAdded + "</td>" +
