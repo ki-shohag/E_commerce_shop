@@ -31,7 +31,7 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         }
         public List<Product> GetAllDiscountProducts()
         {
-            return data.Products.Where(x => x.Discount > 0 && x.Status == "In Stock" && x.Quantity > 0).OrderByDescending(x => x.Id).Take(10).ToList();
+            return data.Products.Where(x => x.Discount > 0).OrderByDescending(x => x.Id).Take(10).ToList();
         }
         public Product GetProductById(int id)
         {
@@ -39,7 +39,7 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         }
         public List<Product> GetProductByCategory(string category, int limit)
         {
-            return data.Products.Where(x => x.Category == category && x.Status == "In Stock").ToList();
+            return data.Products.Where(x => x.Category == category).ToList();
         }
         public List<Product> GetProductByCategoryAndBrand(string category, string brand, int limit)
         {
@@ -73,6 +73,10 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         {
             data.Entry(prd).State = System.Data.Entity.EntityState.Modified;
             data.SaveChanges();
+        }
+        public List<Product> GetProductByName(string Name)
+        {
+            return data.Products.Where(x => x.ProductName == Name).ToList();
         }
     }
 }

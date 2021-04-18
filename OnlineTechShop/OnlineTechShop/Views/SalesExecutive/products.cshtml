@@ -25,6 +25,7 @@
         </select> <br>
         <input type="text" id="SearchValue">
         <input type="submit" id="SearchButton" value="Search" style="float:right">
+       <br> <input type="text" id="searcAny" placeholder="Search here by anything" style="float:right; width:270px;">
     </div>
 
 
@@ -110,7 +111,7 @@
                         @Html.DisplayFor(modelItem => item.Quantity)
                     </td>
                     <td>
-                      
+
                         <img src="@Html.DisplayFor(modelItem => item.Images)" alt="Product Preview" width="100" height="100">
                     </td>
                     <td>
@@ -166,6 +167,7 @@
 
 
                         $.each(JSON.parse(result), function (index, value) {
+
                             var Data = "<tr>" +
                                 "<td>" + value.ProductName + "</td>" +
                                 "<td>" + value.ProductDescription + "</td>" +
@@ -176,14 +178,32 @@
                                 "<td>" + value.Brand + "</td>" +
                                 "<td>" + value.Features + "</td>" +
                                 "<td>" + value.Quantity + "</td>" +
-                                "<td>" + "<img src='"+ value.Images+"' alt='Product Preview' width='100' height='100'>" + "</td>" +
+                                "<td>" + "<img src='" + value.Images + "' alt='Product Preview' width='100' height='100'>" + "</td>" +
                                 "<td>" + value.Discount + "</td>" +
                                 "<td>" + value.Tax + "</td>" +
-                                "<td>" + value.DateAdded+ "</td>" +
+                                "<td>" + value.DateAdded + "</td>" +
                                 "<td>" + value.LastUpdated + "</td>" +
-                                "<td>"+"<input type='number' id='quantity' name='quantity' min='1' max='"+value.Quantity+"' value='1' onchange='quantity(this.value)'>" +"<button class='btn btn-sm btn-block btn-success' id='' onclick='cart(" + value.Id + ")' value='" + value.Id + "'>Add to cart</button> </td>" +
+                                "<td>" + "<input type='number' id='quantity' name='quantity' min='1' max='" + value.Quantity + "' value='1' onchange='quantity(this.value)'>" + "<button class='btn btn-sm btn-block btn-success' id='' onclick='cart(" + value.Id + ")' value='" + value.Id + "'>Add to cart</button> </td>" +
                                 "</tr>";
-                            body.append(Data);
+                            var Data2 = "<tr>" +
+                                "<td>" + value.ProductName + "</td>" +
+                                "<td>" + value.ProductDescription + "</td>" +
+                                "<td>" + value.Status + "</td>" +
+                                "<td>" + value.BuyingPrice + "</td>" +
+                                "<td>" + value.SellingPrice + "</td>" +
+                                "<td>" + value.Category + "</td>" +
+                                "<td>" + value.Brand + "</td>" +
+                                "<td>" + value.Features + "</td>" +
+                                "<td>" + value.Quantity + "</td>" +
+                                "<td>" + "<img src='" + value.Images + "' alt='Product Preview' width='100' height='100'>" + "</td>" +
+                                "<td>" + value.Discount + "</td>" +
+                                "<td>" + value.Tax + "</td>" +
+                                "<td>" + value.DateAdded + "</td>" +
+                                "<td>" + value.LastUpdated + "</td>" +
+                                "<td> </td>" +
+                                "</tr>";
+                            if (value.Status == "In Stock") { body.append(Data); } else { body.append(Data2); }
+
 
                         });
                     }
@@ -195,37 +215,37 @@
 
 <script>
     //ShoppingCart
-    var q=1;
+    var q = 1;
     function quantity(qua) {
-        q=qua;
+        q = qua;
     }
 
     function cart(id) {
-        
-            mydata = JSON.stringify({ "ProductId": id, "Quantity": q });
-            //alert(mydata);
-            cartAjax(mydata);
-            function cartAjax(mydata) { }
-            $.ajax({
-                type: "POST",
-                url: "/SalesExecutive/AddProductToCart",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: mydata,
-                success: function (result) {
-                    alert(JSON.parse(result).msg);
-                   
-                    if (JSON.parse(result).msg == "Added prodcut!") {
-                        $('.alert').show();
-                        $("#alertMsg").text("Added product to the cart!");
-                    }
-                    
+
+        mydata = JSON.stringify({ "ProductId": id, "Quantity": q });
+        //alert(mydata);
+        cartAjax(mydata);
+        function cartAjax(mydata) { }
+        $.ajax({
+            type: "POST",
+            url: "/SalesExecutive/AddProductToCart",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: mydata,
+            success: function (result) {
+                alert(JSON.parse(result).msg);
+
+                if (JSON.parse(result).msg == "Added prodcut!") {
+                    $('.alert').show();
+                    $("#alertMsg").text("Added product to the cart!");
                 }
-            });
+
+            }
+        });
 
 
-        }
-    
+    }
+
 </script>
 <script>
     var tableToExcel = (function () {
@@ -244,4 +264,29 @@
         }
     })()
 
- </script>
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#searcAny').keyup(function () {
+            search_table($(this).val());
+        });
+        function search_table(value) {
+            $('#tbody tr').each(function () {
+                var found = 'false';
+                var x = this;
+                $(this).each(function () {
+                    if ($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+                        found = 'true';
+                    }
+                });
+                if (found == 'true') {
+                    $(x).show();
+                }
+                else {
+                    $(x).hide();
+                }
+            });
+        }
+    });
+</script>

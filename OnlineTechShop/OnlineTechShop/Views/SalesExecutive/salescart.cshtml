@@ -26,9 +26,9 @@
                         <th>Action</th>
                     </tr>    @foreach (var item in Model)
                     {
-                        totalDiscount = item.Discount + totalDiscount;
-                        totalTax = item.Tax + totalTax;
-                        subtotal = (item.UnitPrice * item.Quantity) + subtotal;
+                        totalDiscount += ((item.UnitPrice * item.Quantity) * (item.Discount * item.Quantity)) / 100;
+                        totalTax += ((item.UnitPrice * item.Quantity) * (item.Tax * item.Quantity)) / 100;
+                        subtotal += (item.UnitPrice * item.Quantity) - ((item.UnitPrice * item.Quantity) * (item.Discount * item.Quantity) / 100) + ((item.UnitPrice * item.Quantity) * (item.Tax * item.Quantity)) / 100;
                         <tr>
                             <td>P-@item.ProductId</td>
                             <td>@item.ProductName</td>
@@ -37,23 +37,23 @@
                             <td>
                              <label>@item.Quantity</label>
                             </td>
-                            <td>@item.Discount%</td>
-                            <td>@item.Tax%</td>
-                            <td>@(item.UnitPrice * item.Quantity) BDT</td>
+                            <td>@(item.Discount*item.Quantity)%</td>
+                            <td>@(item.Tax*item.Quantity)%</td>
+                            <td>@((item.UnitPrice * item.Quantity)-((item.UnitPrice*item.Quantity)*(item.Discount*item.Quantity)/100)+((item.UnitPrice * item.Quantity)*(item.Tax*item.Quantity))/100) Taka</td>
                             <td><a class="btn btn-block btn-danger btn-sm text-light" href="/SalesExecutive/RemoveProductFromCart/@item.ProductId">Remove</a></td>
                         </tr>
                     }
                     <tr class="text-left">
                         <td colspan="1"><b>Total Tax:</b> </td>
-                        <td colspan="8">@(subtotal * totalTax / 100) BDT (@totalTax%)</td>
+                        <td colspan="8">@totalTax Taka </td>
                     </tr>
                     <tr class="text-left">
                         <td colspan="1"><b>Total Discount:</b> </td>
-                        <td colspan="8">@(subtotal * totalDiscount / 100) BDT (@totalDiscount%)</td>
+                        <td colspan="8">@totalDiscount Taka</td>
                     </tr>
                     <tr class="text-left">
                         <td colspan="1"><b>Sub Total:</b> </td>
-                        <td colspan="8">@subtotal BDT</td>
+                        <td colspan="8">@subtotal Taka</td>
                     </tr>
                 </table>
 

@@ -76,6 +76,14 @@ namespace OnlineTechShop.Controllers.SalesExecutive
              //return Json(data.GetProductByCategory(SearchValue, 5), JsonRequestBehavior.AllowGet);
              return Json(JsonConvert.SerializeObject(data.GetProductByCategory(SearchValue, 5)), JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public ActionResult SearchByName(string SearchValue)
+        {
+            ProductsDataModel data = new ProductsDataModel();
+
+            //return Json(data.GetProductByCategory(SearchValue, 5), JsonRequestBehavior.AllowGet);
+            return Json(JsonConvert.SerializeObject(data.GetProductByName(SearchValue)), JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult SalesCart()
         {
@@ -101,9 +109,10 @@ namespace OnlineTechShop.Controllers.SalesExecutive
             CartViewModel cart = cartData.ConvertToCartViewModel(productsData.GetProductById(data.ProductId));
             int productStockQuantity = productsData.GetProductStockQuantity(data.ProductId);
             int totalCartQuantity = 0;
-            if (productStockQuantity > data.Quantity)
+            if (productStockQuantity >= data.Quantity)
             {
                 cart.Quantity = data.Quantity;
+                if (cart.Quantity == 0) { return Json(JsonConvert.SerializeObject(new { msg = "Cant Add 0 Quantity!"}), JsonRequestBehavior.AllowGet); }
                 if (Session["SalesCart"] == null)
                 {
                     var currentCart = cartData.GetNewCart();
@@ -213,7 +222,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
 
                 CurrentQuantity = SellingProduct.Quantity;
                 UpdatedQuantity = CurrentQuantity - c.Quantity;
-               // if (UpdatedQuantity == 0) { }
+                if (UpdatedQuantity == 0) { SellingProduct.Status = "Stock Out"; }
                 SellingProduct.Quantity = UpdatedQuantity;
                 data.UpdateProduct(SellingProduct);
                 var sl = new Sales_Log() {
