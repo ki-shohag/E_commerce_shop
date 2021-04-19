@@ -22,7 +22,7 @@ namespace OnlineTechShop.Models.CustomerAccess.ViewModels
         public string Address { get; set; }
         public string Status { get; set; }
         public DateTime JoiningDate { get; set; }
-        public DateTime LastUpdated { get; set; }
+        public DateTime? LastUpdated { get; set; }
 
         CustomerDataModel customerData = new CustomerDataModel();
         public List<CustomerViewModel> ShowAllCustomers()

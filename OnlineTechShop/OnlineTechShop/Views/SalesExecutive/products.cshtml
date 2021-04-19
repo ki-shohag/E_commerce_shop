@@ -1,0 +1,224 @@
+﻿@model IEnumerable<OnlineTechShop.Models.Product>
+@{
+    Layout = "~/Views/Shared/_LayoutSalesExecutive.cshtml";
+}
+
+
+<div class="w3-container tab">
+    <div style="float:left"> <h2 style="text-align:center"> Product List </h2></div><br><br>
+    <div class="dropdown" style="float:left; padding:15px;">
+
+        <button class="dropbtn" style="text-align:right">Filter By</button>
+        <div class="dropdown-content">
+            @Html.ActionLink("Available Products", "AvailableProducts", "SalesExecutive")
+            @Html.ActionLink("Upcoming Products", "UpcomingProducts", "SalesExecutive")
+            @Html.ActionLink("Discount Products", "DiscountProducts", "SalesExecutive")
+        </div>
+    </div>
+
+
+    <div style="float:right">
+        <h7>Search By: </h7>
+        <select id="SearchBy" style="float:right">
+            <option value="Name">Name</option>
+            <option value="Category">Category</option>
+        </select> <br>
+        <input type="text"  id="SearchValue">
+        <input type="submit" id="SearchButton" value="Search" style="float:right">
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuyingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Features)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Images)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdated)
+            </th>
+            <th></th>
+        </tr>
+        <tbody id="tbody">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BuyingPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SellingPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Features)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Images)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Discount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAdded)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastUpdated)
+                    </td>
+                    <td>
+
+                        @if (item.Status == "In Stock") {
+                            <input type="number" id="quantity" name="quantity" min="1" max="@item.Quantity" value="1" onchange="quantity(this.value)">
+                            <button class="btn btn-sm btn-block btn-success" id="" onclick="cart(@item.Id)" value="@item.Id">Add to cart</button>
+                        }
+
+
+                        @* @Html.ActionLink("Add to Cart", "AddToCart", "SalesExecutive", new { id = item.Id })*@
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#SearchButton").click(function () {
+            var SearchBy = $("#SearchBy").val();
+            var SearchValue = $("#SearchValue").val();
+            var body = $("#tbody");
+            body.html("");
+            $.ajax({
+                type: "get",
+                url: "/SalesExecutive/SearchBy" + SearchBy + "?SearchValue=" + SearchValue,
+                datatype: 'json',
+
+                success: function (result) {
+
+                    if (result.length != 0) {
+
+
+
+                        $.each(result, function (index, value) {
+                            var Data = "<tr>" +
+                                "<td>" + value.ProductName + "</td>" +
+                                "<td>" + value.ProductDescription + "</td>" +
+                                "<td>" + value.Status + "</td>" +
+                                "<td>" + value.BuyingPrice + "</td>" +
+                                "<td>" + value.SellingPrice + "</td>" +
+                                "<td>" + value.Category + "</td>" +
+                                "<td>" + value.Brand + "</td>" +
+                                "<td>" + value.Features + "</td>" +
+                                "<td>" + value.Quantity + "</td>" +
+                                "<td>" + value.Images + "</td>" +
+                                "<td>" + value.Discount + "</td>" +
+                                "<td>" + value.Tax + "</td>" +
+                                "<td>" + value.DateAdded+ "</td>" +
+                                "<td>" + value.LastUpdated + "</td>" +
+                                "<td>"+"<input type='number' id='quantity' name='quantity' min='1' max='"+value.Quantity+"' value='1' onchange='quantity(this.value)'>" +"<button class='btn btn-sm btn-block btn-success' id='' onclick='cart(" + value.Id + ")' value='" + value.Id + "'>Add to cart</button> </td>" +
+                                "</tr>";
+                            body.append(Data);
+
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    //ShoppingCart
+    var q=1;
+    function quantity(qua) {
+        q=qua;
+    }
+
+    function cart(id) {
+        
+            mydata = JSON.stringify({ "ProductId": id, "Quantity": q });
+            //alert(mydata);
+            cartAjax(mydata);
+            function cartAjax(mydata) { }
+            $.ajax({
+                type: "POST",
+                url: "/SalesExecutive/AddProductToCart",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: mydata,
+                success: function (result) {
+                    alert(JSON.parse(result).msg);
+                   
+                    if (JSON.parse(result).msg == "Added prodcut!") {
+                        $('.alert').show();
+                        $("#alertMsg").text("Added product to the cart!");
+                    }
+                    
+                }
+            });
+
+
+        }
+    
+</script>

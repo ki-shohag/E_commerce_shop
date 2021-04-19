@@ -21,5 +21,6 @@ namespace OnlineTechShop.Models
         public short ExpirationYear { get; set; }
         public string ShippingMethod { get; set; }
         public string ShippingAddress { get; set; }
+        public int Customer_Id { get; set; }
     }
 }

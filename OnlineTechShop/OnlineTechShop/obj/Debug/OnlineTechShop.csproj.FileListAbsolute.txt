@@ -27,16 +27,6 @@ D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\ros
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\vbc.rsp
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\VBCSCompiler.exe
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\VBCSCompiler.exe.config
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.SqlServer.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Microsoft.Web.Infrastructure.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Helpers.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Mvc.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Razor.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.Deployment.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.Razor.dll
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.xml
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.SqlServer.xml
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Razor.xml
@@ -51,16 +41,67 @@ D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Deb
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csproj.CopyComplete
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.dll
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.pdb
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\BouncyCastle.Crypto.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.dll
-D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Buffers.dll
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\BouncyCastle.Crypto.xml
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.pdb
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.xml
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.pdb
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.xml
 D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Buffers.xml
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Newtonsoft.Json.xml
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Rotativa.Core.dll
+D:\Programs\C#\Mid Project\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Rotativa.MVC.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csprojAssemblyReference.cache
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.pdb
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\OnlineTechShop.dll.config
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\OnlineTechShop.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\OnlineTechShop.pdb
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\csc.exe
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\csc.exe.config
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\csc.rsp
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\csi.exe
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\csi.rsp
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\System.AppContext.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\vbc.exe
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\vbc.exe.config
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\vbc.rsp
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\VBCSCompiler.exe
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Rotativa.Core.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Rotativa.MVC.dll
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\BouncyCastle.Crypto.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.SqlServer.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.pdb
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.pdb
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Newtonsoft.Json.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Buffers.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Razor.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.Razor.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Helpers.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Mvc.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Dell\Desktop\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csproj.CopyComplete
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\OnlineTechShop.dll.config
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\OnlineTechShop.dll
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\OnlineTechShop.pdb
@@ -90,20 +131,8 @@ F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTe
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\vbc.rsp
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\VBCSCompiler.exe
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\roslyn\VBCSCompiler.exe.config
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\BouncyCastle.Crypto.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.SqlServer.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Microsoft.Web.Infrastructure.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Buffers.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Helpers.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Mvc.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Razor.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.Deployment.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.Razor.dll
+F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Rotativa.Core.dll
+F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Rotativa.MVC.dll
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\BouncyCastle.Crypto.xml
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.xml
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\EntityFramework.SqlServer.xml
@@ -111,6 +140,7 @@ F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTe
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MailKit.xml
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.pdb
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\MimeKit.xml
+F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Newtonsoft.Json.xml
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Buffers.xml
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Razor.xml
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Webpages.xml
@@ -119,12 +149,8 @@ F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTe
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Helpers.xml
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\System.Web.Mvc.xml
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csprojAssemblyReference.cache
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csproj.CoreCompileInputs.cache
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csproj.CopyComplete
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.dll
 F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.pdb
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\obj\Debug\OnlineTechShop.csprojAssemblyReference.cache
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\itextsharp.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Rotativa.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Newtonsoft.Json.dll
-F:\AIUB\9th Semester\ADVANCED PROGRAMMING WITH .NET\Mid\E_commerce_shop\OnlineTechShop\OnlineTechShop\bin\Newtonsoft.Json.xml

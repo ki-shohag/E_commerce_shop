@@ -71,13 +71,14 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CardType" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="CardNumber" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="ExpirationMonth" Type="smallint" Nullable="false" />
     <Property Name="ExpirationYear" Type="smallint" Nullable="false" />
     <Property Name="ShippingMethod" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="ShippingAddress" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -113,6 +114,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
     <Property Name="ProductName" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="ProductDescription" Type="text" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="30" Nullable="false" />
@@ -122,6 +124,7 @@
     <Property Name="Features" Type="text" />
     <Property Name="Quantity" Type="int" Nullable="false" />
     <Property Name="Images" Type="varchar" MaxLength="250" />
+    <Property Name="PurchasedDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Ratings">
     <Key>

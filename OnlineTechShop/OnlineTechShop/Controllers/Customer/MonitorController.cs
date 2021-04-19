@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineTechShop.Models.CustomerAccess.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,21 +9,18 @@ namespace OnlineTechShop.Controllers.Customer
 {
     public class MonitorController : Controller
     {
+        ProductsDataModel productsData = new ProductsDataModel();
         // GET: Monitor
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View(productsData.GetProductByCategory("Monitor",10));
         }
         [HttpGet]
         public ActionResult MonitorBrand(string brand)
         {
-            return View();
-        }
-        [HttpGet]
-        public ActionResult ShowMonitor(int? id)
-        {
-            return View();
+            ViewBag.Brand = brand;
+            return View(productsData.GetProductByCategoryAndBrand("Monitor",brand,10));
         }
     }
 }

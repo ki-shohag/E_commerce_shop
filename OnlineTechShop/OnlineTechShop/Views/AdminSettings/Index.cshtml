@@ -1,0 +1,197 @@
+﻿@model OnlineTechShop.Models.Admin
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Update Profile</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <script src="~/Contents/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Contents/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <style>
+        .table-view {
+            width: 100%;
+            color: #212529;
+        }
+
+            .table-view th,
+            .table-view td {
+                padding: 0.75rem;
+                vertical-align: top;
+                border-top: 1px solid #dee2e6;
+            }
+    </style>
+</head>
+<header id="header" class="">
+    <div class="container d-flex align-items-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-1">
+
+            </div>
+
+            <div class="col-12 col-lg-12">
+                <nav class="nav-menu d-none d-lg-block">
+
+                    <ul>
+                        <li class="dropdown-header">
+                            <a href="/AdminDashboard/">Dashboard</a>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/AdminProfile">Profile</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminList">Admins</a>
+                            <ul>
+                                <li><a href="/AdminList">Admin List</a></li>
+                                <li><a href="/AdminList/Create">Add Admin</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/SalesExecutiveList">Sales Executives</a>
+                            <ul>
+                                <li><a href="/SalesExecutiveList">Sales Executive List</a></li>
+                                <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/BuyingAgentList">BuyingAgents</a>
+                            <ul>
+                                <li><a href="/BuyingAgentList">Buying Agent List</a></li>
+                                <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/ProductList">Products</a>
+                            <ul>
+                                <li><a href="/ProductList">Product List</a></li>
+                                <li><a href="/ProductList/Create">Add Products</a></li>
+                                <li><a href="/ProductList/Add">Add Quantity</a></li>
+                                <li><a href="/OldProductList">Used Products</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/PurchaseList">Purchases</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/CustomerList">Customers</a>
+                            <ul>
+                                <li><a href="/CustomerList">Active Customers</a></li>
+                                <li><a href="/CustomerList/Restricted">Restricted Customers</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="dropdown-header">
+                            <a href="/Profits">Profits</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminSettings">Settings</a>
+                            <ul>
+                                <li><a href="/AdminSettings">Update Profile</a></li>
+                                <li><a href="/AdminSettings/ChangePassword">Change Password</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-header">
+                            <a href="/Logout">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+<main id="main ">
+    <div class="container">
+        <br /><br /><br />
+        <div class="row mt-2 justify-content-center">
+            <div class="col-12 col-lg-7 text-center">
+                @using (Html.BeginForm("UpdateProfile", "AdminSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <table class="table-view">
+                        <tr>
+                            <td colspan="5" align="center"><h3>@Html.DisplayFor(model => model.FullName)'s Information</h3></td>
+                        </tr>&nbsp;&nbsp;
+                        <tr>
+                            <td rowspan="11">
+                                <img src="~/Contents/Upload_Files/Admins/@Html.DisplayFor(model => model.ProfilePic)" alt="" height="300" width="250" />
+                                <input type="hidden" name="id" value="@Html.DisplayFor(model => model.Id)" />
+                            </td>
+                            <td rowspan="11" width="2%">&nbsp;</td>
+                            <td width="20%">User Name</td>
+                            <td rowspan="11" width="5%">&nbsp;</td>
+                            <td width="50%">@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                        </tr>
+                        &nbsp;&nbsp;
+                        <tr>
+                            <td>Email</td>
+                            <td>@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                        </tr>&nbsp;&nbsp;
+                        <tr>
+                            <td>Password</td>
+                            <td>@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @class = "form-control", @readonly = "readonly" } })</td>
+                        </tr>&nbsp;&nbsp;
+                        <tr>
+                            <td>Phone</td>
+                            <td><input name="phone" type="text" class="form-control" value="@Html.DisplayFor(model => model.Phone)" data-val="true" data-val-required="You must enter your phone number" data-val-range-min="99999" and data-val-range-max="99999999999" data-val-range="Enter a valid phone number" /></td>
+                        </tr>
+                        <tr><td colspan="3">@Html.ValidationMessage("phone", new { @class = "text-danger" })</td></tr>
+                        &nbsp;&nbsp;
+
+                        <tr>
+                            <td>Address</td>
+                            <td><input name="address" type="text" class="form-control" value="@Html.DisplayFor(model => model.Address)" data-val="true" data-val-required="Address is required." data-val-length-max="150" data-val-length="Too much characters!!"></td>
+                        </tr>
+                        <tr><td colspan="3">@Html.ValidationMessage("address", new { @class = "text-danger" })</td></tr>
+                        &nbsp;&nbsp;
+
+                        <tr>
+                            <td>Image</td>
+                            <td>
+                                @Html.HiddenFor(model => model.ProfilePic)
+                                <input type="file" name="image" class="form-control" />
+                            </td>
+                        </tr>&nbsp;&nbsp;
+
+                        <tr>
+                            <td>Joining Date</td>
+                            <td>@Html.EditorFor(model => model.JoiningDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                        </tr>&nbsp;&nbsp;
+                        <tr>
+                            <td>Last Updated</td>
+                            <td>@Html.EditorFor(model => model.LastUpdated, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                        </tr>&nbsp;&nbsp;
+                        <tr><td colspan="3" align="right"><input type="submit" value="Save" class="btn btn-warning" /></td></tr>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.intellisense.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-1.8.2.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery-ui-1.8.24.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate-vsdoc.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.debug.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/knockout-2.2.0.js"></script>
+<script src="~/Contents/vendor/jquery/jqs/modernizr-2.6.2.js"></script>

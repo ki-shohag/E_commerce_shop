@@ -52,14 +52,28 @@
                         <a class="btn-block btn-primary rounded btn-sm" href="/BuyingAgentProfile">Profile</a>
                         <a class="btn-block btn-success rounded btn-sm" href="/BuyingAgentProfile/BuyingHistory">View Buying History</a>
                         <a class="btn-block btn-secondary rounded btn-sm" href="/Chart">Buying Category Chart</a>
+                        <a class="btn-block btn-warning rounded btn-sm" href="/Chart/Bar">Buying Category Purchase Chart</a>
                         <a class="btn-block btn-danger rounded btn-sm" href="/BuyingAgentLogOut">Logout</a>
                     </div>
                 </div>
                 <div class="col-12 col-lg-9 border border-secondary rounded p-3">
-                    <h5>Buying History : </h5>
+                    <span class="text-danger">@TempData["msg"]</span>
+                    <h5>Buying History :</h5>
                     <p style="margin-right: 5em">
                         @Html.ActionLink("Export To PDF", "ExportPdf")
                     </p>
+                    <form method="POST" action="/BuyingAgentProfile/BuyingHistory">
+                        <center>
+                            <div class="col-12 col-lg-8 text-center">
+                                <input class="form-control" id="searchBox" name="searchCategory" placeholder="Search By Category..." type="text">
+                            </div>
+                        </center>
+                        <br />
+                        <center>
+                            <input class="btn-light rounded" type="submit" value="Search" />
+                        </center>
+                    </form>
+                    <br />
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>Customer ID</th>

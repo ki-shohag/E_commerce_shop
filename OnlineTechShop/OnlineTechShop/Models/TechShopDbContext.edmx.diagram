@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="774c50deb2ba44319610964d626057e1" Name="Diagram1">
+        <EntityTypeShape EntityType="TechShopDbModel.Admin" Width="1.5" PointX="8.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.BuyingAgent" Width="1.5" PointX="8.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.Customer" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.Old_Products" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.OrderData" Width="1.5" PointX="8.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.Product" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.Promotion" Width="1.5" PointX="10.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.Purchase_Log" Width="1.5" PointX="10.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.Rating" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.Review" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.Sales_Log" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.SalesExecutive" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechShopDbModel.WishList" Width="1.5" PointX="10.75" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="TechShopDbModel.FK_Old_Products_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TechShopDbModel.FK_Ratings_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TechShopDbModel.FK_Reviews_Customers1" ManuallyRouted="false" />
+        <AssociationConnector Association="TechShopDbModel.FK_Sales_Log_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TechShopDbModel.FK_Ratings_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="TechShopDbModel.FK_Reviews_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="TechShopDbModel.FK_Sales_Log_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="TechShopDbModel.FK_Sales_Log_SalesExecutives" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

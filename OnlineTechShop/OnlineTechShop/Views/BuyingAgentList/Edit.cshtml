@@ -1,0 +1,190 @@
+﻿@model OnlineTechShop.Models.BuyingAgent
+
+@{
+    Layout = null;
+}
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Edit Buying Agent</title>
+<meta content="" name="descriptison">
+<meta content="" name="keywords">
+
+<link href="~/Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="~/Contents/vendor/venobox/venobox.css" rel="stylesheet">
+<link href="~/Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="~/Contents/vendor/aos/aos.css" rel="stylesheet">
+<link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<title>Edit Buying Agent</title>
+<style>
+
+    .featured-item-box {
+        min-height: 150px;
+        background: #3b555d;
+        min-width: 80px;
+        color: white;
+        border-radius: 5px;
+        padding-top: 30px;
+    }
+</style>
+<header id="header" class="">
+    <div class="container d-flex align-items-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-1">
+
+            </div>
+
+            <div class="col-12 col-lg-12">
+                <nav class="nav-menu d-none d-lg-block">
+
+                    <ul>
+                        <li class="drop-down">
+                            <a href="/AdminList">Admins</a>
+                            <ul>
+                                <li><a href="/AdminList/Create">Register Admin</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/SalesExecutiveList">Sales Executives</a>
+                            <ul>
+                                <li><a href="/SalesExecutiveList/Create">Add Sales Executive</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/BuyingAgentList">BuyingAgents</a>
+                            <ul>
+                                <li><a href="/BuyingAgentList/Create">Add Buying Agent</a></li>
+                            </ul>
+                        <li class="drop-down">
+                            <a href="/ProductList">Products</a>
+                            <ul>
+                                <li><a href="/ProductList/Create">Add Products</a></li>
+                                <li><a href="/ProductList/Edit">Update Products</a></li>
+                                <li><a href="/ProductList/Delete">Remove Products</a></li>
+                            </ul>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Sales">Sales</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Profits">Profits</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminSettings">Settings</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/AdminProfile">Profile</a>
+                        </li>
+                        <li class="drop-down">
+                            <a href="/Logout">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<main id="main ">
+    <div class="container">
+        <br /><br /><br /><br /><br />
+        <div class="row mt-2 justify-content-center">
+            <div class="col-12 col-lg-6 text-center">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        <table border="1">
+                            <tr>
+                                <td rowspan="18">
+                                    <img src="~/Contents/Upload_Files/Admins/@Html.DisplayFor(model=>model.ProfilePic)" alt="" height="350" width="200" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Id)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td> @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td> @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2"> @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</td></tr>
+
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td colspan="2">@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })</td>
+                            </tr>
+                            <tr><td>@Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.JoiningDate, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.JoiningDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                            </tr>
+                            <tr><td>@Html.ValidationMessageFor(model => model.JoiningDate, "", new { @class = "text-danger" })</td></tr>
+
+                            <tr>
+                                <td colspan="3" align="right"><input type="submit" value="Save" class="btn btn-warning" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="~/Contents/vendor/jquery/jquery.min.js"></script>
+<script src="~/Contents/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/Contents/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="~/Contents/vendor/php-email-form/validate.js"></script>
+<script src="~/Contents/vendor/waypoints/jquery.waypoints.min.js"></script>
+<script src="~/Contents/vendor/counterup/counterup.min.js"></script>
+<script src="~/Contents/vendor/venobox/venobox.min.js"></script>
+<script src="~/Contents/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="~/Contents/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="~/Contents/vendor/aos/aos.js"></script>
+<script src="~/Contents/Scripts_Files/main.js"></script>
+<script src="~/Contents/Scripts_Files/productSearch.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -60,6 +60,7 @@
                         <a class="btn-block btn-primary rounded btn-sm" href="/BuyingAgentProfile">Profile</a>
                         <a class="btn-block btn-success rounded btn-sm" href="/BuyingAgentProfile/BuyingHistory">View Buying History</a>
                         <a class="btn-block btn-secondary rounded btn-sm" href="/Chart">Buying Category Chart</a>
+                        <a class="btn-block btn-warning rounded btn-sm" href="/Chart/Bar">Buying Category Purchase Chart</a>
                         <a class="btn-block btn-danger rounded btn-sm" href="/BuyingAgentLogOut">Logout</a>
                     </div>
                 </div>
@@ -69,6 +70,7 @@
                             <div class="col-11 text-center">
                                 <div id="piechart_3d" class="text-center" style="width: 900px; height: 400px;"></div>
                             </div>
+                            <a id="export" href="#" style="display:none" download="FileName">Export as Image</a>
                         </div>
                     </div>
                 </div>
@@ -140,6 +142,11 @@
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                google.visualization.events.addListener(chart, 'ready', function () {
+                    var exportData = chart.getImageURI();
+                    $('#export').attr({ 'href': exportData, 'download': 'Category Chart' }).show();
+
+                });
                 chart.draw(data, options);
             }
         });

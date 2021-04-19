@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using OnlineTechShop.Models;
 using OnlineTechShop.Models.BuyingAgentAccess.DataModels;
+using OnlineTechShop.Models.CustomerAccess.DataModels;
 
 namespace OnlineTechShop.Controllers.BuyingAgent
 {
@@ -14,6 +15,10 @@ namespace OnlineTechShop.Controllers.BuyingAgent
 
         public ActionResult Index(FormCollection collection)
         {
+            if(Session["flag"] == null)
+            {
+                return RedirectToAction("Index", "BuyingAgentLogin");
+            }
             if (collection["sortBy"] == "Price")
             {
                 ViewBag.SelectedOption = "Price";
@@ -32,6 +37,10 @@ namespace OnlineTechShop.Controllers.BuyingAgent
         }
         public ActionResult RejectOldProduct(int id)
         {
+            if (Session["flag"] == null)
+            {
+                return RedirectToAction("Index", "BuyingAgentLogin");
+            }
             OldProductDataModel oldProductData = new OldProductDataModel();
             Models.Old_Products oldProduct = oldProductData.GetOldProductById(id);
             oldProduct.Status = (string)"Rejected";
@@ -42,6 +51,10 @@ namespace OnlineTechShop.Controllers.BuyingAgent
 
         public ActionResult AcceptOldProduct(int id)
         {
+            if (Session["flag"] == null)
+            {
+                return RedirectToAction("Index", "BuyingAgentLogin");
+            }
             OldProductDataModel oldProductData = new OldProductDataModel();
             Models.Old_Products oldProduct = oldProductData.GetOldProductById(id);
             oldProduct.Status = (string)"Accepted";
@@ -50,8 +63,6 @@ namespace OnlineTechShop.Controllers.BuyingAgent
             TempData["msg"] = oldProduct.ProductName + "is added into purchase log";
             return RedirectToAction("Index");
         }
-
-
 
     }
 }

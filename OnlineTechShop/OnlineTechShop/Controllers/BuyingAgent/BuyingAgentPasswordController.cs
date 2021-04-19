@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineTechShop.Models.BuyingAgentAccess.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,22 @@ namespace OnlineTechShop.Controllers.BuyingAgent
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult Index(FormCollection collection)
+        {
+            BuyingAgentDataModel buyingAgentData = new BuyingAgentDataModel();
+            Models.BuyingAgent buyingAgent = buyingAgentData.GetBuyingAgentByEmail(collection["email"]);
+            if (buyingAgent != null)
+            {
+                TempData["msg"] = "*Request sent! Check your mail for further process.";
+                return RedirectToAction("Index", "BuyingAgentLogin");
+            }
+            else
+            {
+                TempData["msg"] = "*Unregisterd email!";
+                return RedirectToAction("Index", "BuyingAgentPassword");
+            }
         }
     }
 }

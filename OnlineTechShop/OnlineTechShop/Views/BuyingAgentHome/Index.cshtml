@@ -52,6 +52,7 @@
                         <a class="btn-block btn-primary rounded btn-sm" href="/BuyingAgentProfile">Profile</a>
                         <a class="btn-block btn-success rounded btn-sm" href="/BuyingAgentProfile/BuyingHistory">View Buying History</a>
                         <a class="btn-block btn-secondary rounded btn-sm" href="/Chart">Buying Category Chart</a>
+                        <a class="btn-block btn-warning rounded btn-sm" href="/Chart/Bar">Buying Category Purchase Chart</a>
                         <a class="btn-block btn-danger rounded btn-sm" href="/BuyingAgentLogOut">Logout</a>
                     </div>
                 </div>
@@ -88,7 +89,7 @@
                         @foreach (var item in ViewBag.OldProducts)
                         {
                             <tr>
-                                <td>@item.CutomerId</td>
+                                <td><a href="/ContactCustomer/Index/@item.CutomerId">@item.CutomerId</a></td>
                                 <td>@item.ProductName</td>
                                 <td>@item.ProductDescription</td>
 

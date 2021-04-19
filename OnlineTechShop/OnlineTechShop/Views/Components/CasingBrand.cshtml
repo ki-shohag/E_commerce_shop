@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Home</title>
+    <title>Casing</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -21,6 +21,12 @@
     <link href="~/Contents/CSS_Files/style.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel="stylesheet">
+
     <style>
         .featured-item-box {
             min-height: 150px;
@@ -35,117 +41,132 @@
 
 <body>
     <header id="header" class="">
-        <div class="container d-flex align-items-center">
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-8">
-                    <h1 class="logo"><a href="/home" class="text-success">Online Tech Shop</a></h1>
+                <div class="col-12 col-lg-6">
+                    <h1 class="logo"><a href="/Home" class="text-success">Online Tech Shop</a></h1>
                 </div>
-                <div class="col-lg-4 col-12">
-                    <a href="#" class="btn btn-light btn-sm">
-                        <i class="icofont-cart-alt h6"> Cart <span class="badge  badge-danger">4</span> </i>
-                    </a> | <a class="btn btn-link">Register</a> | <a class="btn btn-link">Login</a>
+                <div class="col-lg-6 col-12">
+                    <a href="/Cart" class="btn btn-light btn-sm">
+                        <i class="icofont-cart-alt h6"> Cart <span class="badge  badge-danger">@Session["cart_quantity"]</span> </i>
+                    </a> | <a href="/CompareProducts" class="btn-sm  btn-info">Compare Products</a>
+                    @if ((string)Session["user_status"] == "Active")
+                    {
+                        <a href="/SellProduct" class="btn-sm btn-warning">Sell Products</a> <a href="/CustomerProfile" class="btn-sm btn-success">My Account</a> <a href="/CustomerLogOut" class="btn-sm btn-danger">Logout</a>
+                    }
+                    else
+                    {
+                        <a href="/CustomerRegistration" class="btn-sm btn-success">Register</a> <a href="/CustomerLogin" class="btn-sm btn-primary">Login</a>
+                    }
+
                 </div>
                 <div class="col-12 col-lg-6">
                     <nav class="nav-menu d-none d-lg-block">
                         <ul>
-                            <li><a href="/home">Home</a></li>
                             <li class="drop-down">
-                                <a href="/components">Components</a>
+                                <a href="/Components">Components</a>
                                 <ul>
                                     <li class="drop-down">
-                                        <a href="/components/ram">Ram</a>
+                                        <a href="/Components/Ram">Ram</a>
                                         <ul>
-                                            <li><a href="/components/ram/Corsair">Corsair</a></li>
-                                            <li><a href="/components/ram/GSkill">GSkill</a></li>
-                                            <li><a href="/components/ram/Adata">Adata</a></li>
-                                            <li><a href="/components/ram/Avexir">Avexir</a></li>
+                                            <li><a href="/Components/RamBrand?brand=Corsair">Corsair</a></li>
+                                            <li><a href="/Components/RamBrand?brand=Gskill">GSkill</a></li>
+                                            <li><a href="/Components/RamBrand?brand=Adata">Adata</a></li>
+                                            <li><a href="/Components/RamBrand?brand=Avexir">Avexir</a></li>
                                         </ul>
                                     </li>
                                     <li class="drop-down">
-                                        <a href="/components/ssd">SSD</a>
+                                        <a href="/Components/SSD">SSD</a>
                                         <ul>
-                                            <li><a href="/components/ssd/Corsair">Corsair</a></li>
-                                            <li><a href="/components/ssd/Samsung">Samsung</a></li>
-                                            <li><a href="/components/ssd/Gigabyte">Gigabyte</a></li>
+                                            <li><a href="/Components/SSDBrand?brand=Corsair">Corsair</a></li>
+                                            <li><a href="/Components/SSDBrand?brand=Samsung">Samsung</a></li>
+                                            <li><a href="/Components/SSDBrand?brand=Gigabyte">Gigabyte</a></li>
                                         </ul>
                                     </li>
                                     <li class="drop-down">
-                                        <a href="/components/graphics-card">Graphics Card</a>
+                                        <a href="/Components/GraphicsCard">Graphics Card</a>
                                         <ul>
-                                            <li><a href="/components/graphics-card/Gigabyte">Gigabyte</a></li>
-                                            <li><a href="/components/graphics-card/Zotac">Zotac</a></li>
-                                            <li><a href="/components/graphics-card/Asus">Asus</a></li>
-                                            <li><a href="/components/graphics-card/MSI">MSI</a></li>
+                                            <li><a href="/Components/GraphicsCardBrand?brand=Gigabyte">Gigabyte</a></li>
+                                            <li><a href="/Components/GraphicsCardBrand?brand=Zotac">Zotac</a></li>
+                                            <li><a href="/Components/GraphicsCardBrand?brand=Asus">Asus</a></li>
+                                            <li><a href="/Components/GraphicsCardBrand?brand=MSI">MSI</a></li>
                                         </ul>
                                     </li>
 
                                     <li class="drop-down">
-                                        <a href="/components/casing">Casing</a>
+                                        <a href="/Components/Casing">Casing</a>
                                         <ul>
-                                            <li><a href="/components/casing/Corsair">Corsair</a></li>
-                                            <li><a href="/components/casing/Gamdias">Gamdias</a></li>
-                                            <li><a href="/components/casing/Cooler-Master">Cooler Master</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="drop-down">
-                                <a href="/laptops">Laptops</a>
-                                <ul>
-                                    <li><a href="/laptops/HP">HP</a></li>
-                                    <li><a href="/laptops/Dell">Dell</a></li>
-                                    <li><a href="/laptops/Apple">Apple</a></li>
-                                    <li><a href="/laptops/Microsoft">Microsoft</a></li>
-                                    <li><a href="/laptops/Lenovo">Lenovo</a></li>
-                                </ul>
-                            </li>
-                            <li class="drop-down">
-                                <a href="/monitors">Monitor</a>
-                                <ul>
-                                    <li><a href="/monitors/HP">HP</a></li>
-                                    <li><a href="/monitors/Dell">Dell</a></li>
-                                    <li><a href="/monitors/LG">LG</a></li>
-                                    <li><a href="/monitors/Samsung">Samsung</a></li>
-                                    <li><a href="/monitors/BenQ">BenQ</a></li>
-                                </ul>
-                            </li>
-                            <li class="drop-down">
-                                <a href="/accessories">Accessories</a>
-                                <ul>
-                                    <li class="drop-down">
-                                        <a href="/accessories/keyboard">Keyboard</a>
-                                        <ul>
-                                            <li><a href="/accessories/keyboard/Logitech">Logitech</a></li>
-                                            <li><a href="/accessories/keyboard/A4tech">A4Tech</a></li>
-                                            <li><a href="/accessories/keyboard/Gamdias">Gamdias</a></li>
-                                            <li><a href="/accessories/keyboard/Cougar">Cougar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="drop-down">
-                                        <a href="/accessories/mouse">Mouse</a>
-                                        <ul>
-                                            <li><a href="/accessories/mouse/Logitech">Logitech</a></li>
-                                            <li><a href="/accessories/mouse/A4tech">A4Tech</a></li>
-                                            <li><a href="/accessories/mouse/Gamdias">Gamdias</a></li>
-                                            <li><a href="/accessories/mouse/Cougar">Cougar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="drop-down">
-                                        <a href="/accessories/pen-drive">Pen Drive</a>
-                                        <ul>
-                                            <li><a href="/accessories/pen-drive/Sandisk">Sandisk</a></li>
-                                            <li><a href="/accessories/pen-drive/Adata">Adata</a></li>
-                                            <li><a href="/accessories/pen-drive/Avexir">Avexir</a></li>
-                                            <li><a href="/accessories/pen-drive/Transcend">Transcend</a></li>
+                                            <li><a href="/Components/CasingBrand?brand=Corsair">Corsair</a></li>
+                                            <li><a href="/Components/CasingBrand?brand=Gamdias">Gamdias</a></li>
+                                            <li><a href="/Components/CasingBrand?brand=Cooler Master">Cooler Master</a></li>
                                         </ul>
                                     </li>
 
                                     <li class="drop-down">
-                                        <a href="/accessories/webcam">Webcam</a>
+                                        <a href="/Components/MotherBoard">Mother Board</a>
                                         <ul>
-                                            <li><a href="/accessories/webcam/Logitech">Logitech</a></li>
-                                            <li><a href="/accessories/webcam/A4tech">A4Tech</a></li>
-                                            <li><a href="/accessories/webcam/Value-Top">Value Top</a></li>
+                                            <li><a href="/Components/MotherboardBrand?brand=Gigabyte">Gigabyte</a></li>
+                                            <li><a href="/Components/MotherboardBrand?brand=Asus">Asus</a></li>
+                                            <li><a href="/Components/MotherboardBrand?brand=MSI">MSI</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="drop-down">
+                                        <a href="/Components/CPU">CPU</a>
+                                        <ul>
+                                            <li><a href="/Components/CPUBrand?brand=Intel">Intel</a></li>
+                                            <li><a href="/Components/CPUBrand?brand=AMD">AMD</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="drop-down">
+                                        <a href="/Components/CoolingFan">Cooling Fan</a>
+                                        <ul>
+                                            <li><a href="/Components/CoolingFanBrand?brand=Corsair">Corsair</a></li>
+                                            <li><a href="/Components/CoolingFanBrand?brand=Gamdias">Gamdias</a></li>
+                                            <li><a href="/Components/CoolingFanBrand?brand=Cooler Master">Cooler Master</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="/Laptop">Laptops</a>
+                                <ul>
+                                    <li><a href="/Laptop/LaptopBrand?brand=HP">HP</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Asus">Asus</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Apple">Apple</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Razer">Razer</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Microsoft">Microsoft</a></li>
+                                    <li><a href="/Laptop/LaptopBrand?brand=Acer">Acer</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="/Monitor">Monitor</a>
+                                <ul>
+                                    <li><a href="/Monitor/MonitorBrand?brand=HP">HP</a></li>
+                                    <li><a href="/Monitor/MonitorBrand?brand=Dell">Dell</a></li>
+                                    <li><a href="/Monitor/MonitorBrand?brand=LG">LG</a></li>
+                                    <li><a href="/Monitor/MonitorBrand?brand=Samsung">Samsung</a></li>
+                                    <li><a href="/Monitor/MonitorBrand?brand=BenQ">BenQ</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="/Accessories">Accessories</a>
+                                <ul>
+                                    <li class="drop-down">
+                                        <a href="/Accessories/Keyboard">Keyboard</a>
+                                        <ul>
+                                            <li><a href="/Accessories/KeyboardBrand?brand=Logitech">Logitech</a></li>
+                                            <li><a href="/Accessories/KeyboardBrand?brand=A4Tech">A4Tech</a></li>
+                                            <li><a href="/Accessories/KeyboardBrand?brand=Gamdias">Gamdias</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="drop-down">
+                                        <a href="/Accessories/Mouse">Mouse</a>
+                                        <ul>
+                                            <li><a href="/Accessories/MouseBrand?brand=Logitech">Logitech</a></li>
+                                            <li><a href="/Accessories/MouseBrand?brand=A4Tech">A4Tech</a></li>
+                                            <li><a href="/Accessories/MouseBrand?brand=Gamdias">Gamdias</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -168,23 +189,26 @@
                 <div class="col-12 text-center">
                     <h3>@ViewBag.Brand</h3>
                 </div>
-                <div class="col-12 col-lg-3 border border-secondary rounded">
-                    <div class="text-center mt-2 mb-2">
-                        <img class="featured-product-img" src="~/Contents/vendor/Images/default_product_pic.png" />
-                        <h4>Product name</h4>
+                @foreach (var item in Model)
+                {
+                    <div class="col-12 col-lg-3 border border-secondary rounded">
+                        <div class="text-center mt-2 mb-2">
+                            <img class="featured-product-img" src="~/Contents/Upload_Files/Products/@item.Images" />
+                            <h5>@item.ProductName</h5>
+                        </div>
+                        <div class="text-left border-top border-secondary">
+                            <p>
+                                <span><b>Availability : </b> @item.Status</span><br />
+                                <span><b>Price : </b> @item.SellingPrice</span><br />
+                                <span><b>Discount : </b> @item.Discount%</span><br />
+                            </p>
+                        </div>
+                        <div class="border-top border-secondary pb-2 text-center">
+                            <a href="/Products/AddToWishList/@item.Id" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Wishlist</a>
+                            <a href="/Products/ShowProduct/@item.Id" class="btn-sm btn-primary btn-block">View Product</a>
+                        </div>
                     </div>
-                    <div class="text-left border-top border-secondary">
-                        <p>
-                            <span>Rating</span><br />
-                            <span>Price</span><br />
-                            <span>Availability</span><br />
-                        </p>
-                    </div>
-                    <div class="border-top border-secondary pb-2 text-center">
-                        <a href="#" class="btn-sm btn-success btn-block mt-2 mb-2">Add to Cart</a>
-                        <a href="/Components/ShowComponent/1" class="btn-sm btn-primary btn-block">View Product</a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
 
@@ -226,6 +250,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 </body>
 
 </html>

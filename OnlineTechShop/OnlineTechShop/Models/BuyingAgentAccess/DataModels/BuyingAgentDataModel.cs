@@ -56,5 +56,10 @@ namespace OnlineTechShop.Models.BuyingAgentAccess.DataModels
             List<Purchase_Log> buyingData = data.Purchase_Log.Where(x => x.Status == "Accepted").OrderBy(x => x.Id).ToList();
             return buyingData;
         }
+        public List<Purchase_Log> GetAllBuyingDataByCategory(string name)
+        {
+            List<Purchase_Log> buyingData = data.Purchase_Log.Where(x => x.Category == name).OrderBy(x => x.Id).ToList();
+            return buyingData;
+        }
     }
 }

@@ -76,13 +76,14 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CardType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ExpirationMonth" Type="Int16" Nullable="false" />
     <Property Name="ExpirationYear" Type="Int16" Nullable="false" />
     <Property Name="ShippingMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -121,6 +122,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
     <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
@@ -130,6 +132,7 @@
     <Property Name="Features" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PurchasedDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Rating">
     <Key>
