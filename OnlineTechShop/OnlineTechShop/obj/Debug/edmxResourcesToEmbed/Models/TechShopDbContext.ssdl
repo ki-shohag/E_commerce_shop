@@ -113,6 +113,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
     <Property Name="ProductName" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="ProductDescription" Type="text" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="30" Nullable="false" />

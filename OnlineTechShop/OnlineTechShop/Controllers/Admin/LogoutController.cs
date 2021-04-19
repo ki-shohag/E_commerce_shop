@@ -12,6 +12,7 @@ namespace OnlineTechShop.Controllers.Admin
         public ActionResult Index()
         {
             Session.Clear();
+            Session["email"] = "";
             return RedirectToAction("Index", "AdminLogin");
         }
     }

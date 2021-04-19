@@ -125,8 +125,7 @@
                                 <td colspan="3"><label class="col-form-label-sm">@Html.DisplayFor(modelItem => item.Body)</label></td>
                             </tr>
                             <tr>
-                                <td colspan="4" align="center" width="30%">@Html.ActionLink("Other Reviews Given By The Customer", "CustomerReview", "CustomerList", new { id = item.Customer.Id })</td>
-                                
+                                <td colspan="4" align="center" width="30%"><a href="/CustomerList/CustomerReview/@item.Customer.Id">Other Reviews Given By The Customer</a>
                             </tr>
                             <tr><td colspan="4">&nbsp;</td></tr>
                         }

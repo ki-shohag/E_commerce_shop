@@ -63,7 +63,7 @@ namespace OnlineTechShop.Controllers.Admin
 
         public ActionResult CustomerReview(int id)
         {
-            var givenReviews = context.Reviews.Where(p => p.UserId == id).FirstOrDefault();
+            var givenReviews = context.Reviews.Where(p => p.UserId == id).ToList();
             return View(givenReviews);
         }
     }

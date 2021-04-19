@@ -119,6 +119,7 @@
     <EntitySetMapping Name="Purchase_Log">
       <EntityTypeMapping TypeName="TechShopDbModel.Purchase_Log">
         <MappingFragment StoreEntitySet="Purchase_Log">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="PurchasedDate" ColumnName="PurchasedDate" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />

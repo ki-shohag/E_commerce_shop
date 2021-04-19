@@ -11,7 +11,7 @@ namespace OnlineTechShop.Controllers.Admin
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
-            if(filterContext.HttpContext.Session["email"].ToString()==null)
+            if(filterContext.HttpContext.Session["email"].ToString()=="")
             {
                 Response.Redirect("/AdminLogin/Index");
             }
