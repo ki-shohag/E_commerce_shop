@@ -29,6 +29,7 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
         }
         public void UpdatePaymentAndShippingInfo(Models.OrderData order)
         {
+            //data.OrderDatas.Add(order);
             data.Entry(order).State = System.Data.Entity.EntityState.Modified;
             data.SaveChanges();
         }

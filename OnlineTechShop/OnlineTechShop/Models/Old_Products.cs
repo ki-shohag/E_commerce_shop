@@ -11,20 +11,29 @@ namespace OnlineTechShop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Old_Products
     {
         public int Id { get; set; }
         public int CutomerId { get; set; }
+        [Required, MaxLength(50), MinLength(3)]
         public string ProductName { get; set; }
+        [Required, MaxLength(100), MinLength(3)]
         public string ProductDescription { get; set; }
         public string Status { get; set; }
         public decimal BuyingPrice { get; set; }
+        [Required, Range(1,200000)]
         public decimal SellingPrice { get; set; }
+        [Required, MaxLength(20), MinLength(3)]
         public string Category { get; set; }
+        [Required, MaxLength(20), MinLength(3)]
         public string Brand { get; set; }
+        [Required, MaxLength(100), MinLength(3)]
         public string Features { get; set; }
+        [Required, Range(1,5)]
         public int Quantity { get; set; }
+        [Required]
         public string Images { get; set; }
         public Nullable<int> Discount { get; set; }
         public Nullable<int> Tax { get; set; }

@@ -1,4 +1,5 @@
-﻿using OnlineTechShop.Models.CustomerAccess.DataModels;
+﻿using OnlineTechShop.AuthData;
+using OnlineTechShop.Models.CustomerAccess.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace OnlineTechShop.Controllers.Customer
 {
+    [CustomerAuthentication]
     public class SellProductController : Controller
     {
         OldProudctsDataModel oldProductsData = new OldProudctsDataModel();
@@ -15,11 +17,6 @@ namespace OnlineTechShop.Controllers.Customer
         // GET: SellProduct
         public ActionResult Index()
         {
-            if (Session["user_email"]==null)
-            {
-                TempData["msg"] = "Please login first";
-                return RedirectToAction("Index", "CustomerLogin");
-            }
             return View();
         }
         [HttpPost]
@@ -29,6 +26,7 @@ namespace OnlineTechShop.Controllers.Customer
             oldProduct.BuyingPrice = 0;
             oldProduct.Source = "Customer";
             oldProduct.Status = "Pending";
+
             if (ModelState.IsValid)
             {
                 oldProductsData.InsertOldProudctForSale(oldProduct);
@@ -37,8 +35,7 @@ namespace OnlineTechShop.Controllers.Customer
             }
             else
             {
-                TempData["msg"] = "Failed to post!";
-                return RedirectToAction("Index");
+                return View();
             }
         }
         [HttpGet]
@@ -68,16 +65,23 @@ namespace OnlineTechShop.Controllers.Customer
             }
             else
             {
-                TempData["msg"] = "Failed to update post!";
-                return RedirectToAction("PendingSellPosts");
+                return View(oldProductsData.GetPostedProudctById(id));
             }
         }
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            oldProductsData.DeletePost(id);
-            TempData["msg"] = "Deleted post!";
-            return RedirectToAction("PendingSellPosts");
+            if (oldProductsData.CheckPostStatusByPostId(id) == true)
+            {
+                TempData["msg"] = "Sorry your post is already been reviewed!\n It cannot be deleted now!";
+                return RedirectToAction("PendingSellPosts");
+            }
+            else
+            {
+                oldProductsData.DeletePost(id);
+                TempData["msg"] = "Deleted post!";
+                return RedirectToAction("PendingSellPosts");
+            }
         }
         [HttpGet]
         public ActionResult SoldProducts()
@@ -89,11 +93,13 @@ namespace OnlineTechShop.Controllers.Customer
         public ActionResult GetMostSoldCategoriesData()
         {
             var MyList = new List<KeyValuePair<string, int>>();
-            var list = oldProductsData.GetSoldProductsByCustomerId((int)Session["user_id"]);
-            foreach (var item in list)
+            var list = oldProductsData.GetSoldProductsByCustomerId((int)Session["user_id"]).GroupBy(x=>x.Category);
+
+            foreach (var group in list)
             {
-                MyList.Add(new KeyValuePair<string, int>(item.Category, item.Quantity));
+                MyList.Add(new KeyValuePair<string, int>(group.Key, group.Count()));
             }
+            
             return Json(new JavaScriptSerializer().Serialize(MyList), JsonRequestBehavior.AllowGet);
         }
         [HttpGet]

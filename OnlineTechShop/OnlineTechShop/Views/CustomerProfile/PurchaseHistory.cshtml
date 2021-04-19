@@ -216,10 +216,10 @@
                     <a class="btn-block btn-secondary rounded btn-sm" href="/CustomerProfile/WishList/@Model.Id">Wish List</a>
                 </div>
                 <div class="col-12 col-lg-10   border border-secondary rounded p-3">
-                    <h5>Purchase History : </h5>
+                    <h5>Purchase History : <span class="text-danger">@TempData["msg"]</span></h5>
                     <div class="row justify-content-between">
                         <div class="col-12 col-lg-6" id="donutchart" style="width: 900px; height: 500px;"></div>
-                        <div class="col-12 col-lg-6" id="series_chart_div" style="width: 900px; height: 500px;"></divclass="col-12>
+                        <div class="col-12 col-lg-6" id="series_chart_div" style="width: 900px; height: 500px;"></div>
                     </div>
                     
                     <div class="mb-5" id="columnchart_material" style="width: 1500px; height: 350px;"></div><br />
@@ -233,7 +233,7 @@
                             <th>Total Price</th>
                             <th>Date Purchased</th>
                             <th>Status</th>
-                            <th>Payment Type</th>
+                            <th>Action</th>
                         </tr>
                         @foreach (var item in ViewBag.PurchaseHistory)
                         {
@@ -246,7 +246,9 @@
                                 <td>@item.TotalPrice</td>
                                 <td>@item.DatePurchased</td>
                                 <td>@item.Status</td>
-                                <td>@item.PaymentType</td>
+                                <td>
+                                    <button type="button" value="@item.ProductId" class="cancelBtn btn btn-danger btn-sm">Cancel Order</button>
+                                </td>
                             </tr>
                         }
                     </table>
@@ -400,6 +402,18 @@
                 var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
                 chart.draw(data, options);
             }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.cancelBtn').click(function () {
+                var r = confirm("Are you sure to cancel the order? Changes cannot be reverted!");
+                if (r == true) {
+                    window.location.href = "/CustomerProfile/CancelOrder/" + $(this).attr("value");
+                } else {
+
+                }
+            });
         });
     </script>
 </body>

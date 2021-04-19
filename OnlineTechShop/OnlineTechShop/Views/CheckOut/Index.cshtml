@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model OnlineTechShop.Models.CustomerAccess.ViewModels.InvoiceViewModel
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -247,23 +248,36 @@
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <th class="w-25">Customer Name : </th>
-                                <td><input class="form-control" type="text" value="@Model.CustomerFullName" name="CustomerFullName" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.CustomerFullName, "", new { @class = "text-danger" })
+                                    <input class="form-control" type="text" value="@Model.CustomerFullName" name="CustomerFullName" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Phone Number : </th>
-                                <td><input class="form-control" type="text" value="@Model.Phone" name="Phone" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                                    <input class="form-control" type="text" value="@Model.Phone" name="Phone" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Billing Address : </th>
-                                <td><input class="form-control" type="text" value="@Model.BillingAddress" name="BillingAddress" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.BillingAddress, "", new { @class = "text-danger" })
+                                    <input class="form-control" type="text" value="@Model.BillingAddress" name="BillingAddress" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Shipping Address : </th>
-                                <td><input class="form-control" type="text" value="@Model.ShippingAddress" name="ShippingAddress" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.ShippingAddress, "", new { @class = "text-danger" })
+                                    <input class="form-control" type="text" value="@Model.ShippingAddress" name="ShippingAddress" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Shipping Method : </th>
                                 <td>
+                                    @Html.ValidationMessageFor(m => m.ShippingMethod, "", new { @class = "text-danger" })
                                     <select name="ShippingMethod" class="form-control" id="ShippingMethod">
                                         @if (Model.ShippingMethod == "Card Payment")
                                         {
@@ -281,6 +295,7 @@
                             <tr class="cardPaymentDivs">
                                 <th>Card Type : </th>
                                 <td>
+                                    @Html.ValidationMessageFor(m => m.CardType, "", new { @class = "text-danger" })
                                     <select name="CardType" class="form-control">
                                         @if (Model.CardType == "VISA")
                                         {
@@ -305,23 +320,27 @@
                             </tr>
                             <tr class="cardPaymentDivs">
                                 <th>Card Number: </th>
-                                <td><input type="text" value="@Model.CardNumber" class="form-control" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.CardNumber, "", new { @class = "text-danger" })
+                                    <input type="text" value="@Model.CardNumber" name="CardNumber" class="form-control" />
+                                </td>
                             </tr>
                             <tr class="cardPaymentDivs">
                                 <th>Expiration Month : </th>
-                                <td><input type="number" value="@Model.ExpirationMonth" class="form-control" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.ExpirationMonth, "", new { @class = "text-danger" })
+                                    <input type="number" value="@Model.ExpirationMonth" name="ExpirationMonth" class="form-control" />
+                                </td>
                             </tr>
                             <tr class="cardPaymentDivs">
                                 <th>Expiratin Year : </th>
-                                <td><input type="number" value="@Model.ExpirationYear" class="form-control" /></td>
-                            </tr>
-                            <tr>
-                                <th>Promo Code : </th>
-                                <td><input type="text" class="form-control" /></td>
+                                <td>
+                                @Html.ValidationMessageFor(m => m.ExpirationYear, "", new { @class = "text-danger" })
+                                <input type="number" value="@Model.ExpirationYear" name="ExpirationYear" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <button type="submit" class="form-control btn btn-success">Confirm Order</button>
+                                    <button type="submit" id="confirmBtn" class="form-control btn btn-success">Confirm Order</button>
                                 </td>
                             </tr>
                         </table>
@@ -383,6 +402,12 @@
                     $(".cardPaymentDivs").show();
                 }
             });
+            if ($("#ShippingMethod").val() == "Cash on Delivery") {
+                $(".cardPaymentDivs").hide();
+            }
+            else if ($("#ShippingMethod").val() == "Card Payment") {
+                $(".cardPaymentDivs").show();
+            }
         });
     </script>
 </body>

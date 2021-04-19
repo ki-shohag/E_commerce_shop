@@ -6,9 +6,12 @@ using System.Web.Mvc;
 using OnlineTechShop.Models.CustomerAccess.DataModels;
 using System.IO;
 using System.Web.Script.Serialization;
+using OnlineTechShop.AuthData;
+using System.Diagnostics;
 
 namespace OnlineTechShop.Controllers.Customer
 {
+    [CustomerAuthentication]
     public class CustomerProfileController : Controller
     {
         CustomerDataModel customerData = new CustomerDataModel();
@@ -31,7 +34,6 @@ namespace OnlineTechShop.Controllers.Customer
         {
             if (customerData.GetCustomerByEmail((string)customer.Email)!=null && customer.Email!=(string)Session["user_email"] && !customer.Email.Equals((string)Session["user_email"]))
             {
-
                 TempData["msg"] = "Email address already registered!";
                 return RedirectToAction("Edit", "CustomerProfile", id);
             }
@@ -42,14 +44,27 @@ namespace OnlineTechShop.Controllers.Customer
             }
             else
             {
+                Models.Customer currentCustomer = customer;
                 Models.Customer newCustomer = customerData.GetCustomerById(id);
-                newCustomer.FullName = customer.FullName;
-                newCustomer.Address = customer.Address;
-                newCustomer.Phone = customer.Phone;
-                newCustomer.Email = customer.Email;
-                customerData.UpdateCustomer(newCustomer);
-                TempData["msg"] = "Profile Updated!";
-                return RedirectToAction("Index");
+
+                customer = newCustomer;
+                customer.FullName = currentCustomer.FullName;
+                customer.Email = currentCustomer.Email;
+                customer.Address = currentCustomer.Address;
+                customer.Phone = currentCustomer.Phone;
+                customer.UserName = currentCustomer.UserName;
+
+                if (ModelState.IsValid)
+                {
+                    customerData.UpdateCustomer(newCustomer);
+                    TempData["msg"] = "Profile Updated!";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["msg"] = "Failed to update profile!";
+                    return RedirectToAction("Index");
+                }
             }
         }
         [HttpGet]
@@ -60,6 +75,11 @@ namespace OnlineTechShop.Controllers.Customer
         [HttpPost]
         public ActionResult ChangePassword(int id, FormCollection collection)
         {
+            if (!customerData.GetCustomerById((int)Session["user_id"]).Password.Equals(collection["currentPassword"]))
+            {
+                TempData["msg"] = "Invalid current password!";
+                return RedirectToAction("ChangePassword", "CustomerProfile", id);
+            }
             if (!collection["newPassword"].Equals(collection["confirmNewPassword"]))
             {
                 TempData["msg"] = "Passwords did not match!";
@@ -102,20 +122,33 @@ namespace OnlineTechShop.Controllers.Customer
         [HttpPost]
         public ActionResult UploadProfilePic(HttpPostedFileBase image)
         {
-            if (image.ContentLength>0)
+            if (image==null)
+            {
+                TempData["msg"] = "Please select a picture first!";
+                return RedirectToAction("Index");
+            }
+            else if (image.ContentLength>0)
             {
                 Models.Customer customer =customerData.GetCustomerByEmail((string)Session["user_email"]);
                 if (customer!=null)
                 {
                     string ImageFileName = Path.GetFileName(image.FileName);
                     string ImageExtension = Path.GetExtension(image.FileName);
-                    string FolderPath = Path.Combine(Server.MapPath("~/Contents/Upload_Files/Customer/ProfilePic"), ImageFileName.Replace(ImageFileName, Session["user_email"].ToString() + ImageExtension));
-                    image.SaveAs(FolderPath);
-                    customer.ProfilePic = ImageFileName.Replace(ImageFileName, Session["user_email"].ToString() + ImageExtension);
-                    Session["user_profile_pic"] = customer.ProfilePic;
-                    customerData.UpdateCustomer(customer);
-                    TempData["msg"] = "Successfully uploaded profile picture!";
-                    return RedirectToAction("Index");
+                    if (ImageExtension.Equals(".jpg") || ImageExtension==".jpg" || ImageExtension.Equals(".JPG") || ImageExtension == ".JPG" || ImageExtension.Equals(".PNG") || ImageExtension == ".PNG" || ImageExtension.Equals(".png") || ImageExtension == ".png")
+                    {
+                        string FolderPath = Path.Combine(Server.MapPath("~/Contents/Upload_Files/Customer/ProfilePic"), ImageFileName.Replace(ImageFileName, Session["user_email"].ToString() + ImageExtension));
+                        image.SaveAs(FolderPath);
+                        customer.ProfilePic = ImageFileName.Replace(ImageFileName, Session["user_email"].ToString() + ImageExtension);
+                        Session["user_profile_pic"] = customer.ProfilePic;
+                        customerData.UpdateCustomer(customer);
+                        TempData["msg"] = "Successfully uploaded profile picture!";
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["msg"] = "Please choose JPG or PNG files only!";
+                        return RedirectToAction("Index");
+                    }
                 }
                 else
                 {
@@ -136,6 +169,11 @@ namespace OnlineTechShop.Controllers.Customer
             Models.Customer customer = customerData.GetCustomerByEmail((string)Session["user_email"]);
             if (customer!=null)
             {
+                if (customer.ProfilePic==null)
+                {
+                    TempData["msg"] = "No profile picture uploaded to remove!";
+                    return RedirectToAction("Index");
+                }
                 customer.ProfilePic = null;
                 Session["user_profile_pic"] = null;
                 customerData.UpdateCustomer(customer);
@@ -160,17 +198,23 @@ namespace OnlineTechShop.Controllers.Customer
             return View(customerData.GetCustomerByEmail((string)Session["user_email"]));
         }
         [HttpPost]
-        public ActionResult UpdatePaymentAndShipping(Models.OrderData order)
+        public ActionResult PaymentAndShipping(Models.OrderData order)
         {
             order.Id = ordersData.GetOrderIdByCustomerId((int)Session["user_id"]);
             order.Customer_Id = (int)Session["user_id"];
-            order.ShippingMethod = "Card Payment";
+
             if (ModelState.IsValid)
             {
                 ordersData.UpdatePaymentAndShippingInfo(order);
+                TempData["msg"] = "Updated payment and shipping details successfully!";
+                return RedirectToAction("PaymentAndShipping");
             }
-            TempData["msg"] = "Updated payment and shipping details successfully!";
-            return RedirectToAction("PaymentAndShipping");
+            else
+            {
+                TempData["msg"] = "Failed to update payment and shipping details!\nFill up the form carefully!";
+                return RedirectToAction("PaymentAndShipping");
+            }
+
         }
         [HttpGet]
         public ActionResult GetPurchaseCategoryData()
@@ -178,5 +222,18 @@ namespace OnlineTechShop.Controllers.Customer
             var list = salesLogData.GetPurchaseVisualizationData((int)Session["user_id"], 2020,2021);
             return Json(new JavaScriptSerializer().Serialize(list) ,JsonRequestBehavior.AllowGet);
         }
+        //[HttpGet]
+        //public ActionResult CancelOrder(int id)
+        //{
+        //    if (salesLogData.CancelOrderByOrderId(id) == true)
+        //    {
+        //        TempData["msg"] = "Cancelled the order!";
+        //    }
+        //    else
+        //    {
+        //        TempData["msg"] = "Failed to cancel the order!";
+        //    }
+        //    return Redirect("/CustomerProfile/PurchaseHistory/" + (int)Session["user_id"]);
+        //}
     }
 }

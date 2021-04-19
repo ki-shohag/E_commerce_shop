@@ -11,15 +11,22 @@ namespace OnlineTechShop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class OrderData
     {
         public int Id { get; set; }
+        [Required]
         public string CardType { get; set; }
+        [Required, MaxLength(20), MinLength(10)]
         public string CardNumber { get; set; }
+        [Required, Range(1,12)]
         public short ExpirationMonth { get; set; }
+        [Required, Range(20,25)]
         public short ExpirationYear { get; set; }
+        [Required]
         public string ShippingMethod { get; set; }
+        [Required, MaxLength(100), MinLength(3)]
         public string ShippingAddress { get; set; }
         public int Customer_Id { get; set; }
     }

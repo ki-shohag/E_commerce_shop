@@ -204,35 +204,59 @@
                             </tr>
                             <tr>
                                 <th class="w-25">Product Name : </th>
-                                <td><input class="form-control" name="productName" type="text" value="@Model.ProductName" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger" })
+                                    <input class="form-control" name="productName" type="text" value="@Model.ProductName" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Proudct Image : </th>
-                                <td><input class="form-control" name="images" type="file" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.Images, "", new { @class = "text-danger" })
+                                    <input class="form-control" name="images" type="file" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Description : </th>
-                                <td><input class="form-control" name="productDescription" type="text" value="@Model.ProductDescription" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.ProductDescription, "", new { @class = "text-danger" })
+                                    <input class="form-control" name="productDescription" type="text" value="@Model.ProductDescription" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Quantity : </th>
-                                <td><input class="form-control" name="quantity" type="number" value="@Model.Quantity" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
+                                    <input class="form-control" name="quantity" type="number" value="@Model.Quantity" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Category : </th>
-                                <td><input class="form-control" name="category" type="text" value="@Model.Category" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+                                    <input class="form-control" name="category" type="text" value="@Model.Category" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Brand : </th>
-                                <td><input class="form-control" name="brand" type="text" value="@Model.Brand" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.Brand, "", new { @class = "text-danger" })
+                                    <input class="form-control" name="brand" type="text" value="@Model.Brand" />
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Features : </th>
-                                <td><textarea class="form-control" name="features">@Model.Features</textarea></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.Features, "", new { @class = "text-danger" })
+                                    <textarea class="form-control" name="features">@Model.Features</textarea>
+                                </td>
                             </tr>
                             <tr>
                                 <th class="w-25">Asking Price : </th>
-                                <td><input class="form-control" name="sellingPrice" type="number" value="@Model.SellingPrice" /></td>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.SellingPrice, "", new { @class = "text-danger" })
+                                    <input class="form-control" name="sellingPrice" type="number" value="@Model.SellingPrice" />
+                                </td>
                             </tr>
                             <tr>
                                 <td class="text-center" colspan="2"><button class="form-control btn btn-success" type="submit">Update</button></td>

@@ -31,6 +31,14 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
             data.Old_Products.Remove(data.Old_Products.Find(id));
             data.SaveChanges();
         }
+        public bool CheckPostStatusByPostId(int id)
+        {
+            if (data.Old_Products.Where(x=>x.Id==id && x.Status=="Pending")!=null)
+            {
+                return false;
+            }
+            return true;
+        }
         public List<Models.Old_Products> GetSoldProductsByCustomerId(int id)
         {
             return data.Old_Products.Where(x => x.CutomerId == id && x.Status == "Accepted").ToList();

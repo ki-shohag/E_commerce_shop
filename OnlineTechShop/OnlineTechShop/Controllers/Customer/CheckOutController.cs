@@ -1,4 +1,5 @@
-﻿using OnlineTechShop.Models.CustomerAccess.DataModels;
+﻿using OnlineTechShop.AuthData;
+using OnlineTechShop.Models.CustomerAccess.DataModels;
 using OnlineTechShop.Models.CustomerAccess.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace OnlineTechShop.Controllers.Customer
 {
+    [CheckOutAuthentication, CustomerAuthentication]
     public class CheckOutController : Controller
     {
         OrdersDataModel ordersData = new OrdersDataModel();
@@ -51,11 +53,16 @@ namespace OnlineTechShop.Controllers.Customer
                 TempData["msg"] = "Order Confirmed!";
                 Session["cart"] = null;
                 Session["cart_quantity"] = 0;
-                return RedirectToAction("Index","CustomerProfile");
+
+                TempData["msg"] = "Order confirmed successfully!\nCheck order details and shipping status below!";
+                return Redirect("/CustomerProfile/PurchaseHistory/"+(int)Session["user_id"]);
             }
             else
             {
-                return RedirectToAction("Index");
+                List<CartViewModel> cart = null;
+                cart = (List<CartViewModel>)Session["cart"];
+                ViewBag.Cart = cart;
+                return View(ordersData.GetInvoiceData((int)Session["user_id"]));
             }
         }
     }

@@ -24,6 +24,18 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
             data.Ratings.Add(rating);
             data.SaveChanges();
         }
+        public bool CheckRatedProductByCustomerId(int customerId, int productId)
+        {
+            var rating = data.Ratings.Where(x => x.UserId == customerId && x.ProductId == productId).FirstOrDefault();
+            if (rating==null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public Models.Rating GetRatingDataByProductId(int id)
         {
             return data.Ratings.Find(id);

@@ -310,6 +310,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AuthData\CheckOutAuthentication.cs" />
+    <Compile Include="AuthData\CustomerAuthentication.cs" />
     <Compile Include="Controllers\Admin\AdminBaseController.cs" />
     <Compile Include="Controllers\Admin\AdminDashboardController.cs" />
     <Compile Include="Controllers\Admin\AdminListController.cs" />
@@ -391,6 +393,7 @@
     <Compile Include="Models\CustomerAccess\ViewModels\PurchaseViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\ReviewsViewModel.cs" />
     <Compile Include="Models\CustomerAccess\ViewModels\WishListViewModel.cs" />
+    <Compile Include="Models\DataModel\Customer\CustomerProfileMetaData.cs" />
     <Compile Include="Models\Old_Products.cs">
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
@@ -531,7 +534,6 @@
     <Content Include="Views\CustomerProfile\WishList.cshtml" />
     <Content Include="Views\CompareProducts\Index.cshtml" />
     <Content Include="Views\Products\ShowProduct.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Accessories\Index.cshtml" />
     <Content Include="Views\Accessories\Keyboard.cshtml" />
     <Content Include="Views\Accessories\Mouse.cshtml" />
@@ -590,7 +592,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contents\Upload_Files\Customer\ProfilePic\" />
-    <Folder Include="Models\DataModel\Customer\" />
     <Folder Include="Models\ViewModel\Customer\" />
     <Folder Include="Views\CustomerLogOut\" />
     <Folder Include="Views\Customer\" />

@@ -1,0 +1,6 @@
+.vs
+bin
+obj
+OnlineTechShop.csproj
+Web.config
+App_Data

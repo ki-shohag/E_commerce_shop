@@ -16,13 +16,16 @@ namespace OnlineTechShop.Controllers.Customer
         ReviewsDataModel reviewsData = new ReviewsDataModel();
         RatingsDataModel ratingsData = new RatingsDataModel();
         WishListsDataModel wishData = new WishListsDataModel();
-        public ActionResult Index()
-        {
-            return View();
-        }
+        
         [HttpGet]
         public ActionResult ShowProduct(int id)
         {
+            var product = productsData.GetProductById(id);
+            if (product == null)
+            {
+                return Redirect("/Home");
+            }
+
             if (Request.Cookies["RecentlyViewedProductsListCookie"] != null)
             {
                 List<int> RecentlyViewedProductsList = Request.Cookies["RecentlyViewedProductsListCookie"].Value.Split(',').Select(x => Convert.ToInt32(x)).ToList();
@@ -30,7 +33,7 @@ namespace OnlineTechShop.Controllers.Customer
                     {
                         RecentlyViewedProductsList.Insert(0, id);
                         var RecentlyViewedProductsListString = String.Join(",", RecentlyViewedProductsList);
-                        HttpCookie RecentlyViewedProductsListCookie = new HttpCookie("RecentlyViewedProductsListCookie", RecentlyViewedProductsListString.);
+                        HttpCookie RecentlyViewedProductsListCookie = new HttpCookie("RecentlyViewedProductsListCookie", RecentlyViewedProductsListString);
                         Response.Cookies.Add(RecentlyViewedProductsListCookie);
                         RecentlyViewedProductsListCookie.Expires = DateTime.Now.AddDays(7);
                     }
@@ -49,7 +52,7 @@ namespace OnlineTechShop.Controllers.Customer
             ViewBag.Rating = ratingsData.GetProductRatingByProductId(id);
             ViewBag.RatingData = ratingsData.GetRatingDataByProductId(id);
             ViewBag.UserId = Session["user_id"];
-            return View(productsData.GetProductById(id));
+            return View(product);
         }
         [HttpPost]
         public ActionResult PostReview(int id, Models.Review review)
@@ -59,8 +62,28 @@ namespace OnlineTechShop.Controllers.Customer
             review.DatePosted = DateTime.Now;
             if (ModelState.IsValid)
             {
-                reviewsData.PostReview(review);
-                return Redirect("/Products/ShowProduct/"+review.ProductId);
+                if (reviewsData.CheckBoughtProductByCustomerId((int)Session["user_id"], id)==false)
+                {
+                    TempData["msg"] = "Sorry, You are not allowed to review the product as you have not purchased it!";
+                    return Redirect("/Products/ShowProduct/" + review.ProductId);
+                }
+                else if (review.Body==null)
+                {
+                    TempData["msg"] = "Review cannot be empty!";
+                    return Redirect("/Products/ShowProduct/" + review.ProductId);
+                }
+                else if (reviewsData.CheckReviewedProductByCustomerId((int)Session["user_id"], id)==false)
+                {
+                    TempData["msg"] = "You have already reviewed the product once!";
+                    return Redirect("/Products/ShowProduct/" + review.ProductId);
+                }
+                else
+                {
+                    reviewsData.PostReview(review);
+                    TempData["msg"] = "Successfully posted product review!";
+                    return Redirect("/Products/ShowProduct/" + review.ProductId);
+                }
+                
             }
             else
             {
@@ -76,8 +99,17 @@ namespace OnlineTechShop.Controllers.Customer
             newRating.UserId = (int)data.UserId;
             newRating.ProductId = (int)data.ProductId;
             newRating.DateRated = DateTime.Now.Date;
-            ratingsData.PostNewRating(newRating);
-            return Json(newRating, JsonRequestBehavior.AllowGet);
+
+            if (ratingsData.CheckRatedProductByCustomerId((int)Session["user_id"], data.ProductId)==false)
+            {
+                ratingsData.PostNewRating(newRating);
+                return Json(newRating, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                newRating.Rating1 = -1;
+                return Json(newRating, JsonRequestBehavior.AllowGet);
+            }
         }
         public void AddToWishList(int id)
         {

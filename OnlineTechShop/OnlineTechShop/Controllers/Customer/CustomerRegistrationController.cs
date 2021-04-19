@@ -36,9 +36,9 @@ namespace OnlineTechShop.Controllers.Customer
                 else
                 {
                     customerData.InsertCustomer(customer);
-                    Models.OrderData order = new OrderData();
-                    string email = customerData.GetCustomerByEmail(customer.Email).Email.ToString();
-                    ordersData.AddOrderDataOnCustomerRegistration(email);
+                    //Models.OrderData order = new OrderData();
+                    //string email = customerData.GetCustomerByEmail(customer.Email).Email.ToString();
+                    //ordersData.AddOrderDataOnCustomerRegistration(email);
                     TempData["msg"] = "Registration was successful!\nWant to login?";
                     return RedirectToAction("Index", "CustomerLogin");
                 }

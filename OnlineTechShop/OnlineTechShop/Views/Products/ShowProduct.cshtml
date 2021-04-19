@@ -185,9 +185,12 @@
     </header>
     <!-- End Header -->
     <!--Main Body Starts-->
-    <main id="main ">
+    <main id="main">
         <div class="container">
             <div class="row justify-content-center mt-3">
+                <div class="col-6">
+                    <h5 class="text-danger">@TempData["msg"]</h5>
+                </div>
                 <div class="col-12 col-lg-6">
                     <img src="~/Contents/Upload_Files/Products/@Model.Images" /><br />
                 </div>
@@ -365,7 +368,12 @@
                             dataType: "json",
                             data: myData,
                             success: function (data) {
-                                alert("Successfully rated " + rate + "!");
+                                if (data.Rating1 == -1) {
+                                    alert("You have already rated the product!");
+                                }
+                                else {
+                                    alert("Successfully rated the product " + data.Rating1+"!");
+                                }
                             }
                         });
                     });

@@ -28,5 +28,21 @@ namespace OnlineTechShop.Models.CustomerAccess.DataModels
             data.Reviews.Add(review);
             data.SaveChanges();
         }
+        public bool CheckBoughtProductByCustomerId(int customerId, int productId)
+        {
+            if(data.Sales_Log.Where(x=>x.UserId==customerId && x.ProductId==productId && x.Status=="Sold").FirstOrDefault()!=null)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool CheckReviewedProductByCustomerId(int customerId, int productId)
+        {
+            if (data.Reviews.Where(x=>x.UserId==customerId && x.ProductId==productId).FirstOrDefault()!=null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
