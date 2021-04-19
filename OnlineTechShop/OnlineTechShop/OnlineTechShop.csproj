@@ -239,6 +239,7 @@
       <DependentUpon>TechShopDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sales\DataModels\CartDataModel.cs" />
+    <Compile Include="Models\Sales\DataModels\ProductsDataModel.cs" />
     <Compile Include="Models\Sales\DataModels\SalesExecutiveDataModel.cs" />
     <Compile Include="Models\Sales\DataModels\SalesLogDataModel.cs" />
     <Compile Include="Models\Sales\ViewModels\CartViewModel.cs" />

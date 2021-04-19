@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineTechShop.Models;
-using OnlineTechShop.Models.CustomerAccess.DataModels;
 using OnlineTechShop.Models.Sales.ViewModels;
 using OnlineTechShop.Models.Sales.DataModels;
 using System.Web.Script.Serialization;
@@ -150,7 +149,7 @@ namespace OnlineTechShop.Controllers.SalesExecutive
             }
             else
             {
-                return Json(JsonConvert.SerializeObject(new { msg = "Not much stock left!", totalCartQuantity = totalCartQuantity }), JsonRequestBehavior.AllowGet);
+                return Json(JsonConvert.SerializeObject(new { msg = "Not Enoough Stock!", totalCartQuantity = totalCartQuantity }), JsonRequestBehavior.AllowGet);
             }
         }
 
